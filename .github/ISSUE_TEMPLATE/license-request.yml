@@ -1,0 +1,64 @@
+name: License request
+description: Purchase a Pro or Enterprise license — you get a signed license file + invoice
+title: "[License] "
+labels: ["license"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill this in and the maintainer replies within **1 business day** with
+        a signed license file + payment link (card/invoice). Nothing here is
+        billed automatically — you approve the invoice first.
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Tier
+      options:
+        - Pro — $49/mo per deployment
+        - Enterprise — contact (ZDR, audit, SLA, onboarding)
+        - Not sure — describe the use case
+    validations:
+      required: true
+  - type: input
+    id: email
+    attributes:
+      label: Email for the license + invoice
+      placeholder: you@company.com
+    validations:
+      required: true
+  - type: input
+    id: company
+    attributes:
+      label: Company / project
+      placeholder: optional for individuals
+    validations:
+      required: false
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: How are you running webx?
+      options:
+        - docker compose (self-hosted VPS)
+        - webxd + Postgres (production)
+        - webx serve (single node)
+        - Air-gapped / offline
+        - Not deployed yet — evaluating
+    validations:
+      required: true
+  - type: textarea
+    id: usecase
+    attributes:
+      label: What are you building?
+      description: >-
+        One or two sentences — helps size the right tier. Enterprise
+        requests: mention seats, retention requirements (ZDR?), and SLA needs.
+      placeholder: "Internal agent platform, ~5 services hitting /scrape+/search, need per-team keys + audit"
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Acknowledgments
+      options:
+        - label: I understand the code stays MIT — the license covers hosted features, support, and team gates (RBAC/audit/ZDR)
+          required: true

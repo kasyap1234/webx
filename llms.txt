@@ -18,7 +18,7 @@
 - `webx map <domain>` / `webx index <url>` / `webx query` — site discovery + private corpus
 - `webx diff <url>` / `webx watch <url>` — change detection & monitoring
 - `webx similar <url>` — find related pages in the index
-- `webx mcp` — MCP server (12 tools) for agent harnesses
+- `webx mcp` — MCP server (17 tools) for agent harnesses
 - `webx serve` / `webxd` — HTTP API incl. Firecrawl-compatible /v2/* routes
 - `webx skill` — emits a SKILL.md for agent harnesses
 

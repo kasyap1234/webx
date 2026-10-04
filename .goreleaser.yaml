@@ -9,14 +9,14 @@ builds:
     env: [CGO_ENABLED=0]
     goos: [linux, darwin, windows]
     goarch: [amd64, arm64]
-    ldflags: [-s -w -X main.version={{.Version}}]
+    ldflags: ["-s -w -X main.version={{.Version}}"]
   - id: webxd
     main: ./cmd/webxd
     binary: webxd
     env: [CGO_ENABLED=0]
     goos: [linux, darwin]
     goarch: [amd64, arm64]
-    ldflags: [-s -w -X main.version={{.Version}}]
+    ldflags: ["-s -w -X main.version={{.Version}}"]
 
 archives:
   - name_template: "{{ .Binary }}_{{ .Os }}_{{ .Arch }}"
@@ -33,6 +33,20 @@ dockers:
   - image_templates: ["ghcr.io/kasyap1234/webx:{{ .Tag }}", "ghcr.io/kasyap1234/webx:latest"]
     dockerfile: Dockerfile
     ids: [webxd]
+
+# Homebrew tap — uncomment once github.com/kasyap1234/homebrew-tap exists and
+# a HOMEBREW_TAP_TOKEN secret (contents:write on the tap repo) is set on this one.
+# brews:
+#   - repository:
+#       owner: kasyap1234
+#       name: homebrew-tap
+#       token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
+#     ids: [webx]
+#     description: "The web toolkit for AI coding agents — scrape, search, crawl, extract"
+#     homepage: "https://github.com/kasyap1234/webx"
+#     license: MIT
+#     install: |
+#       bin.install "webx"
 
 changelog:
   sort: asc

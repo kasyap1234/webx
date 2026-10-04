@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "webx"
+name = "webx-sdk"
 version = "0.1.0"
 description = "Python SDK for webx — the open-source web toolkit for AI agents (scrape, crawl, search, extract)"
 readme = "README.md"
@@ -25,4 +25,4 @@ Homepage = "https://github.com/kasyap1234/webx"
 Repository = "https://github.com/kasyap1234/webx"
 
 [tool.setuptools.packages.find]
-include = ["webx*"]
+include = ["webx_sdk*"]

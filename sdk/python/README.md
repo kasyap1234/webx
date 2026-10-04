@@ -1,14 +1,14 @@
-# webx — Python SDK
+# webx-sdk — Python SDK
 
 Zero-dependency Python client for any [webx](https://github.com/kasyap1234/webx) server
 (`webx serve` locally, `webxd` in production, or a hosted deployment).
 
 ```bash
-pip install webx
+pip install webx-sdk
 ```
 
 ```python
-from webx import WebX
+from webx_sdk import WebX
 
 wx = WebX("http://localhost:8080")           # api_key="webx_..." if the server requires one
 

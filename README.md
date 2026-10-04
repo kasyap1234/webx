@@ -2,7 +2,7 @@
 
 **The web toolkit for AI coding agents** — scrape, search, map, crawl, index, extract, diff, and serve. Single static binary, MIT licensed, zero required services.
 
-A lighter, open-source alternative to Firecrawl/Exa/Tavily/TinyFish — and a learning project: the important parts (metasearch fusion, FTS5 indexing, adaptive crawling, TLS fingerprinting) are built, not wrapped.
+The self-hosted alternative to Firecrawl/Exa/Tavily/TinyFish: the important parts (metasearch fusion, FTS5 indexing, adaptive crawling, TLS fingerprinting) are built in, not wrapped. One binary replaces a scraping API bill, a search API bill, and a browser-infra bill.
 
 ## Install
 
@@ -119,7 +119,7 @@ docker compose --profile browserless up -d  # Chrome as a separate service
 
 | language | package | notes |
 |---|---|---|
-| **Python** | `sdk/python` → `pip install webx` | zero-dep (stdlib urllib); `WebX(base_url, api_key)` — `scrape / search / crawl / extract / map / research / verify / wayback / batch_scrape` + tenancy (`create_key / usage / schedule`) |
+| **Python** | `sdk/python` → `pip install webx-sdk` (`from webx_sdk import WebX`) | zero-dep (stdlib urllib); `WebX(base_url, api_key)` — `scrape / search / crawl / extract / map / research / verify / wayback / batch_scrape` + tenancy (`create_key / usage / schedule`) |
 | **JS/TS** | `sdk/javascript` → `npm install webx-sdk` | zero-dep ESM, Node 18+, full `.d.ts`; same method surface, camelCase opts |
 | **Go** | `import "github.com/kasyap1234/webx/client"` | the same typed client the CLI uses for `--api` mode |
 
@@ -184,10 +184,11 @@ Gates are enforced in-code — a 402 response body includes `"upgrade"` pointing
 here. `GET /license` on any deployment reports its live tier.
 
 **Buying a license**: `webx license gen --tier pro --email you@co.com` produces
-a signed license file — you need a maintainer signing key, i.e. buy from me:
-**kasyap (at) — open an issue or email to purchase.** Set `WEBX_LICENSE=<path>`
-on the deployment. Operators reselling webx-hosted service point their own
-paywall with `WEBX_UPGRADE_URL`.
+a signed license file — you need a maintainer signing key, i.e. buy from me.
+**To purchase: open a [license request](../../issues/new?template=license-request.yml)
+— you'll get a signed license file + invoice within 1 business day.** Set
+`WEBX_LICENSE=<path>` on the deployment. Operators reselling webx-hosted
+service point their own paywall with `WEBX_UPGRADE_URL`.
 
 **Hosted cloud**: `docker compose --profile cloud up -d` on a VPS gives a
 durable, TLS-terminated deployment (`DOMAIN`, `WEBX_API_KEY`, `PG_PASSWORD`)
@@ -196,6 +197,14 @@ durable, TLS-terminated deployment (`DOMAIN`, `WEBX_API_KEY`, `PG_PASSWORD`)
 Honest note: the free tier is genuinely a product, not a crippleware demo —
 metering, schedules, webhooks all work without a license. The gates are the
 things that only matter once you're running it for a team.
+
+## Comparisons
+
+Honest, dated, reproducible — re-run `go run ./bench` / `webx eval --vs` before quoting.
+
+- [webx vs Firecrawl](docs/vs-firecrawl.md) — features, self-host footprint, pricing model
+- [webx vs Crawl4AI](docs/vs-crawl4ai.md) — library vs toolkit, Python vs single binary
+- [webx vs search APIs (Exa/Tavily/Brave)](docs/vs-search-apis.md) — metasearch vs owned indexes
 
 ## License
 
