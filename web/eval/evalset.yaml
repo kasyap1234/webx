@@ -1,0 +1,72 @@
+# Dev-query eval set — each case lists acceptable-answer domains.
+# A result on any expected host counts as a hit; MRR + hit-rate@N are reported.
+queries:
+  # error-message shaped → SO/GitHub
+  - q: "fatal: not a git repository error"
+    expect: [stackoverflow.com, git-scm.com, github.com]
+  - q: "concurrent map writes golang panic"
+    expect: [stackoverflow.com, go.dev, github.com]
+  - q: "cannot find package golang error"
+    expect: [stackoverflow.com, go.dev, pkg.go.dev]
+  - q: "npm ERR! code ERESOLVE unable to resolve dependency tree"
+    expect: [stackoverflow.com, github.com, docs.npmjs.com]
+  - q: "docker permission denied /var/run/docker.sock"
+    expect: [stackoverflow.com, docs.docker.com, github.com]
+  - q: "pip could not find a version that satisfies the requirement"
+    expect: [stackoverflow.com, github.com, pypi.org]
+  - q: "ModuleNotFoundError no module named pandas"
+    expect: [stackoverflow.com, github.com, pandas.pydata.org]
+
+  # identifier/signature shaped → docs index/pkg registries
+  - q: "http.NewRequest golang"
+    expect: [pkg.go.dev, go.dev]
+  - q: "json.Marshal golang"
+    expect: [pkg.go.dev, go.dev]
+  - q: "useEffect react"
+    expect: [react.dev, legacy.reactjs.org, w3schools.com]
+  - q: "htmx hx-get"
+    expect: [htmx.org]
+  - q: "express.Router"
+    expect: [expressjs.com]
+  - q: "gorilla mux"
+    expect: [github.com, pkg.go.dev, gorillatoolkit.org]
+  - q: "pip install requirements.txt"
+    expect: [pip.pypa.io, stackoverflow.com, python.org]
+  - q: "std::vector c++"
+    expect: [en.cppreference.com, cplusplus.com, stackoverflow.com]
+  - q: "Vec::with_capacity rust"
+    expect: [doc.rust-lang.org, users.rust-lang.org]
+  - q: "lsyncd config"
+    expect: [github.com, archlinux.org]
+
+  # concept/prose shaped → wiki/news/docs
+  - q: "what is a goroutine"
+    expect: [go.dev, en.wikipedia.org, geeksforgeeks.org]
+  - q: "difference between tcp and udp"
+    expect: [en.wikipedia.org, cloudflare.com, geeksforgeeks.org, diffeq.co]
+  - q: "model context protocol"
+    expect: [modelcontextprotocol.io, github.com, anthropic.com]
+  - q: "reciprocal rank fusion"
+    expect: [elastic.co, github.com, learn.microsoft.com, ragaboutit.com]
+  - q: "websocket protocol"
+    expect: [en.wikipedia.org, developer.mozilla.org, websocket.org]
+
+  # library recommendations / ecosystems → github, npm
+  - q: "golang http client"
+    expect: [pkg.go.dev, github.com, stackoverflow.com]
+  - q: "python pdf library"
+    expect: [pypi.org, github.com, stackoverflow.com]
+  - q: "rust web framework"
+    expect: [github.com, arewewebyet.org, docs.rs]
+  - q: "javascript date library"
+    expect: [github.com, npmjs.com, day.js.org]
+  - q: "terminal user interface go"
+    expect: [github.com, pkg.go.dev, charm.sh]
+
+  # fresh/news shaped
+  - q: "go 1.23 release notes"
+    expect: [go.dev, golang.org]
+  - q: "docker compose release"
+    expect: [docs.docker.com, github.com]
+  - q: "kubernetes release notes"
+    expect: [kubernetes.io, github.com]

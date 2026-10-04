@@ -1,0 +1,15 @@
+# build artifacts
+/webx
+/cmd/webx/webx
+/webxd
+/cmd/webxd/webxd
+*.test
+*.out
+
+# local state
+*.db
+*.db-wal
+*.db-shm
+
+# generated long-tail SDKs (scripts/gen-sdks.sh)
+sdk/gen/

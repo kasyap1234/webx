@@ -1,0 +1,44 @@
+# Citation-verifier eval — labeled claim/evidence pairs.
+# supported:true  → evidence genuinely supports the claim (verifier should verify)
+# supported:false → evidence contradicts, omits, or only superficially overlaps
+pairs:
+  # clearly supported
+  - claim: "Go 1.21 introduced the slog structured logging package"
+    evidence: "Go 1.21 adds log/slog, a structured logging package with levels and handlers"
+    supported: true
+  - claim: "SQLite supports write-ahead logging for concurrent readers"
+    evidence: "In WAL mode, SQLite readers do not block writers and writers do not block readers"
+    supported: true
+  - claim: "The Golden Gate Bridge opened in 1937"
+    evidence: "The Golden Gate Bridge opened to traffic on May 27, 1937"
+    supported: true
+  - claim: "Python 3.12 improves error messages with suggestions"
+    evidence: "Python 3.12 continues the improved error messages work, adding suggestions for more exceptions"
+    supported: true
+
+  # numeric hallucination — the classic failure
+  - claim: "The bridge spans twenty kilometers"
+    evidence: "The bridge spans fifteen kilometers and opened to traffic in 1937"
+    supported: false
+  - claim: "The service handles 50000 requests per second"
+    evidence: "In benchmarks the service handled 5000 requests per second on commodity hardware"
+    supported: false
+  - claim: "Go 1.25 was released in 2020"
+    evidence: "Go 1.21 was released in August 2023, following Go 1.20 earlier that year"
+    supported: false
+
+  # superficial overlap, wrong fact
+  - claim: "Reciprocal rank fusion was invented by Google"
+    evidence: "Reciprocal rank fusion combines ranked lists from multiple retrieval systems"
+    supported: false
+  - claim: "Rust was created at Mozilla in 2010 by Linus Torvalds"
+    evidence: "Rust development began at Mozilla; Graydon Hoare started the project in 2006"
+    supported: false
+
+  # paraphrase that IS supported (recall check — should not false-reject)
+  - claim: "WAL mode lets SQLite readers and writers proceed concurrently"
+    evidence: "In WAL mode, SQLite readers do not block writers and writers do not block readers"
+    supported: true
+  - claim: "The MCP standard defines how tools are exposed to models"
+    evidence: "The Model Context Protocol is an open standard for connecting AI models to tools and data sources"
+    supported: true

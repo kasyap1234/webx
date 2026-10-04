@@ -1,0 +1,1461 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "webx API",
+    "description": "Self-hosted web search & extraction API for coding agents. Stateless routes are root paths; Firecrawl-compatible routes live under /v1 and /v2. Bearer auth applies when WEBX_API_KEY is set.",
+    "version": "0.1.0",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Liveness probe (no auth)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/scrape": {
+      "post": {
+        "summary": "Fetch a page \u2192 clean markdown + metadata",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScrapeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "{success, data: Document}",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScrapeResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "target refused by SSRF/domain policy"
+          },
+          "502": {
+            "description": "upstream fetch failed"
+          }
+        }
+      }
+    },
+    "/search": {
+      "post": {
+        "summary": "Fused multi-provider search (Exa-parity filters + contents)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query"
+                ],
+                "properties": {
+                  "query": {
+                    "type": "string"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  },
+                  "providers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "site": {
+                    "type": "string"
+                  },
+                  "domains": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "only results under these domains (Exa includeDomains)"
+                  },
+                  "exclude_domains": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "after": {
+                    "type": "string",
+                    "description": "RFC3339 or YYYY-MM-DD \u2014 drop results published earlier (Exa startPublishedDate)"
+                  },
+                  "before": {
+                    "type": "string",
+                    "description": "RFC3339 or YYYY-MM-DD (Exa endPublishedDate)"
+                  },
+                  "topic": {
+                    "type": "string",
+                    "description": "\"news\" boosts freshness + news-category providers"
+                  },
+                  "lang": {
+                    "type": "string"
+                  },
+                  "exact": {
+                    "type": "boolean",
+                    "description": "phrase-match the query verbatim"
+                  },
+                  "scrape": {
+                    "type": "boolean",
+                    "description": "fetch each result's page \u2192 content + highlights"
+                  },
+                  "scrape_chars": {
+                    "type": "integer",
+                    "description": "cap per-result content chars"
+                  },
+                  "highlights_only": {
+                    "type": "boolean",
+                    "description": "populate highlights without full content (token-saver)"
+                  },
+                  "rerank": {
+                    "type": "boolean",
+                    "description": "re-sort by scraped-content relevance (needs scrape)"
+                  },
+                  "render": {
+                    "type": "boolean"
+                  },
+                  "auto_render": {
+                    "type": "boolean",
+                    "description": "escalate scrapes on JS-shells/bot-walls"
+                  },
+                  "browser": {
+                    "type": "boolean"
+                  },
+                  "session": {
+                    "type": "string"
+                  },
+                  "semantic": {
+                    "type": "boolean",
+                    "description": "index provider: fuse FTS5 with embedding cosine (needs WEBX_EMBED_*)"
+                  },
+                  "depth": {
+                    "type": "string",
+                    "enum": [
+                      "fast",
+                      "basic",
+                      "advanced"
+                    ],
+                    "description": "result tier \u2014 fast: cache+free providers only; advanced: more providers + inline scrape + rerank (Tavily search_depth)"
+                  },
+                  "sources": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "web",
+                        "news",
+                        "images"
+                      ]
+                    },
+                    "description": "result verticals \u2014 default [web]"
+                  },
+                  "subpages": {
+                    "type": "integer",
+                    "description": "per top result, also fetch N matching subpages (Exa subpages)"
+                  },
+                  "subpage_target": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "keywords steering which subpages are picked"
+                  },
+                  "collection": {
+                    "type": "string",
+                    "description": "named local-index corpus to include in results"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "{success, data: Result[], errors, provider_ms, cache_hit}"
+          }
+        }
+      }
+    },
+    "/answer": {
+      "post": {
+        "summary": "Grounded answer with numbered citations (Exa /answer parity)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query"
+                ],
+                "properties": {
+                  "query": {
+                    "type": "string"
+                  },
+                  "num": {
+                    "type": "integer",
+                    "description": "sources to cite (default 5)"
+                  },
+                  "providers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "domains": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "llm": {
+                    "type": "boolean",
+                    "description": "synthesize via WEBX_LLM_* \u2014 answer_type becomes \"llm\"; without a backend the response stays extractive with llm_error explaining why"
+                  },
+                  "max_tokens": {
+                    "type": "integer",
+                    "description": "evidence budget (default 3000-token equivalent)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "{success, answer|null, answer_type, evidence_md, citations[], errors, provider_ms, cache_hit}"
+          }
+        }
+      }
+    },
+    "/map": {
+      "post": {
+        "summary": "Sitemap URL discovery",
+        "responses": {
+          "200": {
+            "description": "{success, links[]}"
+          }
+        }
+      }
+    },
+    "/extract": {
+      "post": {
+        "summary": "Structured extraction \u2014 css (deterministic), schema+prompt (LLM), or type (schema.org)",
+        "responses": {
+          "200": {
+            "description": "{success, data}"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "async": {
+                    "type": "boolean",
+                    "description": "queue as a job \u2014 poll GET /crawl/{id}; result lands in job.result"
+                  },
+                  "webhook_url": {
+                    "type": "string"
+                  },
+                  "webhook_secret": {
+                    "type": "string",
+                    "description": "HMAC key for signed webhook (X-Webx-Signature)"
+                  },
+                  "url": {
+                    "type": "string",
+                    "description": "http(s) URL, or a wildcard like example.com/* \u2014 wildcards map then extract in a queued job (requires async)"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/research": {
+      "post": {
+        "summary": "Deep-research pipeline \u2192 cited report (output_schema \u2192 JSON)",
+        "responses": {
+          "200": {
+            "description": "{success, data: Report}"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "async": {
+                    "type": "boolean",
+                    "description": "queue as a job \u2014 poll GET /crawl/{id}; result lands in job.result"
+                  },
+                  "webhook_url": {
+                    "type": "string"
+                  },
+                  "webhook_secret": {
+                    "type": "string",
+                    "description": "HMAC key for signed webhook (X-Webx-Signature)"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/verify": {
+      "post": {
+        "summary": "Fact-check a claim \u2192 verdict + cited sources",
+        "responses": {
+          "200": {
+            "description": "{success, data: Verdict}"
+          }
+        }
+      }
+    },
+    "/similar": {
+      "post": {
+        "summary": "Find pages like a URL (Exa findSimilar)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "url"
+                ],
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  },
+                  "web": {
+                    "type": "boolean",
+                    "description": "distill the page's signature and search live providers \u2014 works on URLs never indexed; default (false) searches the local FTS index"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "{success, data, errors?}"
+          }
+        }
+      }
+    },
+    "/pages/md": {
+      "get": {
+        "summary": "Serve the indexed markdown snapshot",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "text/markdown"
+          },
+          "404": {
+            "description": "not indexed"
+          }
+        }
+      }
+    },
+    "/crawl": {
+      "post": {
+        "summary": "Queue an adaptive crawl job \u2014 webhooks signed HMAC-SHA256 via webhook_secret (X-Webx-Signature)",
+        "responses": {
+          "200": {
+            "description": "{success, id, url}"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "concurrency": {
+                    "type": "integer",
+                    "description": "parallel page fetches (default 4, WEBX_CRAWL_CONCURRENCY)"
+                  },
+                  "webhook_secret": {
+                    "type": "string",
+                    "description": "HMAC-SHA256 key \u2014 signs webhook payloads as sha256=\u2026 in X-Webx-Signature"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/crawl/{id}": {
+      "get": {
+        "summary": "Job status + pages",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "max pages to return (default 500)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "page offset for pagination"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{success, job, pages}"
+          }
+        }
+      }
+    },
+    "/crawl/{id}/cancel": {
+      "post": {
+        "summary": "Cooperatively cancel a job at the next page boundary",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "cancelling"
+          }
+        }
+      }
+    },
+    "/crawl/{id}/events": {
+      "get": {
+        "summary": "SSE job progress stream",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "text/event-stream"
+          }
+        }
+      }
+    },
+    "/batch/scrape": {
+      "post": {
+        "summary": "Queue a multi-URL scrape job (\u2264200 urls)",
+        "responses": {
+          "200": {
+            "description": "{success, id, url}"
+          }
+        }
+      }
+    },
+    "/jobs": {
+      "get": {
+        "summary": "List recent jobs",
+        "responses": {
+          "200": {
+            "description": "{jobs[]}"
+          }
+        }
+      }
+    },
+    "/doctor": {
+      "get": {
+        "summary": "Provider diagnostics",
+        "responses": {
+          "200": {
+            "description": "provider health report"
+          }
+        }
+      }
+    },
+    "/v2/scrape": {
+      "post": {
+        "summary": "Firecrawl-compatible scrape ({success, data:{markdown, metadata}})",
+        "responses": {
+          "200": {
+            "description": "Firecrawl response shape"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "url"
+                ],
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "formats": {
+                    "type": "array",
+                    "description": "Format names (\"markdown\",\"html\",\"links\",\"screenshot\",\"summary\",\"json\") or objects: {\"type\":\"screenshot\",\"fullPage\":bool,\"quality\":int,\"viewport\":{\"width\":int,\"height\":int}} and {\"type\":\"json\",\"schema\":{...},\"prompt\":\"...\"}",
+                    "items": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object"
+                        }
+                      ]
+                    }
+                  },
+                  "onlyMainContent": {
+                    "type": "boolean"
+                  },
+                  "waitFor": {
+                    "type": "integer"
+                  },
+                  "timeout": {
+                    "type": "integer"
+                  },
+                  "maxAge": {
+                    "type": "integer"
+                  },
+                  "actions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/search": {
+      "post": {
+        "summary": "Firecrawl-compatible search ({success, data:{web[]}})",
+        "responses": {
+          "200": {
+            "description": "Firecrawl response shape"
+          }
+        }
+      }
+    },
+    "/v2/map": {
+      "post": {
+        "summary": "Firecrawl-compatible map",
+        "responses": {
+          "200": {
+            "description": "{success, links[]}"
+          }
+        }
+      }
+    },
+    "/v2/crawl": {
+      "post": {
+        "summary": "Firecrawl-compatible crawl (async)",
+        "responses": {
+          "200": {
+            "description": "{success, id, url}"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "concurrency": {
+                    "type": "integer",
+                    "description": "parallel page fetches (default 4, WEBX_CRAWL_CONCURRENCY)"
+                  },
+                  "webhook_secret": {
+                    "type": "string",
+                    "description": "HMAC-SHA256 key \u2014 signs webhook payloads as sha256=\u2026 in X-Webx-Signature"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/crawl/{id}": {
+      "get": {
+        "summary": "Firecrawl-compatible crawl status",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{success, status, total, completed, data[]}"
+          }
+        }
+      }
+    },
+    "/v2/batch/scrape": {
+      "post": {
+        "summary": "Firecrawl-compatible batch scrape (async)",
+        "responses": {
+          "200": {
+            "description": "{success, id, url}"
+          }
+        }
+      }
+    },
+    "/v2/extract": {
+      "post": {
+        "summary": "Firecrawl-compatible extract",
+        "responses": {
+          "200": {
+            "description": "{success, data}"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "async": {
+                    "type": "boolean",
+                    "description": "queue as a job \u2014 poll GET /crawl/{id}; result lands in job.result"
+                  },
+                  "webhook_url": {
+                    "type": "string"
+                  },
+                  "webhook_secret": {
+                    "type": "string",
+                    "description": "HMAC key for signed webhook (X-Webx-Signature)"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wayback": {
+      "post": {
+        "summary": "Wayback Machine \u2014 {url} lists captures, {url, at} fetches the nearest snapshot extracted like a live page (tier_used: wayback)",
+        "responses": {
+          "200": {
+            "description": "{success, data:[snapshots] | document}"
+          },
+          "404": {
+            "description": "no captures"
+          }
+        }
+      }
+    },
+    "/keys": {
+      "post": {
+        "summary": "Create an API key \u2014 {name,role?,rpm?,concurrency?,monthly_units?} returns {key} once (sha256 stored). Free tier caps at 3 keys; WEBX_LICENSE lifts it.",
+        "responses": {
+          "200": {
+            "description": "{success,key,record}"
+          },
+          "402": {
+            "description": "free-tier key cap or unlicensed feature"
+          }
+        }
+      },
+      "get": {
+        "summary": "List API keys (admin)",
+        "responses": {
+          "200": {
+            "description": "{success,data:[keys]}"
+          }
+        }
+      }
+    },
+    "/keys/{id}": {
+      "patch": {
+        "summary": "Update a key \u2014 name/role/rpm/concurrency/monthly_units/disabled",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{success}"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Revoke a key",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{success}"
+          }
+        }
+      }
+    },
+    "/usage": {
+      "get": {
+        "summary": "Usage report \u2014 ?days=30&key=<id>. Members see own key only; admins see all. Day-bucketed {requests,units,ms} per endpoint.",
+        "responses": {
+          "200": {
+            "description": "{success,data:[usage rows]}"
+          }
+        }
+      }
+    },
+    "/audit": {
+      "get": {
+        "summary": "Request audit trail (licensed: audit). Admin-only.",
+        "responses": {
+          "200": {
+            "description": "{success,data:[audit events]}"
+          },
+          "402": {
+            "description": "requires license"
+          }
+        }
+      }
+    },
+    "/schedules": {
+      "post": {
+        "summary": "Create a recurring job \u2014 {name, cron:\"* * * * *\", timezone?, action:\"crawl\"|\"batch\", params:{...}, webhook_url?}",
+        "responses": {
+          "200": {
+            "description": "{success,data:{schedule incl. next_run}}"
+          },
+          "400": {
+            "description": "bad cron/action"
+          }
+        }
+      },
+      "get": {
+        "summary": "List schedules",
+        "responses": {
+          "200": {
+            "description": "{success,data:[schedules]}"
+          }
+        }
+      }
+    },
+    "/schedules/{id}": {
+      "patch": {
+        "summary": "Update schedule \u2014 enabled/cron/name",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{success}"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete schedule",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{success}"
+          }
+        }
+      }
+    },
+    "/ready": {
+      "get": {
+        "summary": "Readiness probe \u2014 store ping + render reachability (no auth)",
+        "responses": {
+          "200": {
+            "description": "ready"
+          },
+          "503": {
+            "description": "not ready \u2014 checks object lists failures"
+          }
+        }
+      }
+    },
+    "/metrics": {
+      "get": {
+        "summary": "Prometheus-format counters \u2014 http_requests_total, http_request_seconds, webx_jobs (no auth)",
+        "responses": {
+          "200": {
+            "description": "text/plain metrics"
+          }
+        }
+      }
+    },
+    "/version": {
+      "get": {
+        "summary": "Build version + commit (no auth)",
+        "responses": {
+          "200": {
+            "description": "{version, commit}"
+          }
+        }
+      }
+    },
+    "/agent": {
+      "post": {
+        "summary": "Goal-only extraction \u2014 find the pages, extract what's asked (Firecrawl /agent parity)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "goal"
+                ],
+                "properties": {
+                  "goal": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string",
+                    "description": "optional site constraint"
+                  },
+                  "schema": {
+                    "type": "object",
+                    "description": "optional JSON-schema for structured output"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "candidate pages to read (default 5)"
+                  },
+                  "async": {
+                    "type": "boolean"
+                  },
+                  "render": {
+                    "type": "boolean"
+                  },
+                  "webhook_url": {
+                    "type": "string"
+                  },
+                  "webhook_secret": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "{success, data: {extracted, sources[]}}, or {id} when async"
+          },
+          "503": {
+            "description": "async requested without a job store"
+          }
+        }
+      }
+    },
+    "/crawl/{id}/errors": {
+      "get": {
+        "summary": "Pages of a job that failed fetch \u2014 filtered view of crawl errors",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{errors: [{url, error, status}]}"
+          }
+        }
+      }
+    },
+    "/mcp": {
+      "post": {
+        "summary": "MCP streamable HTTP transport \u2014 JSON-RPC over POST, SSE-capable (claude mcp add --transport http)",
+        "responses": {
+          "200": {
+            "description": "JSON-RPC response or SSE stream"
+          }
+        }
+      }
+    },
+    "/v2/agent": {
+      "post": {
+        "summary": "Autonomous agent job (Firecrawl v2 compat)",
+        "description": "Submits a goal-driven agent job. Always async \u2014 poll GET /v2/agent/{id} or supply a webhook.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "prompt"
+                ],
+                "properties": {
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "schema": {
+                    "type": "object"
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "maxCredits": {
+                    "type": "integer"
+                  },
+                  "webhook": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "{success, id, statusUrl}"
+          }
+        }
+      }
+    },
+    "/v2/agent/{id}": {
+      "get": {
+        "summary": "Agent job status (Firecrawl v2 compat)",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{success, status, data, expiresAt}"
+          }
+        }
+      }
+    },
+    "/crawl/{id}/retry": {
+      "post": {
+        "summary": "Requeue failed pages as a new batch job",
+        "description": "Collects pages recorded with meta.error and submits them as a new batch job. Crawl frontier state isn't persisted, so a fresh batch of exactly the failed URLs is the faithful retry.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "webhook_url",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "{success, id, retry_of, retried, url}"
+          },
+          "400": {
+            "description": "job has no failed pages"
+          },
+          "404": {
+            "description": "job not found"
+          }
+        }
+      }
+    },
+    "/license": {
+      "get": {
+        "summary": "Active license tier and features",
+        "tags": [
+          "ops"
+        ],
+        "responses": {
+          "200": {
+            "description": "License info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "tier": {
+                      "type": "string",
+                      "enum": [
+                        "free",
+                        "pro",
+                        "enterprise"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "expires": {
+                      "type": "string"
+                    },
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "upgrade": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "ScrapeRequest": {
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "formats": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "markdown",
+                "html",
+                "rawhtml",
+                "links",
+                "images",
+                "screenshot",
+                "screenshot@fullpage",
+                "pdf",
+                "mhtml",
+                "summary",
+                "branding",
+                "chunks",
+                "a11y",
+                "agent_ready"
+              ]
+            }
+          },
+          "browser": {
+            "type": "boolean"
+          },
+          "render": {
+            "type": "boolean"
+          },
+          "auto_render": {
+            "type": "boolean"
+          },
+          "wait_for": {
+            "type": "string"
+          },
+          "scrolls": {
+            "type": "integer"
+          },
+          "actions": {
+            "type": "string"
+          },
+          "screenshot": {
+            "type": "boolean"
+          },
+          "proxy": {
+            "type": "string"
+          },
+          "session": {
+            "type": "string"
+          },
+          "stealth": {
+            "type": "boolean"
+          },
+          "profile": {
+            "type": "string"
+          },
+          "block_ads": {
+            "type": "boolean"
+          },
+          "text_mode": {
+            "type": "boolean"
+          },
+          "mobile": {
+            "type": "boolean"
+          },
+          "locale": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "capture_network": {
+            "type": "boolean"
+          },
+          "capture_console": {
+            "type": "boolean"
+          },
+          "skip_tls_verification": {
+            "type": "boolean"
+          },
+          "page_session": {
+            "type": "string"
+          },
+          "pierce_dom": {
+            "type": "boolean"
+          },
+          "scroll_selector": {
+            "type": "string"
+          },
+          "scroll_by": {
+            "type": "number"
+          },
+          "fit": {
+            "type": "string"
+          },
+          "max_chars": {
+            "type": "integer"
+          },
+          "max_tokens": {
+            "type": "integer"
+          },
+          "include_tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "exclude_tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "max_age": {
+            "type": "integer",
+            "description": "ms \u2014 serve the cached index copy when fresh"
+          },
+          "change_tracking": {
+            "type": "boolean"
+          },
+          "engine": {
+            "type": "string",
+            "enum": [
+              "chrome",
+              "light",
+              "lightpanda"
+            ],
+            "description": "render engine \u2014 light = Lightpanda over CDP"
+          },
+          "cookies": {
+            "type": "string",
+            "description": "Netscape cookies.txt CONTENT (not a path) \u2014 carries an SSO'd session"
+          },
+          "retry_after": {
+            "type": "boolean",
+            "description": "honor Retry-After once on 429/503, bounded 8s"
+          },
+          "zdr": {
+            "type": "boolean",
+            "description": "zero data retention \u2014 skip all persistence (enterprise license)"
+          },
+          "screenshot_options": {
+            "type": "object",
+            "properties": {
+              "full_page": {
+                "type": "boolean"
+              },
+              "quality": {
+                "type": "integer",
+                "description": "JPEG quality 0-100"
+              },
+              "viewport": {
+                "type": "object",
+                "properties": {
+                  "width": {
+                    "type": "integer"
+                  },
+                  "height": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "description": "screenshot tuning \u2014 requires formats:['screenshot'] + render"
+          },
+          "lang": {
+            "type": "string",
+            "description": "preferred transcript caption language (BCP-47, e.g. en)"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "invalid_url",
+              "blocked_by_policy",
+              "payment_required",
+              "unsupported_type",
+              "http_status",
+              "render_failed",
+              "engine_missing",
+              "rate_limited",
+              "body_too_large",
+              "upstream",
+              "quota_exceeded",
+              "concurrency_limit"
+            ]
+          },
+          "payment": {
+            "type": "object",
+            "description": "x402/AP2 gate details when code=payment_required \u2014 {protocol, required, accepts, price}"
+          }
+        }
+      },
+      "ScrapeResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "markdown": {
+                "type": "string"
+              },
+              "fit_markdown": {
+                "type": "string"
+              },
+              "html": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "images": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "jsonld": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "summary": {
+                "type": "string"
+              },
+              "warnings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "screenshot_b64": {
+                "type": "string"
+              },
+              "pdf_b64": {
+                "type": "string"
+              },
+              "mhtml": {
+                "type": "string"
+              },
+              "network": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "console": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "action_returns": {
+                "type": "array",
+                "items": {}
+              },
+              "branding": {
+                "type": "object"
+              },
+              "chunks": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "a11y": {
+                "type": "string"
+              },
+              "agent_ready": {
+                "type": "object",
+                "description": "{markdown_native, llms_txt, ai_bots{}, jsonld_types[], webmcp, agent_tools[], api_catalog, tdm_reserved, ai_txt, agents_md, agent_card, sitemaps[]}"
+              },
+              "est_tokens": {
+                "type": "integer"
+              },
+              "duration_ms": {
+                "type": "integer"
+              },
+              "tier_used": {
+                "type": "string"
+              },
+              "needs_render": {
+                "type": "boolean"
+              }
+            }
+          },
+          "warning": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearer": []
+    }
+  ]
+}

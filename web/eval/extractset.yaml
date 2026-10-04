@@ -1,0 +1,29 @@
+# Extraction-quality eval — the "contents quality" axis WebCode measures.
+# Each case: fetch the URL, the markdown should contain every marker and at
+# least `min_code_blocks` fenced code blocks. Markers are chosen to verify
+# real content made it through (not nav, not ads, not truncated output).
+pages:
+  - url: https://go.dev/doc/tutorial/getting-started
+    markers: ["go mod init", "go run", "tutorial"]
+    min_code_blocks: 1
+  - url: https://htmx.org/attributes/hx-get
+    markers: ["hx-get", "GET", "innerHTML"]
+    min_code_blocks: 1
+  - url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+    markers: ["map()", "callbackFn", "array"]
+    min_code_blocks: 2
+  - url: https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html
+    markers: ["ownership", "String", "scope"]
+    min_code_blocks: 1
+  - url: https://docs.python.org/3/tutorial/introduction.html
+    markers: ["Python", "interactive", ">>>"]
+    min_code_blocks: 1
+  - url: https://react.dev/reference/react/useState
+    markers: ["useState", "state", "component"]
+    min_code_blocks: 1
+  - url: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+    markers: ["label", "selector", "metadata"]
+    min_code_blocks: 1
+  - url: https://docs.github.com/en/actions/quickstart
+    markers: ["workflow", "YAML", "actions"]
+    min_code_blocks: 1

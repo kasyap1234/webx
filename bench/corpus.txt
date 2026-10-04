@@ -1,0 +1,17 @@
+# webx-bench corpus — mixed static/JS/article/docs pages.
+# format: url | substring-that-must-appear-in-output (content check, optional)
+https://example.com | Example Domain
+https://go.dev/doc/ | Go
+https://pkg.go.dev/net/http | Package http
+https://en.wikipedia.org/wiki/Web_scraping | web scraping
+https://news.ycombinator.com/ | Hacker News
+https://blog.golang.org/ | Go
+https://developer.mozilla.org/en-US/docs/Web/HTTP | HTTP
+https://react.dev/learn | React
+https://www.rust-lang.org/learn | Rust
+https://github.com/go-rod/rod | rod
+https://httpbin.org/html | Herman Melville
+https://kubernetes.io/docs/home/ | Kubernetes
+https://tailwindcss.com/docs/installation | Tailwind
+https://stripe.com/docs/api | Stripe
+https://arxiv.org/abs/2401.00001 |

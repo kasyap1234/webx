@@ -1,0 +1,2626 @@
+# generated eval corpus — see webx eval --gen
+queries:
+  - q: "fairbanks northern lights forecast"
+    expect: [fairbanks-alaska.com]
+  - q: "locate anyone free"
+    expect: [anywho.com]
+  - q: "talcum powder uses"
+    expect: [drugwatch.com]
+  - q: "immodium dosing"
+    expect: [rxlist.com]
+  - q: "the menendez brothers now"
+    expect: [en.wikipedia.org]
+  - q: "drinking glasses"
+    expect: [en.wikipedia.org]
+  - q: "social values example"
+    expect: [socialvalueportal.com]
+  - q: "holiday movie 1938"
+    expect: [en.wikipedia.org]
+  - q: "bmo harris"
+    expect: [tqavgn-bmoharris.dev.bmo.com]
+  - q: "ecommerce website"
+    expect: [forbes.com]
+  - q: "qt drugs"
+    expect: [drugs.com]
+  - q: "14 day weather skegness lincolnshire"
+    expect: [holiday-weather.com]
+  - q: "nexus goes login"
+    expect: [cbp.gov]
+  - q: "bilateral pars defect"
+    expect: [healthtap.com]
+  - q: "north west weather forecast uk"
+    expect: [metoffice.gov.uk]
+  - q: "pearson formula"
+    expect: [en.wikipedia.org]
+  - q: "sorn vehicle check"
+    expect: [gov.uk]
+  - q: "jewish tanakh"
+    expect: [astudyoftheoldtestament.wordpress.com]
+  - q: "google agenda"
+    expect: [google.com]
+  - q: "grapefruit benefits"
+    expect: [lifehack.org]
+  - q: "sherwin williams paint colours"
+    expect: [sherwin-williams.com]
+  - q: "lifetime learning credit 2017"
+    expect: [20somethingfinance.com]
+  - q: "del lago resort casino"
+    expect: [dellagoresort.com]
+  - q: "little alchemy combinations"
+    expect: [littlealchemyhint.blogspot.com]
+  - q: "potato battery experiment"
+    expect: [teachengineering.org]
+  - q: "nolesta after chemo"
+    expect: [neulasta.com]
+  - q: "is rice ok for diabetics"
+    expect: [webmd.com]
+  - q: "homes for sale"
+    expect: [homesandland.com]
+  - q: "golden games"
+    expect: [en.wikipedia.org]
+  - q: "stomach gurgling"
+    expect: [doctortipster.com]
+  - q: "ric church"
+    expect: [marriedbiography.com]
+  - q: "china express tracking system"
+    expect: [trackingmore.com]
+  - q: "downlaod chrom"
+    expect: [google.com]
+  - q: "crosst road"
+    expect: [en.wikipedia.org]
+  - q: "property tax calculator ontario"
+    expect: [mah.gov.on.ca]
+  - q: "assisted suicide statistics"
+    expect: [deathwithdignity.org]
+  - q: "how to add electronic signature in word"
+    expect: [support.office.com]
+  - q: "pebble beach past results"
+    expect: [attpbgolf.com]
+  - q: "homemade mayonnaise"
+    expect: [foodnetwork.com]
+  - q: "nevada marriage certificate certified copy"
+    expect: [clarkcountynv.gov]
+  - q: "nj income tax rate 2019"
+    expect: [tax-brackets.org]
+  - q: "how many people live in the u.s"
+    expect: [census.gov]
+  - q: "dg trade organigramme"
+    expect: [ec.europa.eu]
+  - q: "adam & eve adults products catalog"
+    expect: [answers.com]
+  - q: "sosial security"
+    expect: [faq.ssa.gov]
+  - q: "payroll allowances explained"
+    expect: [irs.gov]
+  - q: "thrush on tongue symptoms"
+    expect: [emedicinehealth.com]
+  - q: "2012 olympics gymnastics"
+    expect: [en.wikipedia.org]
+  - q: "cajun vs creole"
+    expect: [wisegeek.org]
+  - q: "byrd kkk"
+    expect: [en.wikipedia.org]
+  - q: "importance of drinking water"
+    expect: [youtube.com]
+  - q: "neo overshoes"
+    expect: [overshoesneos.com]
+  - q: "highest rated auto insurance companies"
+    expect: [jdpower.com]
+  - q: "renew drivers license near me"
+    expect: [local.dmv.org]
+  - q: "over counter lighting"
+    expect: [pegasuslighting.com]
+  - q: "getting health insurance coverage"
+    expect: [healthcare.gov]
+  - q: "sea breams"
+    expect: [en.wikipedia.org]
+  - q: "qatar air"
+    expect: [en.wikipedia.org]
+  - q: "direcct tv"
+    expect: [directv.com]
+  - q: "lincoln castle england"
+    expect: [en.wikipedia.org]
+  - q: "prom party"
+    expect: [en.wikipedia.org]
+  - q: "rv financing rates"
+    expect: [rvtrader.com]
+  - q: "mint phone plans"
+    expect: [mintsim.com]
+  - q: "google web browser"
+    expect: [google.com]
+  - q: "child line"
+    expect: [childlinesa.org.za]
+  - q: "checking road tax"
+    expect: [gov.uk]
+  - q: "cool languages"
+    expect: [buzzfeed.com]
+  - q: "cvs pasadena"
+    expect: [cvs.com]
+  - q: "apa journal article review sample"
+    expect: [reference.com]
+  - q: "microsoft powerpoint viewer 2010"
+    expect: [microsoft.com]
+  - q: "diabetes type 1 and 2"
+    expect: [medicinenet.com]
+  - q: "how to find gross pay"
+    expect: [thebalance.com]
+  - q: "rock auto parts"
+    expect: [rockauto.com]
+  - q: "cardizem drug class"
+    expect: [medlineplus.gov]
+  - q: "mt vernon washington"
+    expect: [mountvernon.org]
+  - q: "interactive broker canada"
+    expect: [interactivebrokers.ca]
+  - q: "intramembranous ossification steps"
+    expect: [answers.yahoo.com]
+  - q: "st brides correctional"
+    expect: [inmateaid.com]
+  - q: "natural remedies for sore throat"
+    expect: [verywell.com]
+  - q: "crossword assistance"
+    expect: [dictionary.com]
+  - q: "cd bankrate"
+    expect: [bankrate.com]
+  - q: "professional services naics code"
+    expect: [bls.gov]
+  - q: "mnpt vs npt"
+    expect: [thread-chart.ueuo.com]
+  - q: "start folder location windows 10"
+    expect: [softwareok.com]
+  - q: "consumer demand"
+    expect: [thebalance.com]
+  - q: "moral relativism definition"
+    expect: [gotquestions.org]
+  - q: "midhudson regional hospital poughkeepsie ny"
+    expect: [midhudsonregional.org]
+  - q: "average grocery bill for 5"
+    expect: [growingslower.com]
+  - q: "food with antioxidants"
+    expect: [webmd.com]
+  - q: "manual fire alarm box"
+    expect: [ecmag.com]
+  - q: "face3book com"
+    expect: [facebook.com]
+  - q: "11 usc 522(f)"
+    expect: [law.cornell.edu]
+  - q: "duodenum problems symptoms"
+    expect: [medlineplus.gov]
+  - q: "best bank interest rate"
+    expect: [finder.com.au]
+  - q: "pain in left groin area female"
+    expect: [healthline.com]
+  - q: "onald trump"
+    expect: [whitehouse.gov]
+  - q: "tlauncher minecraft servers"
+    expect: [servers.atlauncher.com]
+  - q: "corporate structure chart"
+    expect: [en.wikipedia.org]
+  - q: "ged illinois"
+    expect: [bestgedclasses.org]
+  - q: "cairn terriers"
+    expect: [akc.org]
+  - q: "bike in a bag"
+    expect: [rei.com]
+  - q: "my virginmedia.com"
+    expect: [my.virginmedia.com]
+  - q: "monnett mo"
+    expect: [cityofmonett.com]
+  - q: "hearing loss uk"
+    expect: [nhs.uk]
+  - q: "auto loan backed securities"
+    expect: [investopedia.com]
+  - q: "influenza virus symptoms"
+    expect: [medicinenet.com]
+  - q: "how can i get taller"
+    expect: [beyonddisease.com]
+  - q: "google play payment method"
+    expect: [support.google.com]
+  - q: "fundamental rights"
+    expect: [en.wikipedia.org]
+  - q: "best time to buy a washer/dryer"
+    expect: [creditdonkey.com]
+  - q: "email to text verizon"
+    expect: [20somethingfinance.com]
+  - q: "kodi for kindle"
+    expect: [kodi.tv]
+  - q: "free gedcom software"
+    expect: [toptenreviews.com]
+  - q: "target's target market"
+    expect: [corporate.target.com]
+  - q: "clear airway apnea"
+    expect: [apneaboard.com]
+  - q: "minecraft full free"
+    expect: [minecraft.net]
+  - q: "aurora honda"
+    expect: [valleyhonda.com]
+  - q: "check metro card balance"
+    expect: [wmata.com]
+  - q: "corporate jets"
+    expect: [embraerexecutivejets.com]
+  - q: "size in inches"
+    expect: [frames.uk.com]
+  - q: "pound to euro today"
+    expect: [exchangerates.org.uk]
+  - q: "pain above the knee"
+    expect: [epainassist.com]
+  - q: "oak tree symbolism"
+    expect: [thegoddesstree.com]
+  - q: "figurative sculpture"
+    expect: [en.wikipedia.org]
+  - q: "bnp paribas polska"
+    expect: [group.bnpparibas]
+  - q: "office 365 login email"
+    expect: [outlook.com]
+  - q: "bipolar anger rage and blaming others"
+    expect: [healthguideinfo.com]
+  - q: "free font converter"
+    expect: [fontconverter.org]
+  - q: "back fat exercises for women"
+    expect: [youbeauty.com]
+  - q: "mcso florida"
+    expect: [sheriff.martin.fl.us]
+  - q: "dm diabetes"
+    expect: [webmd.com]
+  - q: "computer monitor dimensions"
+    expect: [en.wikipedia.org]
+  - q: "design your own xbox one controller"
+    expect: [thecontrollershop.com]
+  - q: "long can you keep thawed turkey fridge"
+    expect: [ochef.com]
+  - q: "harkins theater goodyear"
+    expect: [harkins.com]
+  - q: "free clip art"
+    expect: [free-graphics.com]
+  - q: "best place to travel in hawaii"
+    expect: [hawaii-guide.com]
+  - q: "periactin side effects"
+    expect: [rxlist.com]
+  - q: "how much do patents cost"
+    expect: [gov.uk]
+  - q: "american revolution time line"
+    expect: [ushistory.org]
+  - q: "goodwill manchester nh"
+    expect: [goodwillnne.org]
+  - q: "city of ardmore water department"
+    expect: [ardmorecity.org]
+  - q: "easy anatomy of the heart"
+    expect: [livescience.com]
+  - q: "how is euthanasia done"
+    expect: [bbc.co.uk]
+  - q: "ipod locked"
+    expect: [support.apple.com]
+  - q: "progyny insurance"
+    expect: [progyny.com]
+  - q: "pancreatic surgery"
+    expect: [cancer.org]
+  - q: "ny pick3"
+    expect: [lotterypost.com]
+  - q: "population of qatar"
+    expect: [countryeconomy.com]
+  - q: "columbus public schools ohio"
+    expect: [ccsoh.us]
+  - q: "recruiting agencies"
+    expect: [bestofstaffing.com]
+  - q: "mi mobile history"
+    expect: [en.wikipedia.org]
+  - q: "sales tax due dates 2019"
+    expect: [revenue.state.mn.us]
+  - q: "great pyramid at giza"
+    expect: [en.wikipedia.org]
+  - q: "preferred learning style"
+    expect: [educationplanner.org]
+  - q: "btk kansas"
+    expect: [en.wikipedia.org]
+  - q: "steve perry"
+    expect: [biography.com]
+  - q: "how to adjust upvc door"
+    expect: [glassandlock.co.uk]
+  - q: "gold producing countries"
+    expect: [financesonline.com]
+  - q: "small business issues"
+    expect: [leanmethods.com]
+  - q: "things to do in breckenridge colorado summer"
+    expect: [tripadvisor.com]
+  - q: "texas state inspection sticker"
+    expect: [twostepsonesticker.com]
+  - q: "no sound from pc"
+    expect: [wikihow.com]
+  - q: "geico insurance quote online for automobile"
+    expect: [geico.com]
+  - q: "how is social security calculated"
+    expect: [aarp.org]
+  - q: "healthiest breakfast"
+    expect: [health.com]
+  - q: "denton county appraisal district"
+    expect: [dentoncounty.com]
+  - q: "monthly checklist template"
+    expect: [templatelab.com]
+  - q: "can kidney stones cause headaches"
+    expect: [kidneyabc.com]
+  - q: "marriott hotels charlotte nc"
+    expect: [marriott.com]
+  - q: "savanna georgia weather"
+    expect: [theweathernetwork.com]
+  - q: "spondylolisthesis grades"
+    expect: [spineuniverse.com]
+  - q: "metal hydride"
+    expect: [en.wikipedia.org]
+  - q: "federal estimated tax payments 2019 online"
+    expect: [irs.gov]
+  - q: "labour pains"
+    expect: [webmd.com]
+  - q: "country code for canada"
+    expect: [timeanddate.com]
+  - q: "places to go in paris france"
+    expect: [tripadvisor.com]
+  - q: "maryland state teachers retirement system"
+    expect: [msa.maryland.gov]
+  - q: "example of a decomposer"
+    expect: [reference.com]
+  - q: "the doppler effect"
+    expect: [physicsclassroom.com]
+  - q: "environmental issues pdf"
+    expect: [en.wikipedia.org]
+  - q: "drug dealing"
+    expect: [en.wikipedia.org]
+  - q: "mah jong tiles msn"
+    expect: [freemahjong.org]
+  - q: "famous chess players"
+    expect: [en.wikipedia.org]
+  - q: "cartier ring"
+    expect: [1stdibs.com]
+  - q: "orthopedic boot"
+    expect: [footankle.com]
+  - q: "kentucky fried chicken menu uk"
+    expect: [kfc.com]
+  - q: "beat making software free"
+    expect: [beatlab.com]
+  - q: "mobile home foundation types"
+    expect: [wisegeek.com]
+  - q: "louisiana state court"
+    expect: [louisiana.gov]
+  - q: "pka of arginine"
+    expect: [academics.keene.edu]
+  - q: "acetaminophen max daily dose"
+    expect: [cnn.com]
+  - q: "home remedies for oral thrush"
+    expect: [webmd.com]
+  - q: "georgia lottery.com"
+    expect: [lotterypost.com]
+  - q: "dp display"
+    expect: [en.wikipedia.org]
+  - q: "allergy shot cpt code"
+    expect: [medicarepaymentandreimbursement.com]
+  - q: "how do tomatoes grow"
+    expect: [wikihow.com]
+  - q: "pudendal nerve anatomy"
+    expect: [en.wikipedia.org]
+  - q: "cinnamon types"
+    expect: [cinnamonvogue.com]
+  - q: "history of massage therapy"
+    expect: [nccih.nih.gov]
+  - q: "louis gossett"
+    expect: [imdb.com]
+  - q: "deepest lake"
+    expect: [en.wikipedia.org]
+  - q: "menstrual migraines treatment"
+    expect: [lifescript.com]
+  - q: "modifier for abn"
+    expect: [capturebilling.com]
+  - q: "child abuse mandated reporting"
+    expect: [childwelfare.gov]
+  - q: "best place to store potatoes"
+    expect: [wikihow.com]
+  - q: "california board of physicians"
+    expect: [mbc.ca.gov]
+  - q: "hat types list"
+    expect: [parisiangentleman.co.uk]
+  - q: "factor math"
+    expect: [quickmath.com]
+  - q: "area of right angle triangle calculator"
+    expect: [cleavebooks.co.uk]
+  - q: "inmate look up"
+    expect: [dpscs.state.md.us]
+  - q: "definition of than"
+    expect: [merriam-webster.com]
+  - q: "master blaster mad max"
+    expect: [en.wikipedia.org]
+  - q: "cheap military flights"
+    expect: [unitedmilitarytravel.com]
+  - q: "onvert mm to inches"
+    expect: [convertunits.com]
+  - q: "nba 2k16 my career"
+    expect: [sportsgamersonline.com]
+  - q: "tight chest feeling"
+    expect: [patient.info]
+  - q: "elmers glue ingredients"
+    expect: [answers.yahoo.com]
+  - q: "examples of genre"
+    expect: [en.wikipedia.org]
+  - q: "microsoft google"
+    expect: [tools.google.com]
+  - q: "intestinal candida symptoms in women"
+    expect: [healthtap.com]
+  - q: "lauren holly now"
+    expect: [en.wikipedia.org]
+  - q: "intestine pain"
+    expect: [medicinenet.com]
+  - q: "brp mÃ©xico"
+    expect: [brp.com]
+  - q: "adp workforce npow"
+    expect: [workforcenow.adp.com]
+  - q: "nickel brass"
+    expect: [en.wikipedia.org]
+  - q: "logitech.com download"
+    expect: [support.logitech.com]
+  - q: "how to ask for a refund on steam"
+    expect: [support.steampowered.com]
+  - q: "google.com ip address"
+    expect: [support.google.com]
+  - q: "canine parvovirus"
+    expect: [vetstreet.com]
+  - q: "good sources of potassium"
+    expect: [webmd.com]
+  - q: "nbc news washington dc"
+    expect: [nbc.com]
+  - q: "cite webpage apa"
+    expect: [easybib.com]
+  - q: "repairing credit"
+    expect: [myfico.com]
+  - q: "origins of anti-semitism"
+    expect: [britannica.com]
+  - q: "time zone for seattle"
+    expect: [timeanddate.com]
+  - q: "it is well with my soul hymn lyrics"
+    expect: [hymnsite.com]
+  - q: "black roman emperors"
+    expect: [africaresource.com]
+  - q: "pdf merfe"
+    expect: [foxyutils.com]
+  - q: "department of health insurance"
+    expect: [healthcare.gov]
+  - q: "alligiant airlines"
+    expect: [en.wikipedia.org]
+  - q: "dialysis tech"
+    expect: [glassdoor.com]
+  - q: "graphic tee"
+    expect: [modcloth.com]
+  - q: "fidelityinvestments.com log in"
+    expect: [accountmaint.fidelity.com]
+  - q: "jc whitney coupon code"
+    expect: [promocodewatch.com]
+  - q: "champagne aoc"
+    expect: [en.wikipedia.org]
+  - q: "beautiful last names for girls"
+    expect: [thinkbabynames.com]
+  - q: "experian credit reports"
+    expect: [experian.co.uk]
+  - q: "free credit report no card needed"
+    expect: [freecreditreport.com]
+  - q: "how long defrost turkey"
+    expect: [nhs.uk]
+  - q: "how did patton die"
+    expect: [en.wikipedia.org]
+  - q: "hrig collections"
+    expect: [healthcarerevenuerecoverygroup.com]
+  - q: "microsoft anti malware"
+    expect: [microsoft.com]
+  - q: "sixth sence"
+    expect: [en.wikipedia.org]
+  - q: "list of skills for work"
+    expect: [thebalance.com]
+  - q: "alaska september weather"
+    expect: [currentresults.com]
+  - q: "glycolysis animation"
+    expect: [khanacademy.org]
+  - q: "look who's coming to dinner original"
+    expect: [en.wikipedia.org]
+  - q: "foundation crack repair"
+    expect: [houselogic.com]
+  - q: "jackie robinsin"
+    expect: [jackierobinson.com]
+  - q: "foods rich in vitamin a"
+    expect: [ods.od.nih.gov]
+  - q: "children dictionary"
+    expect: [merriam-webster.com]
+  - q: "p values explained"
+    expect: [statsdirect.com]
+  - q: "the four seasons spring"
+    expect: [livescience.com]
+  - q: "realistic colored pencil drawings"
+    expect: [odditycentral.com]
+  - q: "jordan-hare stadium"
+    expect: [auburntigers.com]
+  - q: "dead by daylight update"
+    expect: [steamcommunity.com]
+  - q: "irs eservices login page"
+    expect: [irs.gov]
+  - q: "naruto dies boruto"
+    expect: [otakukart.com]
+  - q: "alexa apps"
+    expect: [amazon.com]
+  - q: "cub scout leaders"
+    expect: [cubscouts.org]
+  - q: "tdap shots for adults"
+    expect: [cdc.gov]
+  - q: "ear problems tinnitus"
+    expect: [webmd.com]
+  - q: "how does touch screen work"
+    expect: [en.wikipedia.org]
+  - q: "baked chicken with panko"
+    expect: [allrecipes.com]
+  - q: "run my credit report"
+    expect: [transunion.com]
+  - q: "browser windows vista"
+    expect: [download.cnet.com]
+  - q: "children's events near me"
+    expect: [idahocalendar.com]
+  - q: "irish and german immigration 1840s"
+    expect: [ushistory.org]
+  - q: "lipomas cause"
+    expect: [healthline.com]
+  - q: "green infrastructure definition"
+    expect: [epa.gov]
+  - q: "field roast"
+    expect: [store.veganessentials.com]
+  - q: "353 area code location"
+    expect: [countrycode.org]
+  - q: "nys tolls thruway"
+    expect: [thruway.ny.gov]
+  - q: "brown rice cook time"
+    expect: [eatingwell.com]
+  - q: "18th judicial circuit court"
+    expect: [18jc.alacourt.gov]
+  - q: "join sams club"
+    expect: [help.samsclub.com]
+  - q: "how much do engagement rings cost"
+    expect: [moneyunder30.com]
+  - q: "bcbs highmark pa"
+    expect: [highmark.com]
+  - q: "schedule c form"
+    expect: [payable.com]
+  - q: "best restaurants near me"
+    expect: [zagat.com]
+  - q: "plex tv sign in"
+    expect: [plex.tv]
+  - q: "barbeque pork ribs"
+    expect: [thespruce.com]
+  - q: "paypal options"
+    expect: [paypal.com]
+  - q: "logo maker free"
+    expect: [tailorbrands.com]
+  - q: "level 6 degree"
+    expect: [en.wikipedia.org]
+  - q: "cunning personality"
+    expect: [merriam-webster.com]
+  - q: "garage styles"
+    expect: [thegarageplanshop.com]
+  - q: "focal marrow edema"
+    expect: [ajronline.org]
+  - q: "me ez pass"
+    expect: [ezpassmaineturnpike.com]
+  - q: "ratings of hearing aids"
+    expect: [consumeraffairs.com]
+  - q: "cbs sportsw"
+    expect: [cbssports.com]
+  - q: "progestogenic side effects"
+    expect: [patient.info]
+  - q: "how to calculate year over year growth"
+    expect: [answers.com]
+  - q: "doug flutie stats"
+    expect: [nfl.com]
+  - q: "brittany murphy death cause"
+    expect: [en.wikipedia.org]
+  - q: "disconnect car battery"
+    expect: [answers.yahoo.com]
+  - q: "cricket design spaces"
+    expect: [shop.cricut.com]
+  - q: "morel mushroom season"
+    expect: [wideopenspaces.com]
+  - q: "oven repair service near me"
+    expect: [angieslist.com]
+  - q: "human digestive system"
+    expect: [enchantedlearning.com]
+  - q: "michigan university ann arbor"
+    expect: [umich.edu]
+  - q: "irs last years tax return"
+    expect: [irs.gov]
+  - q: "medicare login portal"
+    expect: [medicare.gov]
+  - q: "the good doctor tv show"
+    expect: [abc.go.com]
+  - q: "acute flacid myelitis"
+    expect: [myelitis.org]
+  - q: "how to resize a pdf document"
+    expect: [acrobatusers.com]
+  - q: "colorado state university vet school"
+    expect: [csu-cvmbs.colostate.edu]
+  - q: "my dell laptop will not turn on"
+    expect: [lifewire.com]
+  - q: "prime rate today loan"
+    expect: [fedprimerate.com]
+  - q: "secret kdrama"
+    expect: [asianwiki.com]
+  - q: "dark face"
+    expect: [consumerhealthdigest.com]
+  - q: "envirnoment canada weather"
+    expect: [weather.gc.ca]
+  - q: "louisville cardinal baseball"
+    expect: [gocards.com]
+  - q: "big data spark"
+    expect: [spark.apache.org]
+  - q: "errors and omissions insurance"
+    expect: [insurancejournal.com]
+  - q: "perk test"
+    expect: [en.wikipedia.org]
+  - q: "places to see"
+    expect: [buzzfeed.com]
+  - q: "pa inheritance tax rates 2018"
+    expect: [thebalance.com]
+  - q: "how to perform vlookup in excel"
+    expect: [spreadsheeto.com]
+  - q: "temporary pacemaker"
+    expect: [uptodate.com]
+  - q: "how old is quebec city"
+    expect: [en.wikipedia.org]
+  - q: "carrier hvac partners website"
+    expect: [carrier.com]
+  - q: "mighty sat"
+    expect: [masimopersonalhealth.com]
+  - q: "keeping promises"
+    expect: [psychologytoday.com]
+  - q: "reference a website"
+    expect: [neilstoolbox.com]
+  - q: "map of ocala, fl"
+    expect: [mapquest.com]
+  - q: "symptoms kidney stones"
+    expect: [bupa.co.uk]
+  - q: "after death checklist"
+    expect: [legalvoice.org]
+  - q: "are carrots starchy vegetables"
+    expect: [en.wikipedia.org]
+  - q: "cyberknife surgery"
+    expect: [en.wikipedia.org]
+  - q: "math in the news"
+    expect: [sciencedaily.com]
+  - q: "bill murray married"
+    expect: [nydailynews.com]
+  - q: "domain and range of parabola"
+    expect: [texasgateway.org]
+  - q: "florida state lottery"
+    expect: [njlottery.com]
+  - q: "irs toll free number"
+    expect: [ttlc.intuit.com]
+  - q: "benefits of the national guard"
+    expect: [nationalguard.com]
+  - q: "orange county, nc"
+    expect: [co.orange.nc.us]
+  - q: "electrical problems in home"
+    expect: [angieslist.com]
+  - q: "realplayer old version 16"
+    expect: [real.com]
+  - q: "neal mcdonough"
+    expect: [arrow.wikia.com]
+  - q: "dauly mail"
+    expect: [dailymail.co.uk]
+  - q: "sound terminology"
+    expect: [stirlingaudioservices.com]
+  - q: "edward jones investments account access"
+    expect: [edwardjones.com]
+  - q: "the brick.ca furniture store"
+    expect: [thebrick.com]
+  - q: "irs tax calculator"
+    expect: [irs.gov]
+  - q: "eat bulaga"
+    expect: [en-gb.facebook.com]
+  - q: "lincoln tunnel toll"
+    expect: [beta.costtodrive.com]
+  - q: "10 year outlook for silver"
+    expect: [lombardiletter.com]
+  - q: "hot water tank gas"
+    expect: [lowes.com]
+  - q: "supremacy claus"
+    expect: [wisegeek.org]
+  - q: "net price calculator"
+    expect: [collegecost.ed.gov]
+  - q: "san diego whale migration calendar"
+    expect: [sandiego.org]
+  - q: "equilibrium reaction"
+    expect: [chem4kids.com]
+  - q: "augmentin amoxicillin"
+    expect: [differencebetween.net]
+  - q: "sociology Ã©mile durkheim"
+    expect: [study.com]
+  - q: "old bts songs"
+    expect: [en.wikipedia.org]
+  - q: "salting steak"
+    expect: [steamykitchen.com]
+  - q: "definition of intersection"
+    expect: [dictionary.com]
+  - q: "the wedding fair"
+    expect: [theweddingfairs.com]
+  - q: "liver damage signs"
+    expect: [medicinenet.com]
+  - q: "tip chart for hairdressers"
+    expect: [today.com]
+  - q: "palm springs weather in october"
+    expect: [weatherspark.com]
+  - q: "maine ifw"
+    expect: [maine.gov]
+  - q: "pldt hotline customer service"
+    expect: [pldt.com]
+  - q: "instax film"
+    expect: [fujifilm.com]
+  - q: "apps tore"
+    expect: [support.apple.com]
+  - q: "how is cloth made"
+    expect: [mylearning.org]
+  - q: "ciprofloxacin for uti"
+    expect: [healthassist.net]
+  - q: "5 generations"
+    expect: [hbr.org]
+  - q: "apple account id page"
+    expect: [support.apple.com]
+  - q: "how much does adoption cost"
+    expect: [creatingafamily.org]
+  - q: "m. serratus anterior"
+    expect: [en.wikipedia.org]
+  - q: "municipal goverment"
+    expect: [en.wikipedia.org]
+  - q: "gross domestic product"
+    expect: [bea.gov]
+  - q: "how to do a chest press"
+    expect: [dummies.com]
+  - q: "back up on windows 10"
+    expect: [answers.microsoft.com]
+  - q: "sleep medication"
+    expect: [keepinspiring.me]
+  - q: "bank account checker uk"
+    expect: [sortcodes.co.uk]
+  - q: "channel 9 news baton rouge weather"
+    expect: [wafb.com]
+  - q: "early symptoms of alzheimer's"
+    expect: [alz.org]
+  - q: "disd oracle"
+    expect: [oracle.com]
+  - q: "my stubs login"
+    expect: [amctheatres.com]
+  - q: "ohio school closings"
+    expect: [10tv.com]
+  - q: "do amish pay taxes"
+    expect: [groups.etown.edu]
+  - q: "liquid measurement converter"
+    expect: [sks-bottle.com]
+  - q: "cooking great northern beans"
+    expect: [cooks.com]
+  - q: "car shakes when braking"
+    expect: [instructables.com]
+  - q: "florida tax collector website"
+    expect: [leetc.com]
+  - q: "class 3 firearms license"
+    expect: [en.wikipedia.org]
+  - q: "britannia online"
+    expect: [britannica.com]
+  - q: "chegg ebook reader"
+    expect: [chegg.com]
+  - q: "ethics in biology"
+    expect: [en.wikipedia.org]
+  - q: "american music awards voting"
+    expect: [facebook.com]
+  - q: "testamentary trust explanation"
+    expect: [legalzoom.com]
+  - q: "new jersey courts jobs"
+    expect: [judiciary.state.nj.us]
+  - q: "my navy reserve"
+    expect: [navyreserve.navy.mil]
+  - q: "plot summary of hamlet"
+    expect: [cliffsnotes.com]
+  - q: "kohls card payment"
+    expect: [kohls.com]
+  - q: "nitrate nitrogen"
+    expect: [state.ky.us]
+  - q: "taco bell"
+    expect: [abcnews.go.com]
+  - q: "dj music downloads"
+    expect: [beatport.com]
+  - q: "concave diet pill"
+    expect: [dietspotlight.com]
+  - q: "how to download music from pc to iphone"
+    expect: [youtube.com]
+  - q: "cable tv providers in my area"
+    expect: [wikihow.com]
+  - q: "how to wipe a windows 10 laptop"
+    expect: [qoncious.com]
+  - q: "grounds for harassment charges"
+    expect: [courts.ca.gov]
+  - q: "download docker toolbox for windows 10"
+    expect: [docs.docker.com]
+  - q: "msnbc first read"
+    expect: [twitter.com]
+  - q: "dental school entrance exam"
+    expect: [dat-prep.com]
+  - q: "lightweight wrinkle free travel clothes"
+    expect: [whowhatwear.com]
+  - q: "oxygen concentrator store"
+    expect: [store.mainclinicsupply.com]
+  - q: "time now cet"
+    expect: [greenwichmeantime.com]
+  - q: "ebay hotline"
+    expect: [ocsnext.ebay.com]
+  - q: "islands of the world"
+    expect: [en.wikipedia.org]
+  - q: "person with disability act"
+    expect: [dol.gov]
+  - q: "nypd sergeant"
+    expect: [sbanyc.org]
+  - q: "feel sick after flu shot"
+    expect: [cdc.gov]
+  - q: "folic acid tablets for pregnancy"
+    expect: [nhs.uk]
+  - q: "ammonia poisoning in humans"
+    expect: [health.ny.gov]
+  - q: "huygens titan"
+    expect: [en.wikipedia.org]
+  - q: "continuous improvement techniques"
+    expect: [en.wikipedia.org]
+  - q: "bessemer news"
+    expect: [al.com]
+  - q: "sopranos theme song"
+    expect: [en.wikipedia.org]
+  - q: "s3 heart sound indicates"
+    expect: [chfpatients.com]
+  - q: "my spectrum account"
+    expect: [spectrum.net]
+  - q: "spanish american war timeline"
+    expect: [loc.gov]
+  - q: "books read online free"
+    expect: [ebookfriendly.com]
+  - q: "nutritional value of lentils cooked"
+    expect: [whfoods.com]
+  - q: "eurusd live"
+    expect: [dailyfx.com]
+  - q: "smoky mountain cabins for rent"
+    expect: [visitmysmokies.com]
+  - q: "another word for tool"
+    expect: [wordhippo.com]
+  - q: "how to cut up a mango"
+    expect: [realsimple.com]
+  - q: "priceline corporate email for complaints"
+    expect: [hissingkitty.com]
+  - q: "strongsville oh"
+    expect: [en.wikipedia.org]
+  - q: "taking care of business bull"
+    expect: [en.wikipedia.org]
+  - q: "amish history"
+    expect: [religioustolerance.org]
+  - q: "russian flag"
+    expect: [russiaflag.facts.co]
+  - q: "target stool"
+    expect: [target.com]
+  - q: "eradication of disease"
+    expect: [cdc.gov]
+  - q: "cure for dog diarrhea"
+    expect: [petmd.com]
+  - q: "heart atrophy"
+    expect: [healthguidance.org]
+  - q: "pasta history"
+    expect: [internationalpasta.org]
+  - q: "bed bath and beyond bangor"
+    expect: [bedbathandbeyond.com]
+  - q: "guernsey county auditor property search"
+    expect: [guernseycountyauditor.org]
+  - q: "teen mom 3 cast"
+    expect: [tvguide.com]
+  - q: "2019 hyundai sonata"
+    expect: [hyundaiusa.com]
+  - q: "brisbane australia map"
+    expect: [en.wikipedia.org]
+  - q: "ledes format"
+    expect: [easylegalbilling.com]
+  - q: "personal exemption 2018"
+    expect: [forbes.com]
+  - q: "how many seasons of star trek"
+    expect: [quora.com]
+  - q: "john lennon wife"
+    expect: [en.wikipedia.org]
+  - q: "how to close amazon prime account"
+    expect: [amazon.com]
+  - q: "how to delete music from iphone"
+    expect: [support.apple.com]
+  - q: "how to catch bass"
+    expect: [bassfishingandcatching.com]
+  - q: "ecampus phoenix login"
+    expect: [phoenix.edu]
+  - q: "search word"
+    expect: [wordgames.com]
+  - q: "signs of appendicitis in children"
+    expect: [md-health.com]
+  - q: "congressman from alabama"
+    expect: [govtrack.us]
+  - q: "best treatment for sore gums"
+    expect: [natural-homeremedies.com]
+  - q: "free handwriting templates"
+    expect: [k12reader.com]
+  - q: "intermediate results"
+    expect: [bihar.indiaresults.com]
+  - q: "cerebrovascular accident icd 10"
+    expect: [icdlist.com]
+  - q: "irish lotto results 3 draws ie"
+    expect: [irish-lotto.com]
+  - q: "city of denver"
+    expect: [denver.org]
+  - q: "the pick"
+    expect: [lotterypost.com]
+  - q: "city of taylor tx"
+    expect: [ci.taylor.tx.us]
+  - q: "bainbridge georgia"
+    expect: [visitbainbridgega.com]
+  - q: "standard sap document types"
+    expect: [tutorialspoint.com]
+  - q: "outlook web access us army enterprise email"
+    expect: [disa.mil]
+  - q: "causes of constipation in adults"
+    expect: [medicinenet.com]
+  - q: "profed login"
+    expect: [profedcu.org]
+  - q: "online graphing"
+    expect: [mathway.com]
+  - q: "average gas and electricity prices per month"
+    expect: [ukpower.co.uk]
+  - q: "cotillion dance"
+    expect: [en.wikipedia.org]
+  - q: "pharmacovigilance slideshare"
+    expect: [who.int]
+  - q: "sheltie size"
+    expect: [en.wikipedia.org]
+  - q: "dword c++"
+    expect: [cplusplus.com]
+  - q: "antivirus protection best"
+    expect: [antivirusprotection.reviews]
+  - q: "the great wall of china map"
+    expect: [travelchinaguide.com]
+  - q: "date and time difference calculator"
+    expect: [support.office.com]
+  - q: "tea grant opportunities"
+    expect: [tea.texas.gov]
+  - q: "black birds with brown heads"
+    expect: [birdweb.org]
+  - q: "holocaust death camps"
+    expect: [en.wikipedia.org]
+  - q: "pietre dure"
+    expect: [en.wikipedia.org]
+  - q: "compensation for delayed flights in europe"
+    expect: [citizensadvice.org.uk]
+  - q: "pillsbury filled crescents"
+    expect: [pillsbury.com]
+  - q: "full sail university jobs"
+    expect: [fullsail.edu]
+  - q: "how to increase energy"
+    expect: [draxe.com]
+  - q: "reset your apple id"
+    expect: [support.apple.com]
+  - q: "bariatric surgery cpt codes 2018"
+    expect: [facs.org]
+  - q: "oscar winner best picture"
+    expect: [oscar.go.com]
+  - q: "adderall dosages"
+    expect: [everydayhealth.com]
+  - q: "seeing black spots floating"
+    expect: [seeingblackspots.com]
+  - q: "td bank routing ct"
+    expect: [routing-numbers.com]
+  - q: "dow jones right now"
+    expect: [thestockmarketwatch.com]
+  - q: "dawn tomorrow"
+    expect: [timeanddate.com]
+  - q: "telomere length"
+    expect: [ncbi.nlm.nih.gov]
+  - q: "how to stay awake at your desk"
+    expect: [bustle.com]
+  - q: "oil cloth"
+    expect: [simplytablecloths.co.uk]
+  - q: "dell.com support"
+    expect: [dell.com]
+  - q: "free photo editing and graphics"
+    expect: [befunky.com]
+  - q: "office 2016 updates windows 10"
+    expect: [support.office.com]
+  - q: "handwashing techniques for healthcare"
+    expect: [who.int]
+  - q: "raci roles"
+    expect: [valuebasedmanagement.net]
+  - q: "state central registry ny"
+    expect: [ws04.nyenet.state.ny.us]
+  - q: "blue and red"
+    expect: [en.wikipedia.org]
+  - q: "sean connery now pictures"
+    expect: [dailymail.co.uk]
+  - q: "internet prices"
+    expect: [att.com]
+  - q: "lymph node station"
+    expect: [radiologyassistant.nl]
+  - q: "example of a notarized letter"
+    expect: [template.net]
+  - q: "elephant seal rookery san simeon"
+    expect: [tripadvisor.com]
+  - q: "how much is 500 words"
+    expect: [wordstopages.com]
+  - q: "ladac certification"
+    expect: [umb.edu]
+  - q: "rubella virus symptoms"
+    expect: [healthline.com]
+  - q: "conversion of pound to kg"
+    expect: [rapidtables.com]
+  - q: "calorie counter calculator"
+    expect: [calculator.net]
+  - q: "comerica credit card"
+    expect: [myaccountaccess.com]
+  - q: "plantar fasiatis"
+    expect: [webmd.com]
+  - q: "blade of a leaf"
+    expect: [bulbapedia.bulbagarden.net]
+  - q: "petrol cost per mile"
+    expect: [theaa.com]
+  - q: "economic times of india hindi"
+    expect: [economictimes.indiatimes.com]
+  - q: "hilti address"
+    expect: [hilti.ae]
+  - q: "cost of a dental bridge for one tooth"
+    expect: [deardoctor.com]
+  - q: "amazon cloud storage"
+    expect: [amazon.com]
+  - q: "nbnco map"
+    expect: [nbnco.com.au]
+  - q: "metro fare"
+    expect: [metro.net]
+  - q: "palmetto health remote sign on"
+    expect: [palmettohealth.org]
+  - q: "how to update display driver"
+    expect: [helpx.adobe.com]
+  - q: "chrome fownload"
+    expect: [google.com]
+  - q: "side effects of mobic"
+    expect: [medicinenet.com]
+  - q: "house duct cleaning"
+    expect: [angieslist.com]
+  - q: "places to order food"
+    expect: [eat24hours.com]
+  - q: "comprehensive eye exam"
+    expect: [allaboutvision.com]
+  - q: "pubic fracture"
+    expect: [modernmedicine.com]
+  - q: "castile soap shampoo"
+    expect: [thenerdyfarmwife.com]
+  - q: "maui time"
+    expect: [time.is]
+  - q: "homegroup control panel windows 10"
+    expect: [techulator.com]
+  - q: "kinds of media"
+    expect: [blog.hootsuite.com]
+  - q: "career ladder promotions federal government"
+    expect: [cpsc.gov]
+  - q: "this year calendar"
+    expect: [islamicfinder.org]
+  - q: "reynolds number equations"
+    expect: [en.wikipedia.org]
+  - q: "50x60 metal building"
+    expect: [bucksteel.com]
+  - q: "moderate dysplastic nevus"
+    expect: [realself.com]
+  - q: "c# for linux"
+    expect: [code.visualstudio.com]
+  - q: "how to use microsoft onedrive"
+    expect: [onedrive.live.com]
+  - q: "base flood elevation lookup"
+    expect: [fema.gov]
+  - q: "rtg staffing"
+    expect: [rtgmedical.com]
+  - q: "gratitude bible"
+    expect: [gotquestions.org]
+  - q: "eli roth thanksgiving"
+    expect: [en.wikipedia.org]
+  - q: "robert wood johnson new brunswick nj"
+    expect: [facebook.com]
+  - q: "the fiddler"
+    expect: [en.wikipedia.org]
+  - q: "great fictional characters"
+    expect: [fandomania.com]
+  - q: "board of elections"
+    expect: [albanycounty.com]
+  - q: "comment in excel"
+    expect: [excel-easy.com]
+  - q: "bank rates savings"
+    expect: [bankofamerica.com]
+  - q: "arizona state drink"
+    expect: [en.wikipedia.org]
+  - q: "average salary in usa"
+    expect: [smartasset.com]
+  - q: "taco seasoning mix recipe"
+    expect: [thepioneerwoman.com]
+  - q: "the ancient greeks"
+    expect: [en.wikipedia.org]
+  - q: "metabolic alkalosis."
+    expect: [en.wikipedia.org]
+  - q: "odessa tx county"
+    expect: [mapquest.com]
+  - q: "88n army mos"
+    expect: [rallypoint.com]
+  - q: "best remedy for mouth sores"
+    expect: [homeremedies.ygoy.com]
+  - q: "first class with distinction"
+    expect: [en.wikipedia.org]
+  - q: "norse runes"
+    expect: [norse-mythology.org]
+  - q: "first choice provider phone number"
+    expect: [selecthealthofsc.com]
+  - q: "adp insurance login"
+    expect: [adp.com]
+  - q: "louis sachar biography"
+    expect: [scholastic.com]
+  - q: "the american flag"
+    expect: [ushistory.org]
+  - q: "kindle publishing direct"
+    expect: [theindependentpublishingmagazine.com]
+  - q: "heat wave 2018"
+    expect: [dailymail.co.uk]
+  - q: "amazon.com phone number"
+    expect: [headquartersnumbers.net]
+  - q: "berkheimer's website"
+    expect: [hab-inc.com]
+  - q: "blue angels wiki"
+    expect: [en.wikipedia.org]
+  - q: "j b peterson"
+    expect: [en.wikipedia.org]
+  - q: "financial week calendar"
+    expect: [finance.yahoo.com]
+  - q: "accounting cycle steps"
+    expect: [study.com]
+  - q: "stephanie myers one america news"
+    expect: [en.wikipedia.org]
+  - q: "corked thigh"
+    expect: [sma.org.au]
+  - q: "detailed implementation plan"
+    expect: [fao.org]
+  - q: "florida jackpot numbers"
+    expect: [lotterypost.com]
+  - q: "marvel latest"
+    expect: [marvel.com]
+  - q: "results of kentucky derby"
+    expect: [kentuckyderby.com]
+  - q: "oofos uk"
+    expect: [oofos.com]
+  - q: "prime rib cut"
+    expect: [en.wikipedia.org]
+  - q: "positive adjectives"
+    expect: [englishclub.com]
+  - q: "colour blindnes"
+    expect: [nei.nih.gov]
+  - q: "how a pearl is made"
+    expect: [americanpearl.com]
+  - q: "moto 6 manual"
+    expect: [motorola.com]
+  - q: "furniture sale"
+    expect: [overstock.com]
+  - q: "expiration dates on food"
+    expect: [stilltasty.com]
+  - q: "the gremlin"
+    expect: [en.wikipedia.org]
+  - q: "convert inch to mm millimeter"
+    expect: [checkyourmath.com]
+  - q: "guy fieri diners drive-ins and dives"
+    expect: [guyfieri.com]
+  - q: "top 10 breeds of dogs"
+    expect: [pets4homes.co.uk]
+  - q: "can eating beets discolor urine"
+    expect: [quora.com]
+  - q: "how many people use microsoft rewards"
+    expect: [reddit.com]
+  - q: "sioux city obit"
+    expect: [siouxcityjournal.com]
+  - q: "msn weather"
+    expect: [msn.com]
+  - q: "compunet labs dayton ohio"
+    expect: [compunetlab.com]
+  - q: "god attributes"
+    expect: [en.wikipedia.org]
+  - q: "definition of sublimation"
+    expect: [dictionary.com]
+  - q: "easy e rapper"
+    expect: [en.wikipedia.org]
+  - q: "alice coopers wife"
+    expect: [archive.azcentral.com]
+  - q: "14 th amendment"
+    expect: [thoughtco.com]
+  - q: "mummification for kids"
+    expect: [mylearning.org]
+  - q: "indian economic growth"
+    expect: [en.wikipedia.org]
+  - q: "example of a critical analysis"
+    expect: [web.cocc.edu]
+  - q: "basic rap beat"
+    expect: [tweakheadz.com]
+  - q: "fastest way to lower blood sugar quickly"
+    expect: [onegreenplanet.org]
+  - q: "bravo tv lineup for tonight"
+    expect: [bravotv.com]
+  - q: "edm songs"
+    expect: [en.wikipedia.org]
+  - q: "farmer insurance claims phone number"
+    expect: [farmers.com]
+  - q: "project lead the way login"
+    expect: [pltw.org]
+  - q: "children protective services"
+    expect: [michigan.gov]
+  - q: "concatenate in excel"
+    expect: [techonthenet.com]
+  - q: "john boy walton"
+    expect: [tv.com]
+  - q: "court bail"
+    expect: [gov.uk]
+  - q: "define markup"
+    expect: [merriam-webster.com]
+  - q: "signa healthcare"
+    expect: [cigna.com]
+  - q: "ferpa directory information"
+    expect: [www2.ed.gov]
+  - q: "quickbooks support"
+    expect: [contactforhelp.com]
+  - q: "chinese new year animals"
+    expect: [thesun.co.uk]
+  - q: "how to in text cite a website"
+    expect: [owl.english.purdue.edu]
+  - q: "realtor license course"
+    expect: [realestateexpress.com]
+  - q: "coon rapids animal shelter"
+    expect: [animalhumanesociety.org]
+  - q: "egfr aa levels"
+    expect: [kidney.org]
+  - q: "become a teacher in texas"
+    expect: [tea.texas.gov]
+  - q: "fcc packing"
+    expect: [en.wikipedia.org]
+  - q: "fluocinonide 0 05 % ointment"
+    expect: [creamguide.com]
+  - q: "gallipoli map"
+    expect: [maplandia.com]
+  - q: "rst driver windows 10"
+    expect: [downloadcenter.intel.com]
+  - q: "how to sleep earlier"
+    expect: [helpguide.org]
+  - q: "rain check means"
+    expect: [merriam-webster.com]
+  - q: "best security systems for homes"
+    expect: [safewise.com]
+  - q: "student loans .gov"
+    expect: [studentloans.gov]
+  - q: "eagle eye networks"
+    expect: [login.eagleeyenetworks.com]
+  - q: "priority mail package"
+    expect: [postcalc.usps.com]
+  - q: "how to record on computer"
+    expect: [en.wikipedia.org]
+  - q: "film the mummy 2017"
+    expect: [rottentomatoes.com]
+  - q: "jobs outlook"
+    expect: [joboutlook.gov.au]
+  - q: "grade finder"
+    expect: [benegg.net]
+  - q: "market strategy"
+    expect: [charliesaidthat.com]
+  - q: "horrible credit unsecured loan"
+    expect: [credit.com]
+  - q: "gravitational waves news"
+    expect: [nytimes.com]
+  - q: "how is breast cancer caused"
+    expect: [cancer.org]
+  - q: "katy perry music videos"
+    expect: [myspace.com]
+  - q: "clear urine causes"
+    expect: [kidneyfailureweb.com]
+  - q: "edinburgh tattoo 2018"
+    expect: [en.wikipedia.org]
+  - q: "tips to pay off mortgage quicker"
+    expect: [bankrate.com]
+  - q: "random fortnite code generator"
+    expect: [randomcodegenerator.com]
+  - q: "e-waste definition"
+    expect: [epa.gov]
+  - q: "jesus riding on a donkey"
+    expect: [apologeticspress.org]
+  - q: "bacteria discovery"
+    expect: [en.wikipedia.org]
+  - q: "john brennan conversion to islam"
+    expect: [en.wikipedia.org]
+  - q: "severance pay"
+    expect: [en.wikipedia.org]
+  - q: "atlantic time zone"
+    expect: [timeanddate.com]
+  - q: "fed ex notary"
+    expect: [theupsstore.com]
+  - q: "ideas for supper tonight"
+    expect: [cookinglight.com]
+  - q: "song of the south"
+    expect: [theguardian.com]
+  - q: "this is the last worthless evening"
+    expect: [en.wikipedia.org]
+  - q: "project management sample"
+    expect: [projectmanagementdocs.com]
+  - q: "dsm-5 alcohol use disorder"
+    expect: [pro.psychcentral.com]
+  - q: "today newspaper in english"
+    expect: [timesofindia.indiatimes.com]
+  - q: "mercer university acceptance rate"
+    expect: [acceptancerate.com]
+  - q: "canada time converter"
+    expect: [timeanddate.com]
+  - q: "dc metro passes"
+    expect: [freetoursbyfoot.com]
+  - q: "article 6"
+    expect: [en.wikipedia.org]
+  - q: "low alkaline"
+    expect: [healthguideinfo.com]
+  - q: "date calendar between two dates"
+    expect: [timeanddate.com]
+  - q: "benefits of warm water"
+    expect: [steptohealth.com]
+  - q: "can you download fortnite on a laptop"
+    expect: [epicgames.com]
+  - q: "lux ex tenebris"
+    expect: [en.wikipedia.org]
+  - q: "foods that are high in carbohydrates list"
+    expect: [healthyeater.com]
+  - q: "how to prevent programs from auto starting"
+    expect: [kb.iu.edu]
+  - q: "obligee meaning"
+    expect: [merriam-webster.com]
+  - q: "government school"
+    expect: [education.gov.za]
+  - q: "motorhome tow cars"
+    expect: [smart-tow.com]
+  - q: "noise pollution wikipedia"
+    expect: [en.wikipedia.org]
+  - q: "savings account bonus"
+    expect: [nerdwallet.com]
+  - q: "battle of london"
+    expect: [en.wikipedia.org]
+  - q: "robin williams murder"
+    expect: [theguardian.com]
+  - q: "Our security auditor is an idiot. How do I give him the information he wants?"
+    expect: [serverfault.com]
+  - q: "What is a Pem file and how does it differ from other OpenSSL Generated Key File Formats?"
+    expect: [serverfault.com]
+  - q: "How can I sort du -h output by size"
+    expect: [serverfault.com]
+  - q: "How to determine if a bash variable is empty?"
+    expect: [serverfault.com]
+  - q: "Can you ping a specific port of a machine?"
+    expect: [serverfault.com]
+  - q: "Can scp copy directories recursively?"
+    expect: [serverfault.com]
+  - q: "How to automate SSH login with password?"
+    expect: [serverfault.com]
+  - q: "How do you find what process is holding a file open in Windows?"
+    expect: [serverfault.com]
+  - q: "How do I deal with a compromised server?"
+    expect: [serverfault.com]
+  - q: "What exactly do the colors in htop status bars mean?"
+    expect: [serverfault.com]
+  - q: "ssh returns \"Bad owner or permissions on ~/.ssh/config\""
+    expect: [serverfault.com]
+  - q: "How do I tell Git for Windows where to find my private RSA key?"
+    expect: [serverfault.com]
+  - q: "In Nginx, how can I rewrite all http requests to https while maintaining sub-domain?"
+    expect: [serverfault.com]
+  - q: "What is the difference between double and single square brackets in bash?"
+    expect: [serverfault.com]
+  - q: "mysqldump throws: Unknown table 'COLUMN_STATISTICS' in information_schema (1109)"
+    expect: [serverfault.com]
+  - q: "What's the default superuser username/password for postgres after a new install?"
+    expect: [serverfault.com]
+  - q: "How does IPv4 Subnetting Work?"
+    expect: [serverfault.com]
+  - q: "Something is burning in the server room; how can I quickly identify what it is?"
+    expect: [serverfault.com]
+  - q: "Displaying a remote SSL certificate details using CLI tools"
+    expect: [serverfault.com]
+  - q: "How to set environment variable in systemd service?"
+    expect: [serverfault.com]
+  - q: "How do I change my private key passphrase?"
+    expect: [serverfault.com]
+  - q: "How to run a server on port 80 as a normal user on Linux?"
+    expect: [serverfault.com]
+  - q: "Why is my crontab not working, and how can I troubleshoot it?"
+    expect: [serverfault.com]
+  - q: "How can I get the size of an Amazon S3 bucket?"
+    expect: [serverfault.com]
+  - q: "Showing total progress in rsync: is it possible?"
+    expect: [serverfault.com]
+  - q: "How can I use environment variables in Nginx.conf"
+    expect: [serverfault.com]
+  - q: "How do I get the current Unix time in milliseconds in Bash?"
+    expect: [serverfault.com]
+  - q: "How do you search for backdoors from the previous IT person?"
+    expect: [serverfault.com]
+  - q: "What permissions should my website files/folders have on a Linux webserver?"
+    expect: [serverfault.com]
+  - q: "Create a public SSH key from the private key?"
+    expect: [serverfault.com]
+  - q: "Can I automatically add a new host to known_hosts?"
+    expect: [serverfault.com]
+  - q: "Anyone else experiencing high rates of Linux server crashes during a leap second day?"
+    expect: [serverfault.com]
+  - q: "How to send ctrl+alt+del using Remote Desktop?"
+    expect: [serverfault.com]
+  - q: "Copying a large directory tree locally? cp or rsync?"
+    expect: [serverfault.com]
+  - q: "What are the functional differences between .profile .bash_profile and .bashrc"
+    expect: [serverfault.com]
+  - q: "Check if port is open or closed on a Linux server?"
+    expect: [serverfault.com]
+  - q: "Nginx reverse proxy + URL rewrite"
+    expect: [serverfault.com]
+  - q: "How to properly unban an IP address which Fail2Ban banned?"
+    expect: [serverfault.com]
+  - q: "100% uptime for a web application"
+    expect: [serverfault.com]
+  - q: "How to bind MySQL server to more than one IP address?"
+    expect: [serverfault.com]
+  - q: "What's the command-line utility in Windows to do a reverse DNS look-up?"
+    expect: [serverfault.com]
+  - q: "How do I select which Apache MPM to use?"
+    expect: [serverfault.com]
+  - q: "Why do I need Nginx and something like Gunicorn?"
+    expect: [serverfault.com]
+  - q: "command for checking Apache configuration"
+    expect: [serverfault.com]
+  - q: "How to remove an image tag in Docker without removing the image itself?"
+    expect: [serverfault.com]
+  - q: "What's the difference between IP address 0.0.0.0 and 127.0.0.1?"
+    expect: [serverfault.com]
+  - q: "how to download the ssl certificate from a website?"
+    expect: [serverfault.com]
+  - q: "Linux command to inspect TXT records of a domain"
+    expect: [serverfault.com]
+  - q: "Finding out what user Apache is running as?"
+    expect: [serverfault.com]
+  - q: "How do I view the details of a digital certificate .cer file?"
+    expect: [serverfault.com]
+  - q: "Moving an already-running process to Screen"
+    expect: [serverfault.com]
+  - q: "List all DNS records in a domain using dig?"
+    expect: [serverfault.com]
+  - q: "Redirect, change URLs or redirect HTTP to HTTPS in Apache httpd - Everything you ever wanted to know about mod_rewrite rules, but were afraid to ask"
+    expect: [serverfault.com]
+  - q: "Do systemd unit files have to be reloaded when modified?"
+    expect: [serverfault.com]
+  - q: "What is archive mode in rsync?"
+    expect: [serverfault.com]
+  - q: "How do I add Access-Control-Allow-Origin in NGINX?"
+    expect: [serverfault.com]
+  - q: "Can I nohup/screen an already-started process?"
+    expect: [serverfault.com]
+  - q: "Can you pass user/pass for HTTP Basic Authentication in URL parameters?"
+    expect: [serverfault.com]
+  - q: "What are the obstacles to providing reliable Internet access and Wi-Fi at large tech conferences?"
+    expect: [serverfault.com]
+  - q: "How to reply with 200 from Nginx, without serving a file?"
+    expect: [serverfault.com]
+  - q: "How to assign permissions to ApplicationPoolIdentity account"
+    expect: [serverfault.com]
+  - q: "Useful Command-line Commands on Windows"
+    expect: [serverfault.com]
+  - q: "Why does my hostname appear with the address 127.0.1.1 rather than 127.0.0.1 in /etc/hosts?"
+    expect: [serverfault.com]
+  - q: "How can I run Debian stable but install some packages from testing?"
+    expect: [serverfault.com]
+  - q: "How to see stdout of ansible commands?"
+    expect: [serverfault.com]
+  - q: "How to include multiple domains in an spf TXT Record"
+    expect: [serverfault.com]
+  - q: "Why is \"chmod -R 777 /\" destructive?"
+    expect: [serverfault.com]
+  - q: "I've inherited a rat's nest of cabling. What now?"
+    expect: [serverfault.com]
+  - q: "Kubernetes stuck on ContainerCreating"
+    expect: [serverfault.com]
+  - q: "Can anyone explain precisely what IOWait is?"
+    expect: [serverfault.com]
+  - q: "Docker Container time & timezone (will not reflect changes)"
+    expect: [serverfault.com]
+  - q: "When does `cron.daily` run?"
+    expect: [serverfault.com]
+  - q: "df in linux not showing correct free space after file removal"
+    expect: [serverfault.com]
+  - q: "What’s the point in having “www” in a URL?"
+    expect: [serverfault.com]
+  - q: "How can I find out what Active Directory groups I'm a member of?"
+    expect: [serverfault.com]
+  - q: "How to run a command multiple times, using bash shell?"
+    expect: [serverfault.com]
+  - q: "What is the difference between Unix sockets and TCP/IP sockets?"
+    expect: [serverfault.com]
+  - q: "How can I see which flags Nginx was compiled with?"
+    expect: [serverfault.com]
+  - q: "Is it bad to redirect http to https?"
+    expect: [serverfault.com]
+  - q: "Environment variables of a running process on Unix?"
+    expect: [serverfault.com]
+  - q: "How to list all installed packages"
+    expect: [askubuntu.com]
+  - q: "How to unzip a zip file from the Terminal?"
+    expect: [askubuntu.com]
+  - q: "\"The following packages have been kept back:\" Why and how do I solve it?"
+    expect: [askubuntu.com]
+  - q: "How can PPAs be removed?"
+    expect: [askubuntu.com]
+  - q: "How do I install a .deb file via the command line?"
+    expect: [askubuntu.com]
+  - q: "How do I save terminal output to a file?"
+    expect: [askubuntu.com]
+  - q: "How can I copy the contents of a folder to another folder in a different directory using terminal?"
+    expect: [askubuntu.com]
+  - q: "What command do I need to unzip/extract a .tar.gz file?"
+    expect: [askubuntu.com]
+  - q: "How do I determine the total size of a directory (folder) from the command line?"
+    expect: [askubuntu.com]
+  - q: "Where is the cron / crontab log?"
+    expect: [askubuntu.com]
+  - q: "How can I use Docker without sudo?"
+    expect: [askubuntu.com]
+  - q: "Unable to lock the administration directory (/var/lib/dpkg/) is another process using it?"
+    expect: [askubuntu.com]
+  - q: "How can I update my nodeJS to the latest version?"
+    expect: [askubuntu.com]
+  - q: "How to upgrade a single package using apt-get?"
+    expect: [askubuntu.com]
+  - q: "Is there a command to list all users? Also to add, delete, modify users, in the terminal?"
+    expect: [askubuntu.com]
+  - q: "How to keep processes running after ending ssh session?"
+    expect: [askubuntu.com]
+  - q: "How do I uncompress a tarball that uses .xz?"
+    expect: [askubuntu.com]
+  - q: "How can I add a user as a new sudoer using the command line?"
+    expect: [askubuntu.com]
+  - q: "How to add a directory to the PATH?"
+    expect: [askubuntu.com]
+  - q: "How to extract files to another directory using 'tar' command?"
+    expect: [askubuntu.com]
+  - q: "How do I shut down or reboot from a terminal?"
+    expect: [askubuntu.com]
+  - q: "Error message \"sudo: unable to resolve host (none)\""
+    expect: [askubuntu.com]
+  - q: "How to get bash or ssh into a running container in background mode?"
+    expect: [askubuntu.com]
+  - q: "How to enable or disable services?"
+    expect: [askubuntu.com]
+  - q: "Find and replace text within a file using commands"
+    expect: [askubuntu.com]
+  - q: "How can I recursively delete all files of a specific extension in the current directory?"
+    expect: [askubuntu.com]
+  - q: "How to add existing user to an existing group?"
+    expect: [askubuntu.com]
+  - q: "How do I search for available packages from the command-line?"
+    expect: [askubuntu.com]
+  - q: "How to install updates via command line?"
+    expect: [askubuntu.com]
+  - q: "How to increment a variable in bash?"
+    expect: [askubuntu.com]
+  - q: "How do you monitor the progress of dd?"
+    expect: [askubuntu.com]
+  - q: "Command for determining my public IP?"
+    expect: [askubuntu.com]
+  - q: "What is the difference between apt and apt-get?"
+    expect: [askubuntu.com]
+  - q: "How can I reduce the file size of a scanned PDF file?"
+    expect: [askubuntu.com]
+  - q: "How do I find the amount of free space on my hard drive?"
+    expect: [askubuntu.com]
+  - q: "How do I rename a directory via the command line?"
+    expect: [askubuntu.com]
+  - q: "How do I reset a lost administrative password?"
+    expect: [askubuntu.com]
+  - q: "How do I find the package that provides a file?"
+    expect: [askubuntu.com]
+  - q: "How can I extract a page range / a part of a PDF?"
+    expect: [askubuntu.com]
+  - q: "How to delete a non-empty directory in Terminal?"
+    expect: [askubuntu.com]
+  - q: "Change folder permissions and ownership"
+    expect: [askubuntu.com]
+  - q: "How to check Internet Speed via Terminal?"
+    expect: [askubuntu.com]
+  - q: "How to run scripts on start up?"
+    expect: [askubuntu.com]
+  - q: "How do I get the CPU temperature?"
+    expect: [askubuntu.com]
+  - q: "What is the correct way to completely remove an application?"
+    expect: [askubuntu.com]
+  - q: "What should I do when Ubuntu freezes?"
+    expect: [askubuntu.com]
+  - q: "How do I remove old kernel versions to clean up the boot menu?"
+    expect: [askubuntu.com]
+  - q: "How to make 'python' program command execute Python 3?"
+    expect: [askubuntu.com]
+  - q: "What Application Indicators are available?"
+    expect: [askubuntu.com]
+  - q: "How can I decode a base64 string from the command line?"
+    expect: [askubuntu.com]
+  - q: "What does \"sudo apt-get update\" do?"
+    expect: [askubuntu.com]
+  - q: "How do I install a .tar.gz (or .tar.bz2) file?"
+    expect: [askubuntu.com]
+  - q: "How do I check which shell I am using?"
+    expect: [askubuntu.com]
+  - q: "How to display network traffic in the terminal?"
+    expect: [askubuntu.com]
+  - q: "How do I add environment variables?"
+    expect: [askubuntu.com]
+  - q: "How do I resolve unmet dependencies after adding a PPA?"
+    expect: [askubuntu.com]
+  - q: "How do I set up a Cron job?"
+    expect: [askubuntu.com]
+  - q: "How do I free up more space in /boot?"
+    expect: [askubuntu.com]
+  - q: "How can I record my screen?"
+    expect: [askubuntu.com]
+  - q: "How to create a soft or symbolic link?"
+    expect: [askubuntu.com]
+  - q: "How to list all enabled services from systemctl?"
+    expect: [askubuntu.com]
+  - q: "How do I check the version of Ubuntu I am running?"
+    expect: [askubuntu.com]
+  - q: "How to redirect stderr to a file"
+    expect: [askubuntu.com]
+  - q: "What is the difference between adduser and useradd?"
+    expect: [askubuntu.com]
+  - q: "How do I fix the GPG error \"NO_PUBKEY\"?"
+    expect: [askubuntu.com]
+  - q: "How to show the transfer progress and speed when copying files with cp?"
+    expect: [askubuntu.com]
+  - q: "Why crontab scripts are not working?"
+    expect: [askubuntu.com]
+  - q: "Which one is better: using ; or && to execute multiple commands in one line?"
+    expect: [askubuntu.com]
+  - q: "How to merge several PDF files?"
+    expect: [askubuntu.com]
+  - q: "How to install Google Chrome"
+    expect: [askubuntu.com]
+  - q: "How to let `dpkg -i` install dependencies for me?"
+    expect: [askubuntu.com]
+  - q: "How do I fix my locale issue?"
+    expect: [askubuntu.com]
+  - q: "How do I retrieve the public key from a SSH private key?"
+    expect: [askubuntu.com]
+  - q: "How do I install Guest Additions in a VirtualBox VM?"
+    expect: [askubuntu.com]
+  - q: "How do I use variables in a sed command?"
+    expect: [askubuntu.com]
+  - q: "How to prevent updating of a specific package?"
+    expect: [askubuntu.com]
+  - q: "What is an \"AppImage\"? How do I install it?"
+    expect: [askubuntu.com]
+  - q: "How to see the command attached to a bash alias?"
+    expect: [askubuntu.com]
+  - q: "What is the difference between a hard link and a symbolic link?"
+    expect: [askubuntu.com]
+  - q: "What is the difference between apt-get update and upgrade?"
+    expect: [askubuntu.com]
+  - q: "Why does man print \"gimme gimme gimme\" at 00:30?"
+    expect: [unix.stackexchange.com]
+  - q: "How do I get the size of a directory on the command line?"
+    expect: [unix.stackexchange.com]
+  - q: "What is the exact difference between a 'terminal', a 'shell', a 'tty' and a 'console'?"
+    expect: [unix.stackexchange.com]
+  - q: "How to correctly add a path to PATH?"
+    expect: [unix.stackexchange.com]
+  - q: "How to copy files from one machine to another using ssh"
+    expect: [unix.stackexchange.com]
+  - q: "How to install a deb file, by dpkg -i or by apt?"
+    expect: [unix.stackexchange.com]
+  - q: "How to see full log from systemctl status service?"
+    expect: [unix.stackexchange.com]
+  - q: "How can I reduce a video's size with ffmpeg?"
+    expect: [unix.stackexchange.com]
+  - q: "How can I replace a string in a file(s)?"
+    expect: [unix.stackexchange.com]
+  - q: "How to unfreeze after accidentally pressing Ctrl-S in a terminal?"
+    expect: [unix.stackexchange.com]
+  - q: "How do I make `ls` show file sizes in megabytes?"
+    expect: [unix.stackexchange.com]
+  - q: "How to cycle through reverse-i-search in Bash?"
+    expect: [unix.stackexchange.com]
+  - q: "Why was '~' chosen to represent the home directory?"
+    expect: [unix.stackexchange.com]
+  - q: "What does \"--\" (double dash / double hyphen) mean?"
+    expect: [unix.stackexchange.com]
+  - q: "Tracking down where disk space has gone on Linux?"
+    expect: [unix.stackexchange.com]
+  - q: "What is the purpose of the lost+found folder in Linux and Unix?"
+    expect: [unix.stackexchange.com]
+  - q: "Finding the PID of the process using a specific port?"
+    expect: [unix.stackexchange.com]
+  - q: "Zip all files in directory?"
+    expect: [unix.stackexchange.com]
+  - q: "Difference between nohup, disown and &"
+    expect: [unix.stackexchange.com]
+  - q: "How do I grep for multiple patterns with pattern having a pipe character?"
+    expect: [unix.stackexchange.com]
+  - q: "How to switch between users on one terminal?"
+    expect: [unix.stackexchange.com]
+  - q: "Problem running find: missing argument to `-exec'"
+    expect: [unix.stackexchange.com]
+  - q: "What do the numbers in a man page mean?"
+    expect: [unix.stackexchange.com]
+  - q: "How to get execution time of a script effectively?"
+    expect: [unix.stackexchange.com]
+  - q: "Why am I still getting a password prompt with ssh with public key authentication?"
+    expect: [unix.stackexchange.com]
+  - q: "Why is printf better than echo?"
+    expect: [unix.stackexchange.com]
+  - q: "Preserve bash history in multiple terminal windows"
+    expect: [unix.stackexchange.com]
+  - q: "/usr/bin vs /usr/local/bin on Linux"
+    expect: [unix.stackexchange.com]
+  - q: "How to force ssh client to use only password auth?"
+    expect: [unix.stackexchange.com]
+  - q: "How to clear journalctl"
+    expect: [unix.stackexchange.com]
+  - q: "How do I zip/unzip on the unix command line?"
+    expect: [unix.stackexchange.com]
+  - q: "Why is it better to use \"#!/usr/bin/env NAME\" instead of \"#!/path/to/NAME\" as my shebang?"
+    expect: [unix.stackexchange.com]
+  - q: "How to generate a random string?"
+    expect: [unix.stackexchange.com]
+  - q: "How to append multiple lines to a file"
+    expect: [unix.stackexchange.com]
+  - q: "What is the difference between /opt and /usr/local?"
+    expect: [unix.stackexchange.com]
+  - q: "Using \"${a:-b}\" for variable assignment in scripts"
+    expect: [unix.stackexchange.com]
+  - q: "Repeat a Unix command every x seconds forever"
+    expect: [unix.stackexchange.com]
+  - q: "What if 'kill -9' does not work?"
+    expect: [unix.stackexchange.com]
+  - q: "How can I resolve a hostname to an IP address in a Bash script?"
+    expect: [unix.stackexchange.com]
+  - q: "Does curl have a --no-check-certificate option like wget?"
+    expect: [unix.stackexchange.com]
+  - q: "How to display `top` results sorted by memory usage in real time?"
+    expect: [unix.stackexchange.com]
+  - q: "What is a bind mount?"
+    expect: [unix.stackexchange.com]
+  - q: "In a bash script, using the conditional \"or\" in an \"if\" statement"
+    expect: [unix.stackexchange.com]
+  - q: "Scroll inside Screen, or Pause Output"
+    expect: [unix.stackexchange.com]
+  - q: "Can grep output only specified groupings that match?"
+    expect: [unix.stackexchange.com]
+  - q: "How do I copy a folder keeping owners and permissions intact?"
+    expect: [unix.stackexchange.com]
+  - q: "Can less retain colored output?"
+    expect: [unix.stackexchange.com]
+  - q: "What is the difference between the Bash operators [[ vs [ vs ( vs ((?"
+    expect: [unix.stackexchange.com]
+  - q: "How to forward X over SSH to run graphics applications remotely?"
+    expect: [unix.stackexchange.com]
+  - q: "Difference between Login Shell and Non-Login Shell?"
+    expect: [unix.stackexchange.com]
+  - q: "How do I check package version using apt-get / aptitude?"
+    expect: [unix.stackexchange.com]
+  - q: "How to conditionally do something if a command succeeded or failed"
+    expect: [unix.stackexchange.com]
+  - q: "recursive mkdir"
+    expect: [unix.stackexchange.com]
+  - q: "How can I pass a command line argument into a shell script?"
+    expect: [unix.stackexchange.com]
+  - q: "How to copy a file from a remote server to a local machine?"
+    expect: [unix.stackexchange.com]
+  - q: "How to turn off stdout buffering in a pipe?"
+    expect: [unix.stackexchange.com]
+  - q: "Can I zip an entire folder using gzip?"
+    expect: [unix.stackexchange.com]
+  - q: "How do I remove a user from a group?"
+    expect: [unix.stackexchange.com]
+  - q: "What should/shouldn't go in .zshenv, .zshrc, .zlogin, .zprofile, .zlogout?"
+    expect: [unix.stackexchange.com]
+  - q: "How do I loop through only directories in bash?"
+    expect: [unix.stackexchange.com]
+  - q: "Why am I getting an “invalid active developer path” when attempting to use Git after upgrading to macOS Tahoe?"
+    expect: [apple.stackexchange.com]
+  - q: "List of all packages installed using Homebrew"
+    expect: [apple.stackexchange.com]
+  - q: "How can I permanently add my SSH private key to Keychain so it is automatically available to ssh?"
+    expect: [apple.stackexchange.com]
+  - q: "How to separate \"mouse\" and \"trackpad\" settings?"
+    expect: [apple.stackexchange.com]
+  - q: "How to find cause of high kernel_task cpu usage?"
+    expect: [apple.stackexchange.com]
+  - q: "Shortcut for toggling between different windows of same app?"
+    expect: [apple.stackexchange.com]
+  - q: "Please share your hidden macOS features or tips and tricks"
+    expect: [apple.stackexchange.com]
+  - q: "Remap \"Home\" and \"End\" to beginning and end of line"
+    expect: [apple.stackexchange.com]
+  - q: "How do I disable Chrome's two-finger back/forward navigation?"
+    expect: [apple.stackexchange.com]
+  - q: "What is the difference between `brew` and `brew cask`?"
+    expect: [apple.stackexchange.com]
+  - q: "iTerm - going one word backwards and forwards"
+    expect: [apple.stackexchange.com]
+  - q: "How to prevent Mac from changing the order of Desktops/Spaces"
+    expect: [apple.stackexchange.com]
+  - q: "How do I launch Finder from terminal or command line"
+    expect: [apple.stackexchange.com]
+  - q: "Why does my dock keep moving back to my other monitor?"
+    expect: [apple.stackexchange.com]
+  - q: "git auto-complete for *branches* at the command line?"
+    expect: [apple.stackexchange.com]
+  - q: "How can I create a symbolic link in Terminal?"
+    expect: [apple.stackexchange.com]
+  - q: "Using Alt/Cmd + Right/Left Arrow in iTerm"
+    expect: [apple.stackexchange.com]
+  - q: "How do I find my IP Address from the command line?"
+    expect: [apple.stackexchange.com]
+  - q: "mds and mds_stores constantly consuming cpu"
+    expect: [apple.stackexchange.com]
+  - q: "What is the difference between .bash_profile and .bashrc?"
+    expect: [apple.stackexchange.com]
+  - q: "How can I trigger a Notification Center notification from an AppleScript or shell script?"
+    expect: [apple.stackexchange.com]
+  - q: "Got any tips or tricks for Terminal in Mac OS X?"
+    expect: [apple.stackexchange.com]
+  - q: "How can I configure Mac Terminal to have color ls output?"
+    expect: [apple.stackexchange.com]
+  - q: "What are the practical differences between Bash and Zsh?"
+    expect: [apple.stackexchange.com]
+  - q: "How can I list my open network ports with netstat?"
+    expect: [apple.stackexchange.com]
+  - q: "How do I stop the Adobe Creative Cloud app from auto-launching on login?"
+    expect: [apple.stackexchange.com]
+  - q: "How do I recompile Bash to avoid Shellshock (the remote exploit CVE-2014-6271 and CVE-2014-7169)?"
+    expect: [apple.stackexchange.com]
+  - q: "How to combine two images into one on a Mac?"
+    expect: [apple.stackexchange.com]
+  - q: "What Window Management Options exist for OS X?"
+    expect: [apple.stackexchange.com]
+  - q: "How do I downgrade node or install a specific previous version using homebrew?"
+    expect: [apple.stackexchange.com]
+  - q: "How can I disable animation when switching desktops in Lion?"
+    expect: [apple.stackexchange.com]
+  - q: "How to change computer name so terminal displays it in Mac OS X Mountain Lion?"
+    expect: [apple.stackexchange.com]
+  - q: "Can I get the CPU temperature and fan speed from the command line in OS X?"
+    expect: [apple.stackexchange.com]
+  - q: "Hotkey to show hidden files and folders in File Open dialog?"
+    expect: [apple.stackexchange.com]
+  - q: "Applications Don't Show Up in Spotlight"
+    expect: [apple.stackexchange.com]
+  - q: "How to create a text file in a folder"
+    expect: [apple.stackexchange.com]
+  - q: "What do I type to produce the command symbol (⌘) in Mac OS X?"
+    expect: [apple.stackexchange.com]
+  - q: "Why doesn't .bashrc run automatically?"
+    expect: [apple.stackexchange.com]
+  - q: "How can I save tabs in iTerm 2 so they restore the next time the app is run?"
+    expect: [apple.stackexchange.com]
+  - q: "How to use terminal to copy a file to the clipboard?"
+    expect: [apple.stackexchange.com]
+  - q: "How to Retrieve the Wi-Fi Password of a Connected Network on a Mac"
+    expect: [apple.stackexchange.com]
+  - q: "Where can I find the installed package path via brew"
+    expect: [apple.stackexchange.com]
+  - q: "\"File Open\" dialog is missing sidebar items"
+    expect: [apple.stackexchange.com]
+  - q: "How to replace Mac OS X utilities with GNU core utilities?"
+    expect: [apple.stackexchange.com]
+  - q: "Why are dot underscore ._ files created, and how can I avoid them?"
+    expect: [apple.stackexchange.com]
+  - q: "Can I open files in TextEdit from the Terminal in Mac OS X?"
+    expect: [apple.stackexchange.com]
+  - q: "Can Touch ID on Mac authenticate sudo in Terminal?"
+    expect: [apple.stackexchange.com]
+  - q: "How to increase keyboard key repeat rate on OS X?"
+    expect: [apple.stackexchange.com]
+  - q: "How can I manually delete old backups to free space for Time Machine?"
+    expect: [apple.stackexchange.com]
+  - q: "What is the \"rootless\" feature in El Capitan, really?"
+    expect: [apple.stackexchange.com]
+  - q: "Why is conditional processing of a sorted array faster than of an unsorted array?"
+    expect: [stackoverflow.com]
+  - q: "How do I undo the most recent local commits in Git?"
+    expect: [stackoverflow.com]
+  - q: "How do I delete a Git branch locally and remotely?"
+    expect: [stackoverflow.com]
+  - q: "What is the difference between 'git pull' and 'git fetch'?"
+    expect: [stackoverflow.com]
+  - q: "What does the \"yield\" keyword do in Python?"
+    expect: [stackoverflow.com]
+  - q: "How can I remove a specific item from an array in JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "How can I rename a local Git branch?"
+    expect: [stackoverflow.com]
+  - q: "Which JSON content type do I use?"
+    expect: [stackoverflow.com]
+  - q: "How do I undo 'git add' before commit?"
+    expect: [stackoverflow.com]
+  - q: "What is the '-->' operator in C/C++?"
+    expect: [stackoverflow.com]
+  - q: "How do I force \"git pull\" to overwrite local files?"
+    expect: [stackoverflow.com]
+  - q: "Can comments be used in JSON?"
+    expect: [stackoverflow.com]
+  - q: "What and where are the stack and heap?"
+    expect: [stackoverflow.com]
+  - q: "Why does HTML think “chucknorris” is a color?"
+    expect: [stackoverflow.com]
+  - q: "How can I check out a remote Git branch?"
+    expect: [stackoverflow.com]
+  - q: "How do I check if an element is hidden in jQuery?"
+    expect: [stackoverflow.com]
+  - q: "How do I make Git forget about a file that was tracked, but is now in .gitignore?"
+    expect: [stackoverflow.com]
+  - q: "What does \"use strict\" do in JavaScript, and what is the reasoning behind it?"
+    expect: [stackoverflow.com]
+  - q: "What does if __name__ == \"__main__\": do?"
+    expect: [stackoverflow.com]
+  - q: "How do I remove local (untracked) files from the current Git working tree?"
+    expect: [stackoverflow.com]
+  - q: "Does Python have a ternary conditional operator?"
+    expect: [stackoverflow.com]
+  - q: "Is Java \"pass-by-reference\" or \"pass-by-value\"?"
+    expect: [stackoverflow.com]
+  - q: "Find all files containing a specific text (string) on Linux"
+    expect: [stackoverflow.com]
+  - q: "How do I redirect to another webpage?"
+    expect: [stackoverflow.com]
+  - q: "var functionName = function() {} vs function functionName() {}"
+    expect: [stackoverflow.com]
+  - q: "How to modify existing, unpushed commit messages?"
+    expect: [stackoverflow.com]
+  - q: "Why is subtracting these two epoch-milli Times (in year 1927) giving a strange result?"
+    expect: [stackoverflow.com]
+  - q: "How do JavaScript closures work?"
+    expect: [stackoverflow.com]
+  - q: "How do I revert a Git repository to a previous commit?"
+    expect: [stackoverflow.com]
+  - q: "What is the difference between String and string in C#?"
+    expect: [stackoverflow.com]
+  - q: "How do I remove a property from a JavaScript object?"
+    expect: [stackoverflow.com]
+  - q: "What are metaclasses in Python?"
+    expect: [stackoverflow.com]
+  - q: "How to check whether a string contains a substring in JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "How do I check whether a file exists without exceptions?"
+    expect: [stackoverflow.com]
+  - q: "How do I merge two dictionaries in a single expression in Python?"
+    expect: [stackoverflow.com]
+  - q: "How do I change the URI (URL) for a remote Git repository?"
+    expect: [stackoverflow.com]
+  - q: "Move the most recent commit(s) to a new branch with Git"
+    expect: [stackoverflow.com]
+  - q: "How do I return the response from an asynchronous call?"
+    expect: [stackoverflow.com]
+  - q: "How do I discard unstaged changes in Git?"
+    expect: [stackoverflow.com]
+  - q: "What is the difference between POST and PUT in HTTP?"
+    expect: [stackoverflow.com]
+  - q: "What is the difference between px, dip, dp, and sp?"
+    expect: [stackoverflow.com]
+  - q: "How do I get the directory where a Bash script is located from within the script itself?"
+    expect: [stackoverflow.com]
+  - q: "What is the difference between \"let\" and \"var\"?"
+    expect: [stackoverflow.com]
+  - q: "How do I include a JavaScript file in another JavaScript file?"
+    expect: [stackoverflow.com]
+  - q: "How do I execute a program or call a system command?"
+    expect: [stackoverflow.com]
+  - q: "How to disable text selection highlighting"
+    expect: [stackoverflow.com]
+  - q: "Reset local repository branch to be just like remote repository HEAD"
+    expect: [stackoverflow.com]
+  - q: "How can I reset or revert a file to a specific revision?"
+    expect: [stackoverflow.com]
+  - q: "How do I squash my last N commits together?"
+    expect: [stackoverflow.com]
+  - q: "What is the maximum length of a URL in different browsers?"
+    expect: [stackoverflow.com]
+  - q: "How do I push a new local branch to a remote Git repository and track it too?"
+    expect: [stackoverflow.com]
+  - q: "How do I create a directory, and any missing parent directories?"
+    expect: [stackoverflow.com]
+  - q: "Loop (for each) over an array in JavaScript"
+    expect: [stackoverflow.com]
+  - q: "How to determine the URL that a local Git repository was originally cloned from"
+    expect: [stackoverflow.com]
+  - q: "How can I access the index value in a 'for' loop?"
+    expect: [stackoverflow.com]
+  - q: "Which equals operator (== vs ===) should be used in JavaScript comparisons?"
+    expect: [stackoverflow.com]
+  - q: "What's the difference between tilde(~) and caret(^) in package.json?"
+    expect: [stackoverflow.com]
+  - q: "How do I exit Vim?"
+    expect: [stackoverflow.com]
+  - q: "How do I add an empty directory to a Git repository?"
+    expect: [stackoverflow.com]
+  - q: "How do I make a flat list out of a list of lists?"
+    expect: [stackoverflow.com]
+  - q: "How do I replace all occurrences of a string?"
+    expect: [stackoverflow.com]
+  - q: "The definitive guide to form-based website authentication"
+    expect: [stackoverflow.com]
+  - q: "How do I create a GUID / UUID?"
+    expect: [stackoverflow.com]
+  - q: "Regular expression to match a line that doesn't contain a word"
+    expect: [stackoverflow.com]
+  - q: "How can I validate an email address in JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "How do I resolve merge conflicts in a Git repository?"
+    expect: [stackoverflow.com]
+  - q: "How do I make the first letter of a string uppercase in JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "What is a plain English explanation of \"Big O\" notation?"
+    expect: [stackoverflow.com]
+  - q: "What is the difference between INNER JOIN and OUTER JOIN?"
+    expect: [stackoverflow.com]
+  - q: "How do I check whether a checkbox is checked in jQuery?"
+    expect: [stackoverflow.com]
+  - q: "What is the most efficient way to deep clone an object in JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "Reference Guide: What does this symbol mean in PHP? (PHP Syntax)"
+    expect: [stackoverflow.com]
+  - q: "How can I delete a remote tag?"
+    expect: [stackoverflow.com]
+  - q: "How can I horizontally center an element?"
+    expect: [stackoverflow.com]
+  - q: "What is the difference between a URI, a URL, and a URN?"
+    expect: [stackoverflow.com]
+  - q: "How do I check if an array includes a value in JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "Undo a Git merge that hasn't been pushed yet"
+    expect: [stackoverflow.com]
+  - q: "How do I get a timestamp in JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "How do I clone all remote branches?"
+    expect: [stackoverflow.com]
+  - q: "How do I update or sync a forked repository on GitHub?"
+    expect: [stackoverflow.com]
+  - q: "What is the difference between @staticmethod and @classmethod in Python?"
+    expect: [stackoverflow.com]
+  - q: "How to pass \"Null\" (a real surname!) to a SOAP web service in ActionScript 3"
+    expect: [stackoverflow.com]
+  - q: "How do I remove a submodule?"
+    expect: [stackoverflow.com]
+  - q: "How do I read / convert an InputStream into a String in Java?"
+    expect: [stackoverflow.com]
+  - q: "How slicing in Python works"
+    expect: [stackoverflow.com]
+  - q: "Setting \"checked\" for a checkbox with jQuery"
+    expect: [stackoverflow.com]
+  - q: "How do I check if a directory exists or not in a Bash shell script?"
+    expect: [stackoverflow.com]
+  - q: "How do I delete a commit from a branch?"
+    expect: [stackoverflow.com]
+  - q: "Why does Google prepend while(1); to their JSON responses?"
+    expect: [stackoverflow.com]
+  - q: "How is Docker different from a virtual machine?"
+    expect: [stackoverflow.com]
+  - q: "\"Thinking in AngularJS\" if I have a jQuery background?"
+    expect: [stackoverflow.com]
+  - q: "How can I find the index for a given item in a list?"
+    expect: [stackoverflow.com]
+  - q: "Undoing a git rebase"
+    expect: [stackoverflow.com]
+  - q: "Which \"href\" value should I use for JavaScript links, \"#\" or \"javascript:void(0)\"?"
+    expect: [stackoverflow.com]
+  - q: "How do I avoid checking for nulls in Java?"
+    expect: [stackoverflow.com]
+  - q: "Iterating over a dictionary using a 'for' loop, getting keys"
+    expect: [stackoverflow.com]
+  - q: "How can I enumerate an enum?"
+    expect: [stackoverflow.com]
+  - q: "Change an HTML input's placeholder color with CSS"
+    expect: [stackoverflow.com]
+  - q: "How can I close/hide the Android soft keyboard programmatically?"
+    expect: [stackoverflow.com]
+  - q: "How can I insert an item into an array at a specific index?"
+    expect: [stackoverflow.com]
+  - q: "What are the differences between a HashMap and a Hashtable in Java?"
+    expect: [stackoverflow.com]
+  - q: "UPDATE from a SELECT"
+    expect: [stackoverflow.com]
+  - q: "How do I copy to the clipboard in JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "How to round to at most 2 decimal places, if necessary"
+    expect: [stackoverflow.com]
+  - q: "Is there a CSS parent selector?"
+    expect: [stackoverflow.com]
+  - q: "How can I validate an email address using a regular expression?"
+    expect: [stackoverflow.com]
+  - q: "How do I get the current branch name in Git?"
+    expect: [stackoverflow.com]
+  - q: "Message 'src refspec master does not match any' when pushing commits in Git"
+    expect: [stackoverflow.com]
+  - q: "How can I iterate over rows in a Pandas DataFrame?"
+    expect: [stackoverflow.com]
+  - q: "Sort array of objects by string property value"
+    expect: [stackoverflow.com]
+  - q: "How do I clone a specific Git branch?"
+    expect: [stackoverflow.com]
+  - q: "The Definitive C++ Book Guide and List"
+    expect: [stackoverflow.com]
+  - q: "What does the !! (double exclamation mark) operator do in JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "How can I pair socks from a pile efficiently?"
+    expect: [stackoverflow.com]
+  - q: "What exactly is RESTful programming?"
+    expect: [stackoverflow.com]
+  - q: "How do I tell if a file does not exist in Bash?"
+    expect: [stackoverflow.com]
+  - q: "How do I check for an empty/undefined/null string in JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "Checking if a key exists in a JavaScript object?"
+    expect: [stackoverflow.com]
+  - q: "grep: show lines surrounding each match"
+    expect: [stackoverflow.com]
+  - q: "Create ArrayList from array"
+    expect: [stackoverflow.com]
+  - q: "How do I generate random integers within a specific range in Java?"
+    expect: [stackoverflow.com]
+  - q: "Make an existing Git branch track a remote branch?"
+    expect: [stackoverflow.com]
+  - q: "How to loop through the items of an array in JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "Remove a file from a Git repository without deleting it from the local filesystem"
+    expect: [stackoverflow.com]
+  - q: "Proper use cases for Android UserManager.isUserAGoat()?"
+    expect: [stackoverflow.com]
+  - q: "How can I use a global variable in a function?"
+    expect: [stackoverflow.com]
+  - q: "Move existing, uncommitted work to a new branch in Git"
+    expect: [stackoverflow.com]
+  - q: "Is floating-point math broken?"
+    expect: [stackoverflow.com]
+  - q: "How do I efficiently iterate over each entry in a Java Map?"
+    expect: [stackoverflow.com]
+  - q: "View the change history of a file using Git versioning"
+    expect: [stackoverflow.com]
+  - q: "How do I get the current time in Python?"
+    expect: [stackoverflow.com]
+  - q: "What is the JavaScript version of sleep()?"
+    expect: [stackoverflow.com]
+  - q: "How do I POST JSON data with cURL?"
+    expect: [stackoverflow.com]
+  - q: "How do I copy a file?"
+    expect: [stackoverflow.com]
+  - q: "How can I catch multiple exceptions in one line? (in the \"except\" block)"
+    expect: [stackoverflow.com]
+  - q: "What are the differences between a pointer variable and a reference variable?"
+    expect: [stackoverflow.com]
+  - q: "How do I cast int to enum in C#?"
+    expect: [stackoverflow.com]
+  - q: "What is __init__.py for?"
+    expect: [stackoverflow.com]
+  - q: "How do I test for an empty JavaScript object?"
+    expect: [stackoverflow.com]
+  - q: "Convert bytes to a string in Python 3"
+    expect: [stackoverflow.com]
+  - q: "How do I stash only one file out of multiple files that have changed?"
+    expect: [stackoverflow.com]
+  - q: "Why is char[] preferred over String for passwords?"
+    expect: [stackoverflow.com]
+  - q: "Why don't Java's +=, -=, *=, /= compound assignment operators require casting?"
+    expect: [stackoverflow.com]
+  - q: "Get the current URL with JavaScript?"
+    expect: [stackoverflow.com]
+  - q: "Git refusing to merge unrelated histories on rebase"
+    expect: [stackoverflow.com]
+  - q: "What is the difference between __str__ and __repr__?"
+    expect: [stackoverflow.com]
+  - q: "How do I correctly clone a JavaScript object?"
+    expect: [stackoverflow.com]
+  - q: "What does the explicit keyword mean?"
+    expect: [stackoverflow.com]
+  - q: "Iterate through a HashMap"
+    expect: [stackoverflow.com]
+  - q: "How can I pretty-print JSON in a shell script?"
+    expect: [stackoverflow.com]
+  - q: "How do I make a POST request using curl?"
+    expect: [superuser.com]
+  - q: "Why does Windows think that my wireless keyboard is a toaster?"
+    expect: [superuser.com]
+  - q: "How do I scroll in tmux?"
+    expect: [superuser.com]
+  - q: "How can I sort the output of 'ls' by last modified date?"
+    expect: [superuser.com]
+  - q: "How do I make a machine \"blank screen\" for a period of time (as a penalty) if certain noise levels are reached?"
+    expect: [superuser.com]
+  - q: "Getting curl to output HTTP status code?"
+    expect: [superuser.com]
+  - q: "Find out which process is locking a file or folder in Windows"
+    expect: [superuser.com]
+  - q: "How to tell git which private key to use?"
+    expect: [superuser.com]
+  - q: "How to clear/flush the DNS cache in Google Chrome?"
+    expect: [superuser.com]
+  - q: "What are the Windows A: and B: drives used for?"
+    expect: [superuser.com]
+  - q: "Transatlantic ping faster than sending a pixel to the screen?"
+    expect: [superuser.com]
+  - q: "What does 'source' do?"
+    expect: [superuser.com]
+  - q: "How can I display the contents of an environment variable from the command prompt in Windows 7?"
+    expect: [superuser.com]
+  - q: "Is there a built-in checksum utility on Windows 7?"
+    expect: [superuser.com]
+  - q: "How to recursively chmod all directories except files?"
+    expect: [superuser.com]
+  - q: "Why does macOS keep asking for my SSH passphrase ever since I updated to macOS Sierra (10.12)?"
+    expect: [superuser.com]
+  - q: "View list of files in ZIP archive on Linux"
+    expect: [superuser.com]
+  - q: "How to copy with cp to include hidden files and hidden directories and their contents?"
+    expect: [superuser.com]
+  - q: "How do I convert a video to GIF using ffmpeg, with reasonable quality?"
+    expect: [superuser.com]
+  - q: "Why does this PNG image display differently in Chrome & Firefox than in Safari and IE?"
+    expect: [superuser.com]
+  - q: "Permissions on private key in .ssh folder?"
+    expect: [superuser.com]
+  - q: "How to stop an automatic redirect from “http://” to “https://” in Chrome"
+    expect: [superuser.com]
+  - q: "How are pseudorandom and truly random numbers different and why does it matter?"
+    expect: [superuser.com]
+  - q: "How do I reorder tmux windows?"
+    expect: [superuser.com]
+  - q: "How to *disable* automatic reboots in Windows 10?"
+    expect: [superuser.com]
+  - q: "How to find a directory on linux?"
+    expect: [superuser.com]
+  - q: "How to execute a command whenever a file changes?"
+    expect: [superuser.com]
+  - q: "How can I get the same SSID for multiple access points?"
+    expect: [superuser.com]
+  - q: "When reading a file with `less` or `more`, how can I get the content in colors?"
+    expect: [superuser.com]
+  - q: "How to use FFmpeg to cut up a video?"
+    expect: [superuser.com]
+  - q: "Can I make cURL fail with an exitCode different than 0 if the HTTP status code is not 200?"
+    expect: [superuser.com]
+  - q: "Reload a Linux user's group assignments without logging out"
+    expect: [superuser.com]
+  - q: "\"directory junction\" vs \"directory symbolic link\"?"
+    expect: [superuser.com]
+  - q: "From a quality perspective, what is better: turning volume up in the software, in the OS, or on the speakers?"
+    expect: [superuser.com]
+  - q: "Automatically answer 'Yes' when using apt-get install"
+    expect: [superuser.com]
+  - q: "How do I run multiple commands on one line in PowerShell?"
+    expect: [superuser.com]
+  - q: "How do you reload your .vimrc file without restarting vim?"
+    expect: [superuser.com]
+  - q: "What is the \"You have new mail\" message in Linux/UNIX?"
+    expect: [superuser.com]
+  - q: "How to turn off word wrap in less?"
+    expect: [superuser.com]
+  - q: "Remove audio from video file with FFmpeg"
+    expect: [superuser.com]
+  - q: "How do I make rm not give an error if a file doesn't exist?"
+    expect: [superuser.com]
+  - q: "Difference between .bashrc and .bash_profile?"
+    expect: [superuser.com]
+  - q: "How to remove systemd services"
+    expect: [superuser.com]
+  - q: "How to decompress a .bz2 file"
+    expect: [superuser.com]
+  - q: "Windows 7 SP1 Windows Update stuck checking for updates"
+    expect: [superuser.com]
+  - q: "How to enable execution of PowerShell scripts?"
+    expect: [superuser.com]
+  - q: "How to clear the contents of a file from the command line?"
+    expect: [superuser.com]
+  - q: "What is the home directory on Windows Subsystem for Linux?"
+    expect: [superuser.com]
+  - q: "How to fix warning about ECDSA host key"
+    expect: [superuser.com]
+  - q: "Can I delete the folder C:\\ProgramData\\Package Cache\\?"
+    expect: [superuser.com]
+  - q: "How to check if a binary is 32- or 64-bit on Windows?"
+    expect: [superuser.com]
+  - q: "Create/rename a file/folder that begins with a dot in Windows?"
+    expect: [superuser.com]
+  - q: "Is there any 'sudo' command for Windows?"
+    expect: [superuser.com]
+  - q: "Test if a port on a remote system is reachable (without telnet)"
+    expect: [superuser.com]
+  - q: "How do I exit telnet?"
+    expect: [superuser.com]
+  - q: "How does a computer restart itself?"
+    expect: [superuser.com]
+  - q: "How do I rename a session in tmux?"
+    expect: [superuser.com]
+  - q: "How do I compare binary files in Linux?"
+    expect: [superuser.com]
+  - q: "Did I just get hacked?"
+    expect: [superuser.com]
+  - q: "What is the difference between executing a Bash script vs sourcing it?"
+    expect: [superuser.com]
+  - q: "How can I make Chrome stop caching redirects?"
+    expect: [superuser.com]
+  - q: "Mac OS X equivalent of the Ubuntu \"tree\" command"
+    expect: [superuser.com]
+  - q: "How to open files in vertically/horizontal split windows in Vim from the command line"
+    expect: [superuser.com]
+  - q: "What is randomart produced by ssh-keygen?"
+    expect: [superuser.com]
+  - q: "Windows SSH: Permissions for 'private-key' are too open"
+    expect: [superuser.com]
+  - q: "How to download files from command line in Windows like wget or curl"
+    expect: [superuser.com]
+  - q: "How can I download an entire website?"
+    expect: [superuser.com]
+  - q: "How can I free up drive space from the Windows installer folder without killing Windows?"
+    expect: [superuser.com]
+  - q: "An SSH tunnel via multiple hops"
+    expect: [superuser.com]
+  - q: "How to prevent Gnome-shell's Alt+Tab from grouping windows from similar apps?"
+    expect: [superuser.com]
+  - q: "Does e-mail address obfuscation actually work?"
+    expect: [superuser.com]
+  - q: "How do I add text to the beginning of a file in Bash?"
+    expect: [superuser.com]
+  - q: "How can I remove malicious spyware, malware, adware, viruses, trojans or rootkits from my PC?"
+    expect: [superuser.com]
+  - q: "How to merge audio and video file with FFmpeg?"
+    expect: [superuser.com]
+  - q: "How to rename the User folder in Windows 10?"
+    expect: [superuser.com]
+  - q: "How can I resume a stopped job in Linux?"
+    expect: [superuser.com]
+  - q: "How do I exit an SSH connection?"
+    expect: [superuser.com]
+  - q: "How to remove one or all auto-complete text entries in Chrome?"
+    expect: [superuser.com]
+  - q: "Switching back to last *used* tab on Chrome"
+    expect: [superuser.com]
+  - q: "Selecting columns in Visual Studio Code"
+    expect: [superuser.com]
+  - q: "A curated list of awesome Go frameworks, libraries and software awesome-go"
+    expect: [github.com]
+  - q: "Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models. ollama"
+    expect: [github.com]
+  - q: "The Go programming language go"
+    expect: [github.com]
+  - q: "Production-Grade Container Scheduling and Management kubernetes"
+    expect: [github.com]
+  - q: "TypeScript is a superset of JavaScript that compiles to clean JavaScript output. TypeScript"
+    expect: [github.com]
+  - q: "A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet. frp"
+    expect: [github.com]
+  - q: "🪨 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman. caveman"
+    expect: [github.com]
+  - q: "The world’s fastest framework for building websites. hugo"
+    expect: [github.com]
+  - q: "Open Source Continuous File Synchronization syncthing"
+    expect: [github.com]
+  - q: ":cherry_blossom: A command-line fuzzy finder fzf"
+    expect: [github.com]
+  - q: "simple terminal UI for git commands lazygit"
+    expect: [github.com]
+  - q: "The fastest path to AI-powered full stack observability, even for lean teams. netdata"
+    expect: [github.com]
+  - q: "Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS caddy"
+    expect: [github.com]
+  - q: "Run your GitHub Actions locally 🚀 act"
+    expect: [github.com]
+  - q: "The Moby Project - a collaborative project for the container ecosystem to assemble container-based systems moby"
+    expect: [github.com]
+  - q: "The Prometheus monitoring system and time series database. prometheus"
+    expect: [github.com]
+  - q: "The Cloud Native Application Proxy traefik"
+    expect: [github.com]
+  - q: "A personal timeline for quick notes. Write short memos, find them later by search, tag, or date. Open source and self-hosted. memos"
+    expect: [github.com]
+  - q: "MinIO is a high-performance, S3 compatible object store, open sourced under GNU AGPLv3 license. minio"
+    expect: [github.com]
+  - q: "Open Source realtime backend in 1 file pocketbase"
+    expect: [github.com]
+  - q: "A simple zero-config tool to make locally trusted development certificates with any names you'd like. mkcert"
+    expect: [github.com]
+  - q: "A tool for exploring each layer in a docker image dive"
+    expect: [github.com]
+  - q: "The lazier way to manage everything docker lazydocker"
+    expect: [github.com]
+  - q: "Distributed reliable key-value store for the most critical data of a distributed system etcd"
+    expect: [github.com]
+  - q: "Make humans and AI agents work as one team — open-source and self-hostable. multica"
+    expect: [github.com]
+  - q: "Go implementation of the Ethereum protocol go-ethereum"
+    expect: [github.com]
+  - q: "LocalAI is the open-source AI engine. Run any model - LLMs, vision, voice, image, video - on any hardware. No GPU required. LocalAI"
+    expect: [github.com]
+  - q: "The painless way to host your own Git service gogs"
+    expect: [github.com]
+  - q: "Supporting multi-protocol multi-user(Vmess, Vless, Trojan, ShadowSocks, Wireguard, Hysteria, Tunnel, Mixed, HTTP, Tun, MTProto، AmneziaWG) 3x-ui"
+    expect: [github.com]
+  - q: "A collective list of free APIs public-apis"
+    expect: [github.com]
+  - q: ":books: Freely available programming books free-programming-books"
+    expect: [github.com]
+  - q: "Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards. system-design-primer"
+    expect: [github.com]
+  - q: "The definitive list that answers \"I want to do X in Python, which tool should I use?\" awesome-python"
+    expect: [github.com]
+  - q: "Curated list of project-based tutorials project-based-learning"
+    expect: [github.com]
+  - q: "The agent that grows with you hermes-agent"
+    expect: [github.com]
+  - q: "All Algorithms implemented in Python Python"
+    expect: [github.com]
+  - q: "A feature-rich command-line audio/video downloader yt-dlp"
+    expect: [github.com]
+  - q: "Python tool for converting files and office documents to Markdown. markitdown"
+    expect: [github.com]
+  - q: ":octocat: 分享 GitHub 上有趣、入门级的开源项目。Share interesting, entry-level open source projects on GitHub. HelloGitHub"
+    expect: [github.com]
+  - q: "Public repository for Agent Skills skills"
+    expect: [github.com]
+  - q: "Stable Diffusion web UI stable-diffusion-webui"
+    expect: [github.com]
+  - q: "Langflow is a powerful tool for building and deploying AI-powered agents and workflows. langflow"
+    expect: [github.com]
+  - q: "User-friendly AI Interface (Supports Ollama, OpenAI API, ...) open-webui"
+    expect: [github.com]
+  - q: "The agent engineering platform. langchain"
+    expect: [github.com]
+  - q: "Command-line program to download videos from YouTube.com and other video sites youtube-dl"
+    expect: [github.com]
+  - q: "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source. awesome-llm-apps"
+    expect: [github.com]
+  - q: "💫 Toolkit to help you get started with SDD or any other process! spec-kit"
+    expect: [github.com]
+  - q: "An AI skill that provides design intelligence for building professional UI/UX across multiple platforms. ui-ux-pro-max-skill"
+    expect: [github.com]
+  - q: "Agents that use the browser. browser-use"
+    expect: [github.com]
+  - q: "Robust Speech Recognition via Large-Scale Weak Supervision whisper"
+    expect: [github.com]
+  - q: "TradingAgents: Multi-Agents LLM Financial Trading Framework TradingAgents"
+    expect: [github.com]
+  - q: "Tensors and Dynamic neural networks in Python with strong GPU acceleration pytorch"
+    expect: [github.com]
+  - q: "FastAPI framework, high performance, easy to learn, fast to code, ready for production fastapi"
+    expect: [github.com]
+  - q: "Magnificent app which corrects your previous console command. thefuck"
+    expect: [github.com]
+  - q: "AI agents running research on single-GPU nanochat training automatically autoresearch"
+    expect: [github.com]
+  - q: "real time face swap and one-click video deepfake with only a single image Deep-Live-Cam"
+    expect: [github.com]
+  - q: "Animation engine for explanatory math videos manim"
+    expect: [github.com]
+  - q: "Hunt down social media accounts by username across social networks sherlock"
+    expect: [github.com]
+  - q: "A high-throughput and memory-efficient inference and serving engine for LLMs vllm"
+    expect: [github.com]
+  - q: ":house_with_garden: Open source home automation that puts local control and privacy first. core"
+    expect: [github.com]
+  - q: "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free. freeCodeCamp"
+    expect: [github.com]
+  - q: "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 openclaw"
+    expect: [github.com]
+  - q: "Interactive roadmaps, guides and other educational content to help developers grow in their careers. developer-roadmap"
+    expect: [github.com]
+  - q: "DeepSeek Harness: Everything is a Plugin. deepseek-harness"
+    expect: [github.com]
+  - q: "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core vue"
+    expect: [github.com]
+  - q: "The open source coding agent. opencode"
+    expect: [github.com]
+  - q: "Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥 firecrawl"
+    expect: [github.com]
+  - q: "Curated coding interview preparation materials for busy software engineers tech-interview-handbook"
+    expect: [github.com]
+  - q: "Collection of publicly available IPTV channels from all over the world iptv"
+    expect: [github.com]
+  - q: "Virtual whiteboard for sketching hand-drawn like diagrams excalidraw"
+    expect: [github.com]
+  - q: "High performance self-hosted photo and video management solution. immich"
+    expect: [github.com]
+  - q: "AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI pi"
+    expect: [github.com]
+  - q: "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications. supabase"
+    expect: [github.com]
+  - q: "An open-source AI agent that brings the power of Gemini directly into your terminal. gemini-cli"
+    expect: [github.com]
+  - q: "Deliver web apps with confidence 🚀 angular"
+    expect: [github.com]
+  - q: "An enterprise-class UI design language and React UI library ant-design"
+    expect: [github.com]
+  - q: "A utility-first CSS framework for rapid UI development. tailwindcss"
+    expect: [github.com]
+  - q: "Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. playwright"
+    expect: [github.com]
+  - q: "The open-source app everyone uses to manage agents at work paperclip"
+    expect: [github.com]
+  - q: "JavaScript API for Chrome and Firefox puppeteer"
+    expect: [github.com]
+  - q: "The open-source CapCut alternative OpenCut"
+    expect: [github.com]
+  - q: "Storybook is the industry standard workshop for building, documenting, and testing UI components in isolation storybook"
+    expect: [github.com]
+  - q: "Model Context Protocol Servers servers"
+    expect: [github.com]
+  - q: "Generation of diagrams like flowcharts or sequence diagrams from text in a similar manner as markdown mermaid"
+    expect: [github.com]
+  - q: "🙌 OpenHands: AI-Driven Development OpenHands"
+    expect: [github.com]
+  - q: "\"The mother of all demo apps\" — Exemplary fullstack Medium.com clone powered by React, Angular, Node, Django, and many more realworld"
+    expect: [github.com]
+  - q: "An agent-managed museum exhibit, built in Rust with Gajae-Code / LazyCodex — developed and maintained with no human intervention. claw-code"
+    expect: [github.com]
+  - q: "A modern GUI client based on Tauri, designed to run in Windows, macOS and Linux for tailored proxy experience clash-verge-rev"
+    expect: [github.com]
+  - q: "Lightweight coding agent that runs in your terminal codex"
+    expect: [github.com]
+  - q: "An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer. rustdesk"
+    expect: [github.com]
+  - q: "Empowering everyone to build reliable and efficient software. rust"
+    expect: [github.com]
+  - q: "Build smaller, faster, and more secure desktop and mobile applications with a web frontend. tauri"
+    expect: [github.com]
+  - q: "A modern runtime for JavaScript and TypeScript. deno"
+    expect: [github.com]
+  - q: "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one bun"
+    expect: [github.com]
+  - q: "Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter. zed"
+    expect: [github.com]
+  - q: "An extremely fast Python package and project manager, written in Rust. uv"
+    expect: [github.com]
+  - q: "CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. Single Rust binary, zero dependencies rtk"
+    expect: [github.com]
+  - q: "ripgrep recursively searches directories for a regex pattern while respecting your gitignore ripgrep"
+    expect: [github.com]
+  - q: "A coding agent for open models like Kimi K3 and GLM 5.3 openinterpreter"
+    expect: [github.com]
+  - q: "Unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs vaultwarden"
+    expect: [github.com]
+  - q: "A cross-platform, OpenGL terminal emulator. alacritty"
+    expect: [github.com]
+  - q: "Warp is an agentic development environment, born out of the terminal. warp"
+    expect: [github.com]
+  - q: ":crab: Small exercises to get you used to reading and writing Rust code! rustlings"
+    expect: [github.com]
+  - q: "🤱🏻 Turn any webpage into a desktop app with one command. Pake"
+    expect: [github.com]
+  - q: "🌴 Empowering everyone to build reliable and efficient smart contracts. sway"
+    expect: [github.com]
+  - q: "A cat(1) clone with wings. bat"
+    expect: [github.com]
+  - q: "☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell! starship"
+    expect: [github.com]
+  - q: "A curated list of Rust code and resources. awesome-rust"
+    expect: [github.com]
+  - q: "A lightning-fast search engine API bringing AI-powered hybrid search to your sites and applications. meilisearch"
+    expect: [github.com]
+  - q: "Rust full node implementation of the Fuel v2 protocol. fuel-core"
+    expect: [github.com]
+  - q: "A markup-based typesetting system that is powerful and easy to learn. typst"
+    expect: [github.com]
+  - q: "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM goose"
+    expect: [github.com]
+  - q: "❄️ ChatGPT Desktop Application (Mac, Windows and Linux) ChatGPT"
+    expect: [github.com]
+  - q: "An extremely fast Python linter and code formatter, written in Rust. ruff"
+    expect: [github.com]
+  - q: "A refreshingly simple data-driven game engine built in Rust bevy"
+    expect: [github.com]
+  - q: "A post-modern modal text editor. helix"
+    expect: [github.com]
+  - q: "Jan is an open source alternative to ChatGPT that runs 100% offline on your computer. jan"
+    expect: [github.com]
+  - q: "A simple, fast and user-friendly alternative to 'find' fd"
+    expect: [github.com]
+  - q: "Browser automation CLI for AI agents agent-browser"
+    expect: [github.com]

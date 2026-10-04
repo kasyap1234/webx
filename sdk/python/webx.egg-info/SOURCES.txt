@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+webx/__init__.py
+webx/client.py
+webx.egg-info/PKG-INFO
+webx.egg-info/SOURCES.txt
+webx.egg-info/dependency_links.txt
+webx.egg-info/top_level.txt

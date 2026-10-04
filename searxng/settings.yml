@@ -1,0 +1,32 @@
+# Minimal SearXNG config for webx — the critical bit is `formats: [html, json]`.
+# Without json, /search?format=json 404s and the searxng provider is dead.
+use_default_settings: true
+
+server:
+  secret_key: "ultrasecretkey-change-me"
+  limiter: false
+  image_proxy: true
+
+search:
+  safe_search: 0
+  autocomplete: ""
+
+formats:
+  - html
+  - json
+
+engines:
+  - name: duckduckgo
+    disabled: false
+  - name: google
+    disabled: false
+  - name: bing
+    disabled: false
+  - name: wikipedia
+    disabled: false
+  - name: github
+    disabled: false
+  - name: stackoverflow
+    disabled: false
+  - name: hackernews
+    disabled: false

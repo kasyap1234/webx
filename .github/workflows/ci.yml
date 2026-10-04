@@ -1,0 +1,56 @@
+name: ci
+on:
+  push: { branches: [main] }
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with: { go-version-file: go.mod }
+      - run: gofmt -l . | tee /dev/stderr | (! read)
+      - run: go vet ./...
+      - run: go test ./...
+      - run: go build ./cmd/webx ./cmd/webxd
+
+  sdks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: python -m py_compile sdk/python/webx/*.py
+      - run: cd sdk/python && pip install . && python -c "import webx; print(webx.__version__)"
+      - run: node --check sdk/javascript/src/index.js
+
+  # openapi.json stays generator-consumable — every spec edit is proven
+  # against real client generation for the long-tail languages.
+  gen-sdks:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        lang: [rust, ruby, java]
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/gen-sdks.sh ${{ matrix.lang }}
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: test
+    runs-on: ubuntu-latest
+    permissions: { contents: write, packages: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with: { go-version-file: go.mod }
+      - uses: goreleaser/goreleaser-action@v6
+        with:
+          distribution: goreleaser
+          version: latest
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,25 @@
+{
+  "name": "webx-sdk",
+  "version": "0.1.0",
+  "description": "JavaScript/TypeScript SDK for webx — the open-source web toolkit for AI agents (scrape, crawl, search, extract)",
+  "type": "module",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    }
+  },
+  "files": ["src", "README.md"],
+  "engines": { "node": ">=18" },
+  "license": "MIT",
+  "keywords": ["scraping", "crawling", "agents", "llm", "markdown", "search", "firecrawl-alternative"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kasyap1234/webx",
+    "directory": "sdk/javascript"
+  },
+  "homepage": "https://github.com/kasyap1234/webx"
+}

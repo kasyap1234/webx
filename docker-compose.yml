@@ -1,0 +1,207 @@
+# Durable-ish webx deployment: webx serve + self-hosted SearXNG.
+# No paid APIs required — SearXNG fans out to upstream engines and webx
+# fuses it with the dev-vertical providers and the local index.
+#
+#   docker compose up -d
+#   curl -X POST localhost:8080/search -d '{"query":"golang http client"}'
+#
+# SearXNG JSON output is REQUIRED — config at ./searxng/settings.yml is
+# mounted below; if you bring your own, ensure `formats: [html, json]`.
+
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: webx-searxng
+    volumes:
+      - ./searxng:/etc/searxng:rw
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8888/
+    ports:
+      - "8888:8080"
+    restart: unless-stopped
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
+        max-file: "1"
+
+  webx:
+    build: .
+    container_name: webx
+    depends_on:
+      - searxng
+    environment:
+      # The one env var that turns webx's recall Google-class.
+      - WEBX_SEARXNG_URL=http://searxng:8080
+      - WEBX_INDEX_DB=/data/index.db
+    volumes:
+      - webx-data:/data
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  # ── durable edition: docker compose --profile durable up -d ──
+  # webxd + Postgres. Jobs survive restarts; workers claim via SKIP LOCKED
+  # so you can scale webxd replicas freely.
+  db:
+    image: postgres:17-alpine
+    profiles: ["durable"]
+    environment:
+      POSTGRES_USER: webx
+      POSTGRES_PASSWORD: webx
+      POSTGRES_DB: webx
+    volumes:
+      - webx-pg:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  webxd:
+    build:
+      context: .
+      target: webxd
+    container_name: webxd
+    profiles: ["durable"]
+    depends_on:
+      - db
+      - searxng
+    command: ["--addr", ":8080", "--store", "pg",
+              "--dsn", "postgres://webx:webx@db:5432/webx?sslmode=disable",
+              "--workers", "4"]
+    environment:
+      - WEBX_SEARXNG_URL=http://searxng:8080
+      - WEBX_INDEX_DB=/data/index.db
+    volumes:
+      - webx-data:/data
+    ports:
+      - "8081:8080"
+    restart: unless-stopped
+
+  # ── render profiles ─────────────────────────────────────────────
+  # Two ways to get real-Chrome rendering:
+  #
+  #   docker compose --profile render up -d      # Chrome baked into webx
+  #   docker compose --profile browserless up -d # Chrome as a sidecar
+  #
+  # webx-render = Dockerfile.render (webx + Chrome for Testing, one box).
+  webx-render:
+    build:
+      context: .
+      dockerfile: Dockerfile.render
+    container_name: webx-render
+    profiles: ["render"]
+    depends_on:
+      - searxng
+    environment:
+      - WEBX_SEARXNG_URL=http://searxng:8080
+      - WEBX_INDEX_DB=/data/index.db
+    volumes:
+      - webx-data:/data
+    ports:
+      - "8082:8080"
+    restart: unless-stopped
+    shm_size: "2g" # Chrome crashes on /dev/shm exhaustion without this
+
+  # browserless — Chrome runs as its own service; webx connects over CDP.
+  # The leanest production topology: cheap webx replicas + one warm browser.
+  browserless:
+    image: ghcr.io/browserless/chromium:latest
+    container_name: webx-browserless
+    profiles: ["browserless", "cloud"]
+    restart: unless-stopped
+    shm_size: "2g"
+    environment:
+      - CONCURRENT=5
+      - TIMEOUT=60000
+
+  webx-browserless:
+    build: .
+    container_name: webx-bl
+    profiles: ["browserless"]
+    depends_on:
+      - browserless
+      - searxng
+    environment:
+      - WEBX_SEARXNG_URL=http://searxng:8080
+      - WEBX_INDEX_DB=/data/index.db
+      - WEBX_CDP_URL=ws://browserless:3000
+    volumes:
+      - webx-data:/data
+    ports:
+      - "8083:8080"
+    restart: unless-stopped
+
+  # ── cloud edition: your own hosted webx product ─────────────────
+  # docker compose --profile cloud up -d — the sellable deployment:
+  # durable Postgres jobs + self-hosted searxng + browserless Chrome +
+  # Caddy auto-HTTPS. Point DOMAIN at the box and it's a live product:
+  #
+  #   DOMAIN=api.example.com ACME_EMAIL=you@co.com \
+  #     WEBX_API_KEY=<bootstrap-admin-key> \
+  #     docker compose --profile cloud up -d
+  #
+  # Then `webx license gen` mints customer keys / licenses; tenants get
+  # API keys via POST /keys (Bearer WEBX_API_KEY). Rate-limit and quota
+  # tenants with PATCH /keys/{id} — that's the billing surface.
+  db-cloud:
+    image: postgres:17-alpine
+    profiles: ["cloud"]
+    environment:
+      POSTGRES_USER: webx
+      POSTGRES_PASSWORD: ${PG_PASSWORD:?set PG_PASSWORD}
+      POSTGRES_DB: webx
+    volumes:
+      - webx-pg:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  webx-cloud:
+    build:
+      context: .
+      target: webxd
+    container_name: webx-cloud
+    profiles: ["cloud"]
+    depends_on:
+      - db-cloud
+      - searxng
+      - browserless
+    command: ["--addr", ":8080", "--store", "pg",
+              "--dsn", "postgres://webx:${PG_PASSWORD}@db-cloud:5432/webx?sslmode=disable",
+              "--workers", "4"]
+    environment:
+      - WEBX_SEARXNG_URL=http://searxng:8080
+      - WEBX_INDEX_DB=/data/index.db
+      - WEBX_CDP_URL=ws://browserless:3000
+      - WEBX_API_KEY=${WEBX_API_KEY:?set WEBX_API_KEY — the bootstrap admin key}
+      - WEBX_RATE_RPM=${WEBX_RATE_RPM:-120}
+      - WEBX_LICENSE=${WEBX_LICENSE:-}
+    volumes:
+      - webx-data:/data
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: webx-caddy
+    profiles: ["cloud"]
+    depends_on:
+      - webx-cloud
+    environment:
+      - DOMAIN=${DOMAIN:-localhost}
+      - ACME_EMAIL=${ACME_EMAIL:-}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+
+volumes:
+  webx-data:
+  webx-pg:
+  caddy-data:
+  caddy-config:

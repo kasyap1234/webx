@@ -1,0 +1,6 @@
+# Cloud profile edge — auto-HTTPS for the hosted webx product.
+# DOMAIN and ACME_EMAIL come from the compose environment.
+{$DOMAIN:localhost} {
+	encode zstd gzip
+	reverse_proxy webx-cloud:8080
+}

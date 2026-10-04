@@ -1,0 +1,57 @@
+# Render-enabled webx image — the base Dockerfile ships Chrome-free, which
+# makes --render/--auto-render impossible inside the container. This image
+# bakes Chrome for Testing (the version-pinned, CI-grade build Google
+# publishes for automation) so every render feature works out of the box:
+#
+#   docker build -f Dockerfile.render -t webx:render .
+#   docker run -p 8080:8080 webx:render
+#   curl -X POST localhost:8080/scrape -d '{"url":"https://example.com","render":true,"screenshot":true}'
+#
+# Prefer the compose `render` profile for the browserless variant —
+# Chrome runs as its own service with proper shm sizing.
+
+FROM golang:1.25-bookworm AS build
+WORKDIR /src
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /webx ./cmd/webx
+RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /webxd ./cmd/webxd
+
+# Chrome download happens in its own stage — the final image doesn't
+# carry curl/unzip just to have fetched a zip once.
+FROM debian:bookworm-slim AS chrome-dl
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      ca-certificates curl unzip \
+    && rm -rf /var/lib/apt/lists/*
+# Resolve the current Stable channel build at image-build time so the
+# Dockerfile never rots pinning a dead version.
+RUN set -eux; \
+    VER=$(curl -fsSL https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json \
+          | tr -d '\n ' | sed 's/.*"Stable":{[^}]*"version":"\([^"]*\)".*/\1/'); \
+    curl -fsSL "https://storage.googleapis.com/chrome-for-testing-public/${VER}/linux64/chrome-linux64.zip" \
+         -o /tmp/chrome.zip; \
+    unzip -q /tmp/chrome.zip -d /opt; \
+    mv /opt/chrome-linux64 /opt/chrome; \
+    /opt/chrome/chrome --version
+
+FROM debian:bookworm-slim
+# Headless-Chrome runtime deps — the minimum set for --headless=new.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      ca-certificates fonts-liberation \
+      libasound2 libatk-bridge2.0-0 libatk1.0-0 libcairo2 libcups2 \
+      libdbus-1-3 libdrm2 libgbm1 libglib2.0-0 libnspr4 libnss3 \
+      libpango-1.0-0 libx11-6 libxcb1 libxcomposite1 libxdamage1 \
+      libxext6 libxfixes3 libxkbcommon0 libxrandr2 xdg-utils \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=chrome-dl /opt/chrome /opt/chrome
+COPY --from=build /webx /usr/local/bin/webx
+COPY --from=build /webxd /usr/local/bin/webxd
+ENV WEBX_CHROME_BIN=/opt/chrome/chrome
+# Container Chrome can't use the sandbox; the launcher already passes
+# --no-sandbox and --disable-dev-shm-usage.
+VOLUME /data
+ENV WEBX_INDEX_DB=/data/index.db
+EXPOSE 8080
+ENTRYPOINT ["webx"]
+CMD ["serve", "--addr", ":8080"]

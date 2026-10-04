@@ -1,0 +1,3268 @@
+{
+  "num": 10,
+  "queries": 619,
+  "hit_rate": 0.20516962843295639,
+  "hit_lo": 0.1752212788707134,
+  "hit_hi": 0.23875492310423496,
+  "mrr": 0.17837205426058414,
+  "providers_ok": [
+    "crates",
+    "gh",
+    "hn",
+    "npm",
+    "sg",
+    "wiki"
+  ],
+  "by_kind": {
+    "concept": {
+      "queries": 311,
+      "hit_rate": 0.3247588424437299,
+      "mrr": 0.2925279436533456
+    },
+    "errorish": {
+      "queries": 5,
+      "hit_rate": 0,
+      "mrr": 0
+    },
+    "fresh": {
+      "queries": 2,
+      "hit_rate": 0,
+      "mrr": 0
+    },
+    "howto": {
+      "queries": 301,
+      "hit_rate": 0.08637873754152824,
+      "mrr": 0.06457179771133259
+    }
+  },
+  "by_provider": {
+    "crates": 24,
+    "gh": 6,
+    "hn": 98,
+    "npm": 3
+  },
+  "results": [
+    {
+      "query": "Our security auditor is an idiot. How do I give him the information he wants?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "serverfault.com"
+    },
+    {
+      "query": "What is a Pem file and how does it differ from other OpenSSL Generated Key File Formats?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I sort du -h output by size",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to determine if a bash variable is empty?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can you ping a specific port of a machine?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can scp copy directories recursively?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to automate SSH login with password?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do you find what process is holding a file open in Windows?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I deal with a compromised server?",
+      "best_rank": 8,
+      "hit": true,
+      "matched_on": "serverfault.com"
+    },
+    {
+      "query": "What exactly do the colors in htop status bars mean?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "ssh returns \"Bad owner or permissions on ~/.ssh/config\"",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I tell Git for Windows where to find my private RSA key?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "In Nginx, how can I rewrite all http requests to https while maintaining sub-domain?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between double and single square brackets in bash?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "mysqldump throws: Unknown table 'COLUMN_STATISTICS' in information_schema (1109)",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What's the default superuser username/password for postgres after a new install?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How does IPv4 Subnetting Work?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Something is burning in the server room; how can I quickly identify what it is?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "serverfault.com"
+    },
+    {
+      "query": "Displaying a remote SSL certificate details using CLI tools",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to set environment variable in systemd service?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I change my private key passphrase?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to run a server on port 80 as a normal user on Linux?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why is my crontab not working, and how can I troubleshoot it?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I get the size of an Amazon S3 bucket?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Showing total progress in rsync: is it possible?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I use environment variables in Nginx.conf",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I get the current Unix time in milliseconds in Bash?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do you search for backdoors from the previous IT person?",
+      "best_rank": 6,
+      "hit": true,
+      "matched_on": "serverfault.com"
+    },
+    {
+      "query": "What permissions should my website files/folders have on a Linux webserver?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Create a public SSH key from the private key?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can I automatically add a new host to known_hosts?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Anyone else experiencing high rates of Linux server crashes during a leap second day?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "serverfault.com"
+    },
+    {
+      "query": "How to send ctrl+alt+del using Remote Desktop?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Copying a large directory tree locally? cp or rsync?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What are the functional differences between .profile .bash_profile and .bashrc",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Check if port is open or closed on a Linux server?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Nginx reverse proxy + URL rewrite",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to properly unban an IP address which Fail2Ban banned?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "100% uptime for a web application",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "serverfault.com"
+    },
+    {
+      "query": "How to bind MySQL server to more than one IP address?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What's the command-line utility in Windows to do a reverse DNS look-up?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I select which Apache MPM to use?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why do I need Nginx and something like Gunicorn?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "command for checking Apache configuration",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to remove an image tag in Docker without removing the image itself?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What's the difference between IP address 0.0.0.0 and 127.0.0.1?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "how to download the ssl certificate from a website?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Linux command to inspect TXT records of a domain",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Finding out what user Apache is running as?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I view the details of a digital certificate .cer file?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Moving an already-running process to Screen",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "List all DNS records in a domain using dig?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Redirect, change URLs or redirect HTTP to HTTPS in Apache httpd - Everything you ever wanted to know about mod_rewrite rules, but were afraid to ask",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Do systemd unit files have to be reloaded when modified?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is archive mode in rsync?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I add Access-Control-Allow-Origin in NGINX?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can I nohup/screen an already-started process?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can you pass user/pass for HTTP Basic Authentication in URL parameters?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What are the obstacles to providing reliable Internet access and Wi-Fi at large tech conferences?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "serverfault.com"
+    },
+    {
+      "query": "How to reply with 200 from Nginx, without serving a file?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to assign permissions to ApplicationPoolIdentity account",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Useful Command-line Commands on Windows",
+      "best_rank": 4,
+      "hit": true,
+      "matched_on": "serverfault.com"
+    },
+    {
+      "query": "Why does my hostname appear with the address 127.0.1.1 rather than 127.0.0.1 in /etc/hosts?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I run Debian stable but install some packages from testing?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to see stdout of ansible commands?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to include multiple domains in an spf TXT Record",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why is \"chmod -R 777 /\" destructive?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "serverfault.com"
+    },
+    {
+      "query": "I've inherited a rat's nest of cabling. What now?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Kubernetes stuck on ContainerCreating",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can anyone explain precisely what IOWait is?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Docker Container time \u0026 timezone (will not reflect changes)",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "When does `cron.daily` run?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "df in linux not showing correct free space after file removal",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What’s the point in having “www” in a URL?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I find out what Active Directory groups I'm a member of?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to run a command multiple times, using bash shell?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between Unix sockets and TCP/IP sockets?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I see which flags Nginx was compiled with?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Is it bad to redirect http to https?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Environment variables of a running process on Unix?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to list all installed packages",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to unzip a zip file from the Terminal?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "\"The following packages have been kept back:\" Why and how do I solve it?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can PPAs be removed?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I install a .deb file via the command line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I save terminal output to a file?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I copy the contents of a folder to another folder in a different directory using terminal?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What command do I need to unzip/extract a .tar.gz file?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I determine the total size of a directory (folder) from the command line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Where is the cron / crontab log?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I use Docker without sudo?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Unable to lock the administration directory (/var/lib/dpkg/) is another process using it?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I update my nodeJS to the latest version?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to upgrade a single package using apt-get?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Is there a command to list all users? Also to add, delete, modify users, in the terminal?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to keep processes running after ending ssh session?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I uncompress a tarball that uses .xz?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I add a user as a new sudoer using the command line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to add a directory to the PATH?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to extract files to another directory using 'tar' command?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I shut down or reboot from a terminal?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Error message \"sudo: unable to resolve host (none)\"",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to get bash or ssh into a running container in background mode?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to enable or disable services?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Find and replace text within a file using commands",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I recursively delete all files of a specific extension in the current directory?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to add existing user to an existing group?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I search for available packages from the command-line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to install updates via command line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to increment a variable in bash?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do you monitor the progress of dd?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Command for determining my public IP?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between apt and apt-get?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I reduce the file size of a scanned PDF file?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I find the amount of free space on my hard drive?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I rename a directory via the command line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I reset a lost administrative password?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I find the package that provides a file?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I extract a page range / a part of a PDF?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to delete a non-empty directory in Terminal?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Change folder permissions and ownership",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to check Internet Speed via Terminal?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to run scripts on start up?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I get the CPU temperature?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the correct way to completely remove an application?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What should I do when Ubuntu freezes?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I remove old kernel versions to clean up the boot menu?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to make 'python' program command execute Python 3?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What Application Indicators are available?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I decode a base64 string from the command line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What does \"sudo apt-get update\" do?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I install a .tar.gz (or .tar.bz2) file?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I check which shell I am using?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to display network traffic in the terminal?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I add environment variables?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I resolve unmet dependencies after adding a PPA?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I set up a Cron job?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I free up more space in /boot?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I record my screen?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to create a soft or symbolic link?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to list all enabled services from systemctl?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I check the version of Ubuntu I am running?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to redirect stderr to a file",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between adduser and useradd?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I fix the GPG error \"NO_PUBKEY\"?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to show the transfer progress and speed when copying files with cp?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why crontab scripts are not working?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Which one is better: using ; or \u0026\u0026 to execute multiple commands in one line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to merge several PDF files?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to install Google Chrome",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to let `dpkg -i` install dependencies for me?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I fix my locale issue?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I retrieve the public key from a SSH private key?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I install Guest Additions in a VirtualBox VM?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I use variables in a sed command?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to prevent updating of a specific package?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is an \"AppImage\"? How do I install it?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to see the command attached to a bash alias?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between a hard link and a symbolic link?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between apt-get update and upgrade?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why does man print \"gimme gimme gimme\" at 00:30?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "unix.stackexchange.com"
+    },
+    {
+      "query": "How do I get the size of a directory on the command line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the exact difference between a 'terminal', a 'shell', a 'tty' and a 'console'?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "unix.stackexchange.com"
+    },
+    {
+      "query": "How to correctly add a path to PATH?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to copy files from one machine to another using ssh",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to install a deb file, by dpkg -i or by apt?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to see full log from systemctl status service?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I reduce a video's size with ffmpeg?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I replace a string in a file(s)?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to unfreeze after accidentally pressing Ctrl-S in a terminal?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I make `ls` show file sizes in megabytes?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to cycle through reverse-i-search in Bash?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "unix.stackexchange.com"
+    },
+    {
+      "query": "Why was '~' chosen to represent the home directory?",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "unix.stackexchange.com"
+    },
+    {
+      "query": "What does \"--\" (double dash / double hyphen) mean?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Tracking down where disk space has gone on Linux?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the purpose of the lost+found folder in Linux and Unix?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "unix.stackexchange.com"
+    },
+    {
+      "query": "Finding the PID of the process using a specific port?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Zip all files in directory?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Difference between nohup, disown and \u0026",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I grep for multiple patterns with pattern having a pipe character?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to switch between users on one terminal?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Problem running find: missing argument to `-exec'",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What do the numbers in a man page mean?",
+      "best_rank": 3,
+      "hit": true,
+      "matched_on": "unix.stackexchange.com"
+    },
+    {
+      "query": "How to get execution time of a script effectively?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why am I still getting a password prompt with ssh with public key authentication?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why is printf better than echo?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "unix.stackexchange.com"
+    },
+    {
+      "query": "Preserve bash history in multiple terminal windows",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "unix.stackexchange.com"
+    },
+    {
+      "query": "/usr/bin vs /usr/local/bin on Linux",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to force ssh client to use only password auth?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to clear journalctl",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I zip/unzip on the unix command line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why is it better to use \"#!/usr/bin/env NAME\" instead of \"#!/path/to/NAME\" as my shebang?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to generate a random string?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to append multiple lines to a file",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between /opt and /usr/local?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Using \"${a:-b}\" for variable assignment in scripts",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Repeat a Unix command every x seconds forever",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What if 'kill -9' does not work?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I resolve a hostname to an IP address in a Bash script?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Does curl have a --no-check-certificate option like wget?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to display `top` results sorted by memory usage in real time?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is a bind mount?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "In a bash script, using the conditional \"or\" in an \"if\" statement",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Scroll inside Screen, or Pause Output",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can grep output only specified groupings that match?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I copy a folder keeping owners and permissions intact?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can less retain colored output?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between the Bash operators [[ vs [ vs ( vs ((?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to forward X over SSH to run graphics applications remotely?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Difference between Login Shell and Non-Login Shell?",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "unix.stackexchange.com"
+    },
+    {
+      "query": "How do I check package version using apt-get / aptitude?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to conditionally do something if a command succeeded or failed",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "recursive mkdir",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I pass a command line argument into a shell script?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to copy a file from a remote server to a local machine?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to turn off stdout buffering in a pipe?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can I zip an entire folder using gzip?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I remove a user from a group?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What should/shouldn't go in .zshenv, .zshrc, .zlogin, .zprofile, .zlogout?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I loop through only directories in bash?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why am I getting an “invalid active developer path” when attempting to use Git after upgrading to macOS Tahoe?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "List of all packages installed using Homebrew",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I permanently add my SSH private key to Keychain so it is automatically available to ssh?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to separate \"mouse\" and \"trackpad\" settings?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to find cause of high kernel_task cpu usage?",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "apple.stackexchange.com"
+    },
+    {
+      "query": "Shortcut for toggling between different windows of same app?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Please share your hidden macOS features or tips and tricks",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Remap \"Home\" and \"End\" to beginning and end of line",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "apple.stackexchange.com"
+    },
+    {
+      "query": "How do I disable Chrome's two-finger back/forward navigation?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "apple.stackexchange.com"
+    },
+    {
+      "query": "What is the difference between `brew` and `brew cask`?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "iTerm - going one word backwards and forwards",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to prevent Mac from changing the order of Desktops/Spaces",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "apple.stackexchange.com"
+    },
+    {
+      "query": "How do I launch Finder from terminal or command line",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why does my dock keep moving back to my other monitor?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "git auto-complete for *branches* at the command line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I create a symbolic link in Terminal?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Using Alt/Cmd + Right/Left Arrow in iTerm",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I find my IP Address from the command line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "mds and mds_stores constantly consuming cpu",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between .bash_profile and .bashrc?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I trigger a Notification Center notification from an AppleScript or shell script?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Got any tips or tricks for Terminal in Mac OS X?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "apple.stackexchange.com"
+    },
+    {
+      "query": "How can I configure Mac Terminal to have color ls output?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What are the practical differences between Bash and Zsh?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "apple.stackexchange.com"
+    },
+    {
+      "query": "How can I list my open network ports with netstat?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I stop the Adobe Creative Cloud app from auto-launching on login?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I recompile Bash to avoid Shellshock (the remote exploit CVE-2014-6271 and CVE-2014-7169)?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to combine two images into one on a Mac?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What Window Management Options exist for OS X?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I downgrade node or install a specific previous version using homebrew?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I disable animation when switching desktops in Lion?",
+      "best_rank": 6,
+      "hit": true,
+      "matched_on": "apple.stackexchange.com"
+    },
+    {
+      "query": "How to change computer name so terminal displays it in Mac OS X Mountain Lion?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can I get the CPU temperature and fan speed from the command line in OS X?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Hotkey to show hidden files and folders in File Open dialog?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Applications Don't Show Up in Spotlight",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to create a text file in a folder",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What do I type to produce the command symbol (⌘) in Mac OS X?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why doesn't .bashrc run automatically?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I save tabs in iTerm 2 so they restore the next time the app is run?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to use terminal to copy a file to the clipboard?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to Retrieve the Wi-Fi Password of a Connected Network on a Mac",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Where can I find the installed package path via brew",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "\"File Open\" dialog is missing sidebar items",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to replace Mac OS X utilities with GNU core utilities?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why are dot underscore ._ files created, and how can I avoid them?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can I open files in TextEdit from the Terminal in Mac OS X?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can Touch ID on Mac authenticate sudo in Terminal?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to increase keyboard key repeat rate on OS X?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I manually delete old backups to free space for Time Machine?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the \"rootless\" feature in El Capitan, really?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why is conditional processing of a sorted array faster than of an unsorted array?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I undo the most recent local commits in Git?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I delete a Git branch locally and remotely?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between 'git pull' and 'git fetch'?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "What does the \"yield\" keyword do in Python?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How can I remove a specific item from an array in JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I rename a local Git branch?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Which JSON content type do I use?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I undo 'git add' before commit?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the '--\u003e' operator in C/C++?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I force \"git pull\" to overwrite local files?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can comments be used in JSON?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What and where are the stack and heap?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "Why does HTML think “chucknorris” is a color?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How can I check out a remote Git branch?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I check if an element is hidden in jQuery?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I make Git forget about a file that was tracked, but is now in .gitignore?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What does \"use strict\" do in JavaScript, and what is the reasoning behind it?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "What does if __name__ == \"__main__\": do?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I remove local (untracked) files from the current Git working tree?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Does Python have a ternary conditional operator?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Is Java \"pass-by-reference\" or \"pass-by-value\"?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "Find all files containing a specific text (string) on Linux",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I redirect to another webpage?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "var functionName = function() {} vs function functionName() {}",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How to modify existing, unpushed commit messages?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why is subtracting these two epoch-milli Times (in year 1927) giving a strange result?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do JavaScript closures work?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I revert a Git repository to a previous commit?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between String and string in C#?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I remove a property from a JavaScript object?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What are metaclasses in Python?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to check whether a string contains a substring in JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I check whether a file exists without exceptions?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I merge two dictionaries in a single expression in Python?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I change the URI (URL) for a remote Git repository?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Move the most recent commit(s) to a new branch with Git",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I return the response from an asynchronous call?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I discard unstaged changes in Git?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between POST and PUT in HTTP?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between px, dip, dp, and sp?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I get the directory where a Bash script is located from within the script itself?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between \"let\" and \"var\"?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I include a JavaScript file in another JavaScript file?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I execute a program or call a system command?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to disable text selection highlighting",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Reset local repository branch to be just like remote repository HEAD",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I reset or revert a file to a specific revision?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I squash my last N commits together?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the maximum length of a URL in different browsers?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I push a new local branch to a remote Git repository and track it too?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I create a directory, and any missing parent directories?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Loop (for each) over an array in JavaScript",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to determine the URL that a local Git repository was originally cloned from",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I access the index value in a 'for' loop?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Which equals operator (== vs ===) should be used in JavaScript comparisons?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What's the difference between tilde(~) and caret(^) in package.json?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I exit Vim?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I add an empty directory to a Git repository?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I make a flat list out of a list of lists?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I replace all occurrences of a string?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "The definitive guide to form-based website authentication",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I create a GUID / UUID?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Regular expression to match a line that doesn't contain a word",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How can I validate an email address in JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I resolve merge conflicts in a Git repository?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I make the first letter of a string uppercase in JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is a plain English explanation of \"Big O\" notation?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between INNER JOIN and OUTER JOIN?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I check whether a checkbox is checked in jQuery?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the most efficient way to deep clone an object in JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Reference Guide: What does this symbol mean in PHP? (PHP Syntax)",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I delete a remote tag?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I horizontally center an element?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between a URI, a URL, and a URN?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I check if an array includes a value in JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Undo a Git merge that hasn't been pushed yet",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I get a timestamp in JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I clone all remote branches?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I update or sync a forked repository on GitHub?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between @staticmethod and @classmethod in Python?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How to pass \"Null\" (a real surname!) to a SOAP web service in ActionScript 3",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I remove a submodule?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I read / convert an InputStream into a String in Java?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How slicing in Python works",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Setting \"checked\" for a checkbox with jQuery",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I check if a directory exists or not in a Bash shell script?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I delete a commit from a branch?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why does Google prepend while(1); to their JSON responses?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How is Docker different from a virtual machine?",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "\"Thinking in AngularJS\" if I have a jQuery background?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How can I find the index for a given item in a list?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Undoing a git rebase",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Which \"href\" value should I use for JavaScript links, \"#\" or \"javascript:void(0)\"?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I avoid checking for nulls in Java?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Iterating over a dictionary using a 'for' loop, getting keys",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I enumerate an enum?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Change an HTML input's placeholder color with CSS",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I close/hide the Android soft keyboard programmatically?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I insert an item into an array at a specific index?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What are the differences between a HashMap and a Hashtable in Java?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "UPDATE from a SELECT",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I copy to the clipboard in JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to round to at most 2 decimal places, if necessary",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Is there a CSS parent selector?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I validate an email address using a regular expression?",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I get the current branch name in Git?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Message 'src refspec master does not match any' when pushing commits in Git",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I iterate over rows in a Pandas DataFrame?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Sort array of objects by string property value",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I clone a specific Git branch?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "The Definitive C++ Book Guide and List",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "What does the !! (double exclamation mark) operator do in JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I pair socks from a pile efficiently?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "What exactly is RESTful programming?",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I tell if a file does not exist in Bash?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I check for an empty/undefined/null string in JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Checking if a key exists in a JavaScript object?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "grep: show lines surrounding each match",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Create ArrayList from array",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I generate random integers within a specific range in Java?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Make an existing Git branch track a remote branch?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to loop through the items of an array in JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Remove a file from a Git repository without deleting it from the local filesystem",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Proper use cases for Android UserManager.isUserAGoat()?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How can I use a global variable in a function?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Move existing, uncommitted work to a new branch in Git",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Is floating-point math broken?",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "How do I efficiently iterate over each entry in a Java Map?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "View the change history of a file using Git versioning",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I get the current time in Python?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the JavaScript version of sleep()?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I POST JSON data with cURL?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I copy a file?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I catch multiple exceptions in one line? (in the \"except\" block)",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What are the differences between a pointer variable and a reference variable?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I cast int to enum in C#?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is __init__.py for?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I test for an empty JavaScript object?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Convert bytes to a string in Python 3",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I stash only one file out of multiple files that have changed?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why is char[] preferred over String for passwords?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "stackoverflow.com"
+    },
+    {
+      "query": "Why don't Java's +=, -=, *=, /= compound assignment operators require casting?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Get the current URL with JavaScript?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Git refusing to merge unrelated histories on rebase",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the difference between __str__ and __repr__?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I correctly clone a JavaScript object?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What does the explicit keyword mean?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Iterate through a HashMap",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I pretty-print JSON in a shell script?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I make a POST request using curl?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why does Windows think that my wireless keyboard is a toaster?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "How do I scroll in tmux?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I sort the output of 'ls' by last modified date?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I make a machine \"blank screen\" for a period of time (as a penalty) if certain noise levels are reached?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "Getting curl to output HTTP status code?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Find out which process is locking a file or folder in Windows",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to tell git which private key to use?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to clear/flush the DNS cache in Google Chrome?",
+      "best_rank": 5,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "What are the Windows A: and B: drives used for?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "Transatlantic ping faster than sending a pixel to the screen?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "What does 'source' do?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I display the contents of an environment variable from the command prompt in Windows 7?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Is there a built-in checksum utility on Windows 7?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to recursively chmod all directories except files?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why does macOS keep asking for my SSH passphrase ever since I updated to macOS Sierra (10.12)?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "View list of files in ZIP archive on Linux",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to copy with cp to include hidden files and hidden directories and their contents?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I convert a video to GIF using ffmpeg, with reasonable quality?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Why does this PNG image display differently in Chrome \u0026 Firefox than in Safari and IE?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Permissions on private key in .ssh folder?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to stop an automatic redirect from “http://” to “https://” in Chrome",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How are pseudorandom and truly random numbers different and why does it matter?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "How do I reorder tmux windows?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to *disable* automatic reboots in Windows 10?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to find a directory on linux?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to execute a command whenever a file changes?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I get the same SSID for multiple access points?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "When reading a file with `less` or `more`, how can I get the content in colors?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to use FFmpeg to cut up a video?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can I make cURL fail with an exitCode different than 0 if the HTTP status code is not 200?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Reload a Linux user's group assignments without logging out",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "\"directory junction\" vs \"directory symbolic link\"?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "From a quality perspective, what is better: turning volume up in the software, in the OS, or on the speakers?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Automatically answer 'Yes' when using apt-get install",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I run multiple commands on one line in PowerShell?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do you reload your .vimrc file without restarting vim?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the \"You have new mail\" message in Linux/UNIX?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to turn off word wrap in less?",
+      "best_rank": 9,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "Remove audio from video file with FFmpeg",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I make rm not give an error if a file doesn't exist?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Difference between .bashrc and .bash_profile?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to remove systemd services",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to decompress a .bz2 file",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Windows 7 SP1 Windows Update stuck checking for updates",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to enable execution of PowerShell scripts?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to clear the contents of a file from the command line?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is the home directory on Windows Subsystem for Linux?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to fix warning about ECDSA host key",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Can I delete the folder C:\\ProgramData\\Package Cache\\?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to check if a binary is 32- or 64-bit on Windows?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Create/rename a file/folder that begins with a dot in Windows?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "Is there any 'sudo' command for Windows?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Test if a port on a remote system is reachable (without telnet)",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I exit telnet?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How does a computer restart itself?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "How do I rename a session in tmux?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I compare binary files in Linux?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Did I just get hacked?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "What is the difference between executing a Bash script vs sourcing it?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I make Chrome stop caching redirects?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Mac OS X equivalent of the Ubuntu \"tree\" command",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to open files in vertically/horizontal split windows in Vim from the command line",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "What is randomart produced by ssh-keygen?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "Windows SSH: Permissions for 'private-key' are too open",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to download files from command line in Windows like wget or curl",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I download an entire website?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I free up drive space from the Windows installer folder without killing Windows?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "An SSH tunnel via multiple hops",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to prevent Gnome-shell's Alt+Tab from grouping windows from similar apps?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Does e-mail address obfuscation actually work?",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "How do I add text to the beginning of a file in Bash?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I remove malicious spyware, malware, adware, viruses, trojans or rootkits from my PC?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to merge audio and video file with FFmpeg?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to rename the User folder in Windows 10?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How can I resume a stopped job in Linux?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How do I exit an SSH connection?",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "How to remove one or all auto-complete text entries in Chrome?",
+      "best_rank": 6,
+      "hit": true,
+      "matched_on": "superuser.com"
+    },
+    {
+      "query": "Switching back to last *used* tab on Chrome",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Selecting columns in Visual Studio Code",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "A curated list of awesome Go frameworks, libraries and software awesome-go",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models. ollama",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "The Go programming language go",
+      "best_rank": 3,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Production-Grade Container Scheduling and Management kubernetes",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "TypeScript is a superset of JavaScript that compiles to clean JavaScript output. TypeScript",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet. frp",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "🪨 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman. caveman",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "The world’s fastest framework for building websites. hugo",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Open Source Continuous File Synchronization syncthing",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": ":cherry_blossom: A command-line fuzzy finder fzf",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "simple terminal UI for git commands lazygit",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "The fastest path to AI-powered full stack observability, even for lean teams. netdata",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS caddy",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Run your GitHub Actions locally 🚀 act",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "The Moby Project - a collaborative project for the container ecosystem to assemble container-based systems moby",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "The Prometheus monitoring system and time series database. prometheus",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "The Cloud Native Application Proxy traefik",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A personal timeline for quick notes. Write short memos, find them later by search, tag, or date. Open source and self-hosted. memos",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "MinIO is a high-performance, S3 compatible object store, open sourced under GNU AGPLv3 license. minio",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Open Source realtime backend in 1 file pocketbase",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A simple zero-config tool to make locally trusted development certificates with any names you'd like. mkcert",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "A tool for exploring each layer in a docker image dive",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "The lazier way to manage everything docker lazydocker",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Distributed reliable key-value store for the most critical data of a distributed system etcd",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Make humans and AI agents work as one team — open-source and self-hostable. multica",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Go implementation of the Ethereum protocol go-ethereum",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "LocalAI is the open-source AI engine. Run any model - LLMs, vision, voice, image, video - on any hardware. No GPU required. LocalAI",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "The painless way to host your own Git service gogs",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Supporting multi-protocol multi-user(Vmess, Vless, Trojan, ShadowSocks, Wireguard, Hysteria, Tunnel, Mixed, HTTP, Tun, MTProto، AmneziaWG) 3x-ui",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "A collective list of free APIs public-apis",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": ":books: Freely available programming books free-programming-books",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards. system-design-primer",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "The definitive list that answers \"I want to do X in Python, which tool should I use?\" awesome-python",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Curated list of project-based tutorials project-based-learning",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "The agent that grows with you hermes-agent",
+      "best_rank": 2,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "All Algorithms implemented in Python Python",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A feature-rich command-line audio/video downloader yt-dlp",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Python tool for converting files and office documents to Markdown. markitdown",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": ":octocat: 分享 GitHub 上有趣、入门级的开源项目。Share interesting, entry-level open source projects on GitHub. HelloGitHub",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Public repository for Agent Skills skills",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Stable Diffusion web UI stable-diffusion-webui",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows. langflow",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...) open-webui",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "The agent engineering platform. langchain",
+      "best_rank": 7,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Command-line program to download videos from YouTube.com and other video sites youtube-dl",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source. awesome-llm-apps",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "💫 Toolkit to help you get started with SDD or any other process! spec-kit",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "An AI skill that provides design intelligence for building professional UI/UX across multiple platforms. ui-ux-pro-max-skill",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Agents that use the browser. browser-use",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Robust Speech Recognition via Large-Scale Weak Supervision whisper",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "TradingAgents: Multi-Agents LLM Financial Trading Framework TradingAgents",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Tensors and Dynamic neural networks in Python with strong GPU acceleration pytorch",
+      "best_rank": 4,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "FastAPI framework, high performance, easy to learn, fast to code, ready for production fastapi",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Magnificent app which corrects your previous console command. thefuck",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "AI agents running research on single-GPU nanochat training automatically autoresearch",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "real time face swap and one-click video deepfake with only a single image Deep-Live-Cam",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Animation engine for explanatory math videos manim",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Hunt down social media accounts by username across social networks sherlock",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A high-throughput and memory-efficient inference and serving engine for LLMs vllm",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": ":house_with_garden: Open source home automation that puts local control and privacy first. core",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free. freeCodeCamp",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 openclaw",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Interactive roadmaps, guides and other educational content to help developers grow in their careers. developer-roadmap",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "DeepSeek Harness: Everything is a Plugin. deepseek-harness",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core vue",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "The open source coding agent. opencode",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥 firecrawl",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Curated coding interview preparation materials for busy software engineers tech-interview-handbook",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Collection of publicly available IPTV channels from all over the world iptv",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Virtual whiteboard for sketching hand-drawn like diagrams excalidraw",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "High performance self-hosted photo and video management solution. immich",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI pi",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications. supabase",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "An open-source AI agent that brings the power of Gemini directly into your terminal. gemini-cli",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Deliver web apps with confidence 🚀 angular",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "An enterprise-class UI design language and React UI library ant-design",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "A utility-first CSS framework for rapid UI development. tailwindcss",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. playwright",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "The open-source app everyone uses to manage agents at work paperclip",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "JavaScript API for Chrome and Firefox puppeteer",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "The open-source CapCut alternative OpenCut",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Storybook is the industry standard workshop for building, documenting, and testing UI components in isolation storybook",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Model Context Protocol Servers servers",
+      "best_rank": 3,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Generation of diagrams like flowcharts or sequence diagrams from text in a similar manner as markdown mermaid",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "🙌 OpenHands: AI-Driven Development OpenHands",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "\"The mother of all demo apps\" — Exemplary fullstack Medium.com clone powered by React, Angular, Node, Django, and many more realworld",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "An agent-managed museum exhibit, built in Rust with Gajae-Code / LazyCodex — developed and maintained with no human intervention. claw-code",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "A modern GUI client based on Tauri, designed to run in Windows, macOS and Linux for tailored proxy experience clash-verge-rev",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Lightweight coding agent that runs in your terminal codex",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer. rustdesk",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Empowering everyone to build reliable and efficient software. rust",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Build smaller, faster, and more secure desktop and mobile applications with a web frontend. tauri",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A modern runtime for JavaScript and TypeScript. deno",
+      "best_rank": 3,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one bun",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter. zed",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "An extremely fast Python package and project manager, written in Rust. uv",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. Single Rust binary, zero dependencies rtk",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "ripgrep recursively searches directories for a regex pattern while respecting your gitignore ripgrep",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A coding agent for open models like Kimi K3 and GLM 5.3 openinterpreter",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs vaultwarden",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "A cross-platform, OpenGL terminal emulator. alacritty",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Warp is an agentic development environment, born out of the terminal. warp",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": ":crab: Small exercises to get you used to reading and writing Rust code! rustlings",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "🤱🏻 Turn any webpage into a desktop app with one command. Pake",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "🌴 Empowering everyone to build reliable and efficient smart contracts. sway",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "A cat(1) clone with wings. bat",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell! starship",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "A curated list of Rust code and resources. awesome-rust",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A lightning-fast search engine API bringing AI-powered hybrid search to your sites and applications. meilisearch",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Rust full node implementation of the Fuel v2 protocol. fuel-core",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A markup-based typesetting system that is powerful and easy to learn. typst",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM goose",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "❄️ ChatGPT Desktop Application (Mac, Windows and Linux) ChatGPT",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "An extremely fast Python linter and code formatter, written in Rust. ruff",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A refreshingly simple data-driven game engine built in Rust bevy",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A post-modern modal text editor. helix",
+      "best_rank": 0,
+      "hit": false
+    },
+    {
+      "query": "Jan is an open source alternative to ChatGPT that runs 100% offline on your computer. jan",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "A simple, fast and user-friendly alternative to 'find' fd",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    },
+    {
+      "query": "Browser automation CLI for AI agents agent-browser",
+      "best_rank": 1,
+      "hit": true,
+      "matched_on": "github.com"
+    }
+  ]
+}

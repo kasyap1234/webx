@@ -1,0 +1,17 @@
+# JS-heavy / app-shell / bot-protected corpus — where raw HTTP gets shells.
+# format: url | substring-that-must-appear (post-render content; empty = no check)
+https://www.youtube.com/ | YouTube
+https://open.spotify.com/ | Spotify
+https://www.npmjs.com/package/express | express
+https://www.producthunt.com/ | Product Hunt
+https://edition.cnn.com/ | CNN
+https://www.airbnb.com/ | Airbnb
+https://www.tiktok.com/ | TikTok
+https://medium.com/ | Medium
+https://discord.com/app | Discord
+https://web.whatsapp.com/ | WhatsApp
+https://chatgpt.com/ | ChatGPT
+https://claude.ai/ | Claude
+https://x.com/home |
+https://nowsecure.nl/ |
+https://www.amazon.com/ |
