@@ -1,13 +1,17 @@
 name: publish-sdks
 
-# Tag a release → SDKs ship. Both publish jobs are environment-gated so a
-# tag push never leaks a token to a forked workflow run.
+# Tag a release → SDKs ship. Each job is gated on a repo variable so the
+# release goes green before the registry accounts exist — flip the switch
+# once configured (see docs/LAUNCH.md):
+#   gh variable set PYPI_ENABLED --body true   # after PyPI trusted publishing is set up
+#   gh variable set NPM_ENABLED --body true    # after `gh secret set NPM_TOKEN`
 on:
   push:
     tags: ["v*"]
 
 jobs:
   pypi:
+    if: vars.PYPI_ENABLED == 'true'
     runs-on: ubuntu-latest
     environment: pypi
     permissions:
@@ -27,6 +31,7 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
 
   npm:
+    if: vars.NPM_ENABLED == 'true'
     runs-on: ubuntu-latest
     environment: npm
     steps:

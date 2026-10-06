@@ -7,9 +7,12 @@ The self-hosted alternative to Firecrawl/Exa/Tavily/TinyFish: the important part
 ## Install
 
 ```bash
-go install github.com/kasyap1234/webx/cmd/webx@latest
-# or: go build -o webx ./cmd/webx
+go install github.com/kasyap1234/webx/cmd/webx@latest   # from source
+brew install --cask kasyap1234/tap/webx               # macOS/Linux cask
+docker pull ghcr.io/kasyap1234/webx:latest            # webx + webxd image
 ```
+
+or grab a binary from the [releases page](../../releases) — linux/darwin/windows, amd64+arm64.
 
 ## Quickstart
 
@@ -48,7 +51,7 @@ webx doctor                                           # provider health check
 | `skill` | Emit a `SKILL.md` teaching agent harnesses when to use webx — `webx skill > .devin/skills/webx/SKILL.md` |
 | `install <engine>` | Install a render engine — `chrome` (Chrome for Testing via rod's downloader) or `lightpanda` (Zig engine → `~/.webx/bin`, the `--engine light` backend) |
 | `botkey` | Generate a Web Bot Auth ed25519 key + the JWKS to self-host — sign requests cryptographically instead of fingerprint-guessing (draft-meunier-webbotauth-httpsig-protocol) |
-| `license` | License tooling — `keygen` makes the maintainer Ed25519 keypair, `gen` signs customer license files (`--tier pro\|enterprise --days N`), `check` verifies. `WEBX_LICENSE=<file>` on `serve`/`webxd` unlocks multi-key, RBAC roles, audit log, ZDR mode |
+| `license` | `check` verifies a license file; `install <file\|->` validates + parks it at `~/.webx/license.json` (picked up automatically by `serve`/`webxd`); `status` shows the active tier. Maintainer side: `keygen` makes the signing keypair, `gen` signs customer files (`--tier pro\|enterprise --days N`) — `webxl` automates this from Polar/Stripe webhooks |
 | `wayback <url>` | Wayback Machine: list captures (`--from`/`--to`), or fetch the nearest snapshot `--at <ts>` and extract it like a live page — dead-link recovery (`tier_used: wayback`, stale warning) |
 | `cdx <pattern>` | Common Crawl CDXJ index — enumerate a domain's known URLs without touching the host (`--crawl <collection>`, `--limit`) |
 | `archive <url>...` | Write raw fetches as WARC/1.0 (ISO 28500) response records to `-o file.warc` — replays in replayweb.page/pywb |
@@ -69,7 +72,7 @@ webx doctor                                           # provider health check
 | `WEBX_PROXY` | HTTP proxy for fetches + Chrome renders |
 | `WEBX_API_KEY` | Bootstrap admin key for `serve`/`webxd` — all routes except `/health` require `Authorization: Bearer <key>`; `--api` clients send it automatically. Issue tenant keys via `POST /keys` |
 | `WEBX_MAX_CONCURRENCY` | Global in-flight request cap on `serve`/`webxd` — over-limit → 429 + `Retry-After` |
-| `WEBX_LICENSE` | Signed license file (path or JSON) — unlocks >3 API keys, admin roles, `GET /audit`, `zdr` mode. `WEBX_LICENSE_PUBKEY` overrides the verifier for dev |
+| `WEBX_LICENSE` | Signed license file (path or JSON) — unlocks >3 API keys, admin roles, `GET /audit`, `zdr` mode. Default path `~/.webx/license.json` when unset (what `webx license install` writes). `WEBX_LICENSE_PUBKEY` overrides the verifier for dev |
 | `WEBX_RATE_RPM` | Per-IP request cap on `serve`/`webxd` (default 240/min) |
 | `WEBX_BLOCK_PRIVATE` | SSRF guard — refuse private/loopback/metadata targets (default ON; `0` opts out for intranet deploys) |
 | `WEBX_ALLOW_DOMAINS` / `WEBX_DENY_DOMAINS` | Comma-separated domain policy on every outbound target (subdomains included) |
@@ -183,12 +186,20 @@ hosted version, support, and enterprise features**, not permission.
 Gates are enforced in-code — a 402 response body includes `"upgrade"` pointing
 here. `GET /license` on any deployment reports its live tier.
 
-**Buying a license**: `webx license gen --tier pro --email you@co.com` produces
-a signed license file — you need a maintainer signing key, i.e. buy from me.
-**To purchase: open a [license request](../../issues/new?template=license-request.yml)
-— you'll get a signed license file + invoice within 1 business day.** Set
-`WEBX_LICENSE=<path>` on the deployment. Operators reselling webx-hosted
-service point their own paywall with `WEBX_UPGRADE_URL`.
+**Buying a license**: self-serve checkout (Polar/Stripe) → the fulfillment
+service (`webxl`) signs your license and emails it within seconds — renewals
+re-issue automatically each billing cycle. Or open a
+[license request](../../issues/new?template=license-request.yml) and get a
+signed file + invoice within 1 business day. Either way:
+
+```bash
+webx license install webx-license.json   # verify + park at ~/.webx/license.json
+webx license status                      # confirm the tier
+```
+
+`serve`/`webxd` pick it up with zero env config (`WEBX_LICENSE=<path|json>`
+still works, and wins over the file). Operators reselling webx-hosted service
+point their own paywall with `WEBX_UPGRADE_URL`.
 
 **Hosted cloud**: `docker compose --profile cloud up -d` on a VPS gives a
 durable, TLS-terminated deployment (`DOMAIN`, `WEBX_API_KEY`, `PG_PASSWORD`)

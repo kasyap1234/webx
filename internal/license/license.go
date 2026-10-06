@@ -13,6 +13,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"path/filepath"
 	"time"
 )
 
@@ -82,7 +83,7 @@ func resolvePubKey() ed25519.PublicKey {
 // embeddedPubKey is filled in by `webx license keygen` output pasted here.
 // Empty until the maintainer commits a real key — without it, generated
 // licenses verify only under WEBX_LICENSE_PUBKEY (dev mode).
-const embeddedPubKey = ""
+const embeddedPubKey = "vEyGY7UlNU7Ci39kY14m67qNiY7P52NOUJmRvRdS1es="
 
 // Load reads and verifies a license file. Invalid/missing → (nil, err).
 func Load(path string) (*License, error) {
@@ -93,17 +94,31 @@ func Load(path string) (*License, error) {
 	return Parse(raw)
 }
 
-// LoadEnv resolves the license from WEBX_LICENSE (path or inline JSON).
-// No license → (nil, nil) — free tier, not an error.
+// LoadEnv resolves the license from WEBX_LICENSE (path or inline JSON),
+// falling back to the well-known path ~/.webx/license.json that
+// `webx license install` writes. No license → (nil, nil) — free tier.
 func LoadEnv() (*License, error) {
-	v := os.Getenv("WEBX_LICENSE")
-	if v == "" {
-		return nil, nil
+	if v := os.Getenv("WEBX_LICENSE"); v != "" {
+		if st, err := os.Stat(v); err == nil && !st.IsDir() {
+			return Load(v)
+		}
+		return Parse([]byte(v))
 	}
-	if st, err := os.Stat(v); err == nil && !st.IsDir() {
-		return Load(v)
+	if p := DefaultPath(); p != "" {
+		if _, err := os.Stat(p); err == nil {
+			return Load(p)
+		}
 	}
-	return Parse([]byte(v))
+	return nil, nil
+}
+
+// DefaultPath is where `webx license install` stores a verified license.
+func DefaultPath() string {
+	h, err := os.UserHomeDir()
+	if err != nil {
+		return ""
+	}
+	return filepath.Join(h, ".webx", "license.json")
 }
 
 // Parse verifies signature + expiry.

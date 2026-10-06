@@ -1,0 +1,52 @@
+name: pages
+
+# Deploys the marketing site (site/) to kasyap1234.github.io/webx and the
+# docs (docs-site/) under /webx/docs — one Pages artifact, two builds.
+# Move to a real domain later: drop BASE_PATH and point DNS.
+on:
+  push:
+    branches: [main]
+    paths: ["site/**", "docs-site/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20", cache: npm }
+
+      - name: marketing site → build/
+        working-directory: site
+        env: { BASE_PATH: "/webx" }
+        run: npm ci && npm run build
+
+      - name: docs site → dist/
+        working-directory: docs-site
+        env:
+          SITE_URL: "https://kasyap1234.github.io"
+          BASE_PATH: "/webx/docs"
+        run: npm ci && npm run build
+
+      - name: merge docs under /docs
+        run: mkdir -p site/build/docs && cp -r docs-site/dist/* site/build/docs/
+
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: site/build }
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

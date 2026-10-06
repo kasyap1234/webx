@@ -3,9 +3,25 @@
 Notable user-facing changes. This project follows semver-ish: breaking API
 changes bump minor, fixes bump patch. `webx version` prints the build.
 
-## [Unreleased]
+## [v0.1.0] — 2026-10-06
+
+First tagged release — installable binaries, docker image, Homebrew cask,
+and a working self-serve license path.
 
 ### Added
+- `webx license install <file|->` — verify + park a purchased license at
+  `~/.webx/license.json`; `webx license status` shows the active tier.
+  `serve`/`webxd` pick up the file with zero env config.
+- `webxl` — license-fulfillment service: verifies Polar (Standard Webhooks)
+  and Stripe payment webhooks, signs licenses with the maintainer key, and
+  emails them via Resend (mailbox-file spool when unconfigured). Subscription
+  renewals re-issue automatically. Retry-safe event dedup.
+- Maintainer signing key embedded — `webx license check` verifies real
+  customer licenses, not just dev-mode ones.
+- Releases: per-binary archives (linux/darwin/windows + amd64/arm64),
+  `ghcr.io/kasyap1234/webx` multi-arch image, `brew install --cask
+  kasyap1234/tap/webx`, SDK publish on tag (env-gated until registry
+  accounts exist), GitHub Pages deploy for the site + docs.
 - `webx eval` quality harness: search hit-rate/MRR with Wilson CI, extraction
   marker coverage, `--cite` citation-verifier accuracy, `--vs` competitor
   comparison (exa/tavily/firecrawl, key-gated), `--gen` corpus builder from
@@ -31,8 +47,6 @@ changes bump minor, fixes bump patch. `webx version` prints the build.
   dated and reproducible (`go run ./bench`, `webx eval --vs`).
 - `.github` license-request issue template (structured purchase path) and
   FUNDING.yml → SPONSORS.md.
-- goreleaser: ghcr.io docker login in the release job; commented Homebrew
-  tap block ready for `kasyap1234/homebrew-tap`.
 
 ### Changed
 - **Python SDK is `webx-sdk` on PyPI** (`pip install webx-sdk`,

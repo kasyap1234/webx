@@ -4,7 +4,9 @@
  */
 
 export const REPO_URL = 'https://github.com/kasyap1234/webx';
-export const DOCS_URL = 'https://github.com/kasyap1234/webx/tree/main/docs';
+// Starlight docs deployed under the Pages site's /docs path — swap to a
+// real domain when one is chosen.
+export const DOCS_URL = 'https://kasyap1234.github.io/webx/docs/';
 export const INSTALL_CMD = 'go install github.com/kasyap1234/webx/cmd/webx@latest';
 export const VERSION = 'v0.1.0';
 

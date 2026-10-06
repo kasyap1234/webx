@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 	import { REPO_URL, DOCS_URL, VERSION } from '$lib/data';
 
 	const links = [
@@ -21,7 +22,7 @@
 
 <header class="nav" class:scrolled>
 	<div class="shell nav-inner">
-		<a href="/" class="wordmark" aria-label="webx home"> webx </a>
+		<a href="{base}/" class="wordmark" aria-label="webx home"> webx </a>
 
 		<nav class="nav-links" aria-label="primary">
 			{#each links as link (link.label)}

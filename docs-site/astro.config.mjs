@@ -5,8 +5,10 @@ import starlightLlmsTxt from 'starlight-llms-txt';
 
 // https://astro.build/config
 export default defineConfig({
-	// canonical docs origin — update when the real domain is chosen
-	site: 'https://docs.webx.dev',
+	// Canonical origin — SITE_URL/BASE_PATH come from the deploy target:
+	// GitHub Pages = kasyap1234.github.io + /webx/docs, custom domain = real host + '/'.
+	site: process.env.SITE_URL || 'https://kasyap1234.github.io',
+	base: process.env.BASE_PATH || '/',
 	integrations: [
 		starlight({
 			title: 'webx',

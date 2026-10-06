@@ -1,0 +1,52 @@
+name: Bug report
+description: Something webx does that it shouldn't — or doesn't do that it should
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: input
+    id: command
+    attributes:
+      label: Command / request
+      placeholder: "webx scrape https://example.com --render"
+      description: The exact CLI invocation or HTTP request that misbehaves.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+      description: Include the error, JSON output, or log lines. Run with -v for verbose logs.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: webx version
+      placeholder: "webx version output, or commit"
+    validations:
+      required: true
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: How you're running it
+      options:
+        - CLI binary (go install / release tarball)
+        - webx serve / webxd (self-hosted)
+        - Docker image
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Environment
+      description: "OS/arch, render engine (chrome/lightpanda/none), proxy, relevant WEBX_* env (names only, never values)."
+      placeholder: "macOS arm64, chrome render, no proxy"
+    validations:
+      required: false

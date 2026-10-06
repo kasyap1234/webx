@@ -241,7 +241,7 @@ var (
 )
 
 var licenseCmd = &cobra.Command{
-	Use:   "license <keygen|gen|check> [file]",
+	Use:   "license <keygen|gen|check|install|status> [file]",
 	Short: "License tooling — generate signing keys, mint license files, verify them",
 	Args:  cobra.RangeArgs(1, 2),
 	RunE:  runLicense,
@@ -306,8 +306,55 @@ func runLicense(cmd *cobra.Command, args []string) error {
 		fmt.Fprintf(cmd.OutOrStdout(), "valid — tier=%s email=%s expires=%s features=%v\n",
 			l.Tier, l.Email, l.Expires, l.Features)
 		return nil
+
+	case "install":
+		// Customer-side: verify the signed file, then park it at the
+		// well-known path LoadEnv reads — serve/webxd pick it up with
+		// no env config. `-` reads stdin (paste from the purchase email).
+		if len(args) < 2 {
+			return fmt.Errorf("usage: webx license install <file|->")
+		}
+		var raw []byte
+		var err error
+		if args[1] == "-" {
+			raw, err = io.ReadAll(cmd.InOrStdin())
+		} else {
+			raw, err = os.ReadFile(args[1])
+		}
+		if err != nil {
+			return err
+		}
+		l, err := license.Parse(raw)
+		if err != nil {
+			return err
+		}
+		dest := license.DefaultPath()
+		if dest == "" {
+			return fmt.Errorf("no home dir — export WEBX_LICENSE=%s instead", args[1])
+		}
+		if err := os.MkdirAll(filepath.Dir(dest), 0o700); err != nil {
+			return err
+		}
+		if err := os.WriteFile(dest, raw, 0o600); err != nil {
+			return err
+		}
+		fmt.Fprintf(cmd.OutOrStdout(), "installed → %s (tier=%s, expires=%s)\nserve/webxd pick it up automatically\n",
+			dest, l.Tier, l.Expires)
+		return nil
+
+	case "status":
+		l, err := license.LoadEnv()
+		if err != nil {
+			return err
+		}
+		fmt.Fprintf(cmd.OutOrStdout(), "tier=%s\n", l.TierName())
+		if l != nil {
+			fmt.Fprintf(cmd.OutOrStdout(), "email=%s expires=%s features=%v\n",
+				l.Email, l.Expires, l.Features)
+		}
+		return nil
 	}
-	return fmt.Errorf("unknown subcommand %q (want keygen|gen|check)", args[0])
+	return fmt.Errorf("unknown subcommand %q (want keygen|gen|check|install|status)", args[0])
 }
 
 var installCmd = &cobra.Command{

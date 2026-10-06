@@ -1,0 +1,48 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+  "name": "io.github.kasyap1234/webx",
+  "title": "webx — web toolkit for AI agents",
+  "description": "Self-hosted web search, scrape, crawl, index, extract, and research — 17 tools over metasearch fusion, FTS5 indexing, and adaptive rendering. Firecrawl/Exa-compatible.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/kasyap1234/webx",
+    "source": "github"
+  },
+  "websiteUrl": "https://kasyap1234.github.io/webx",
+  "license": "MIT",
+  "packages": [
+    {
+      "registryType": "oci",
+      "identifier": "ghcr.io/kasyap1234/webx",
+      "version": "latest",
+      "transport": {
+        "type": "stdio"
+      },
+      "runtimeArguments": ["run", "--rm", "-i", "ghcr.io/kasyap1234/webx:latest", "mcp"],
+      "environmentVariables": [
+        {
+          "name": "WEBX_SEARXNG_URL",
+          "description": "SearXNG instance(s), comma-separated",
+          "isRequired": false
+        },
+        {
+          "name": "WEBX_BRAVE_API_KEY",
+          "description": "Enables Brave search provider",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "WEBX_LLM_BASE",
+          "description": "OpenAI-compatible LLM endpoint for extract/research/verify",
+          "isRequired": false
+        },
+        {
+          "name": "WEBX_LLM_KEY",
+          "description": "API key for the LLM endpoint",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

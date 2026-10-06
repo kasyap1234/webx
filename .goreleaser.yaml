@@ -1,4 +1,4 @@
-# Goreleaser — `goreleaser release` on a git tag builds both binaries for
+# Goreleaser — `goreleaser release` on a git tag builds all binaries for
 # every agent-platform arch. Chrome stays optional at runtime (never bundled).
 version: 2
 
@@ -17,36 +17,64 @@ builds:
     goos: [linux, darwin]
     goarch: [amd64, arm64]
     ldflags: ["-s -w -X main.version={{.Version}}"]
+  - id: webxl
+    main: ./cmd/webxl
+    binary: webxl
+    env: [CGO_ENABLED=0]
+    goos: [linux, darwin]
+    goarch: [amd64, arm64]
+    ldflags: ["-s -w -X main.version={{.Version}}"]
 
+# One archive per binary — webx ships windows too, webxd/webxl don't;
+# a shared archive block would mismatch binary counts per platform.
 archives:
-  - name_template: "{{ .Binary }}_{{ .Os }}_{{ .Arch }}"
-    format: tar.gz
+  - id: webx
+    ids: [webx]
+    name_template: "{{ .Binary }}_{{ .Os }}_{{ .Arch }}"
+    formats: ["tar.gz"]
     format_overrides:
       - goos: windows
-        format: zip
+        formats: ["zip"]
+    files: [README.md, LICENSE, llms.txt]
+  - id: webxd
+    ids: [webxd]
+    name_template: "{{ .Binary }}_{{ .Os }}_{{ .Arch }}"
+    formats: ["tar.gz"]
+    files: [README.md, LICENSE, llms.txt]
+  - id: webxl
+    ids: [webxl]
+    name_template: "{{ .Binary }}_{{ .Os }}_{{ .Arch }}"
+    formats: ["tar.gz"]
     files: [README.md, LICENSE, llms.txt]
 
 checksum:
   name_template: "checksums.txt"
 
-dockers:
-  - image_templates: ["ghcr.io/kasyap1234/webx:{{ .Tag }}", "ghcr.io/kasyap1234/webx:latest"]
-    dockerfile: Dockerfile
-    ids: [webxd]
+# dockers_v2 — one buildx build pushes a multi-arch manifest straight to
+# ghcr. The context layout is $TARGETPLATFORM/ containing the matched
+# binaries, which is what Dockerfile.release copies.
+dockers_v2:
+  - ids: [webx, webxd]
+    dockerfile: Dockerfile.release
+    images: ["ghcr.io/kasyap1234/webx"]
+    tags:
+      - "v{{ .Version }}"
+      - "{{ if not .IsNightly }}latest{{ end }}"
+    platforms: [linux/amd64, linux/arm64]
 
-# Homebrew tap — uncomment once github.com/kasyap1234/homebrew-tap exists and
-# a HOMEBREW_TAP_TOKEN secret (contents:write on the tap repo) is set on this one.
-# brews:
-#   - repository:
-#       owner: kasyap1234
-#       name: homebrew-tap
-#       token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
-#     ids: [webx]
-#     description: "The web toolkit for AI coding agents — scrape, search, crawl, extract"
-#     homepage: "https://github.com/kasyap1234/webx"
-#     license: MIT
-#     install: |
-#       bin.install "webx"
+# Homebrew cask → brew install --cask kasyap1234/tap/webx.
+# Needs HOMEBREW_TAP_TOKEN (contents:write on kasyap1234/homebrew-tap).
+homebrew_casks:
+  - repository:
+      owner: kasyap1234
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
+      branch: main
+    ids: [webx]
+    binaries: [webx]
+    description: "The web toolkit for AI coding agents — scrape, search, crawl, extract"
+    homepage: "https://github.com/kasyap1234/webx"
+    license: MIT
 
 changelog:
   sort: asc

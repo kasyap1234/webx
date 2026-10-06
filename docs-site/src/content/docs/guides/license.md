@@ -23,24 +23,30 @@ The free tier is a product, not a demo — every command, the full fetch ladder,
 Licenses are **signed Ed25519 license files** — verified offline by an embedded public key, no phone-home:
 
 ```bash
-# set on the server — path or inline JSON
-WEBX_LICENSE=/etc/webx/license.json webx serve
-# or
-webxd --addr :8080   # with WEBX_LICENSE in the environment
+webx license install webx-license.json   # verify + park at ~/.webx/license.json
+webx license status                      # confirm the active tier
+
+webx serve    # picks up ~/.webx/license.json automatically — no env needed
+webxd --addr :8080
 ```
+
+`WEBX_LICENSE=<path|inline-json>` still works and wins over the file when set.
 
 Without a valid license, gated requests return **HTTP 402** with `upgrade` metadata pointing at `WEBX_UPGRADE_URL` — clients (and the SDKs) surface it as a purchase prompt, not a silent failure.
 
 ## Buying a license
 
-Self-serve checkout is coming; today, purchase is via the [license request form](https://github.com/kasyap1234/webx/issues/new?template=license-request.yml) — include your deployment type and use case, and a signed license file comes back by email.
+Self-serve checkout (Polar/Stripe) emails a signed license within seconds — subscription renewals automatically issue a fresh license each billing cycle. Manual path: the [license request form](https://github.com/kasyap1234/webx/issues/new?template=license-request.yml), fulfilled within 1 business day.
 
 ## For operators: minting licenses
 
 ```bash
-webx license keygen                                    # one-time maintainer keypair
-webx license gen --tier pro --days 365 --out lic.json  # sign a customer license
-webx license check lic.json                            # verify
+webx license keygen --key maintainer.pem                    # one-time keypair (never commit)
+webx license gen --key maintainer.pem --tier pro \
+    --email user@co.com --out lic.json                      # sign a customer license
+webx license check lic.json                                 # verify
 ```
+
+To automate delivery on purchases, run `webxl` — a tiny webhook service that verifies Polar/Stripe payment events, signs licenses with your maintainer key, and emails them via Resend (or spools to a mailbox dir). See `docs/LAUNCH.md` for wiring.
 
 `WEBX_LICENSE_PUBKEY` overrides the verifier for development.

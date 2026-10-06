@@ -3,8 +3,12 @@
 /cmd/webx/webx
 /webxd
 /cmd/webxd/webxd
+/dist/
 *.test
 *.out
+
+# maintainer signing key — never commit
+*.pem
 
 # local state
 *.db

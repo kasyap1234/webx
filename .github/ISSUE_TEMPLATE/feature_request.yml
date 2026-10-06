@@ -1,0 +1,42 @@
+name: Feature request
+description: A capability, provider, or API surface webx should grow
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: The workflow you're doing today that's harder than it should be.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed shape
+      description: "Flag, route, or command — e.g. `webx search --provider arxiv` or `POST /crawl { concurrency: 8 }`. Prior art from Firecrawl/Exa/Tavily/Jina welcome."
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - search providers / fusion
+        - scrape / render
+        - extract / structured output
+        - crawl / index / query
+        - server API / jobs / tenancy
+        - MCP / agent integrations
+        - SDKs
+        - docs / examples
+        - other
+    validations:
+      required: true
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd implement this myself with maintainer guidance
+        - label: This is blocking a paid deployment for me

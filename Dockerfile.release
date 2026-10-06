@@ -1,0 +1,16 @@
+# Release image — binaries are built by goreleaser; this file only packages
+# them. goreleaser dockers_v2 lays the context out as $TARGETPLATFORM/<binary>.
+# For the source-build image (no release artifacts), see Dockerfile.
+FROM alpine:3.21
+RUN apk add --no-cache ca-certificates
+ARG TARGETPLATFORM
+COPY ${TARGETPLATFORM}/webx ${TARGETPLATFORM}/webxd /usr/local/bin/
+VOLUME /data
+ENV WEBX_INDEX_DB=/data/index.db
+EXPOSE 8080
+ENTRYPOINT ["webx"]
+CMD ["serve", "--addr", ":8080"]
+
+# webxd (durable edition, Postgres job store): docker run img webxd --addr :8080
+# Render (--render/--auto-render) needs a Chrome host or WEBX_RENDER_URL —
+# this image is intentionally Chrome-free.

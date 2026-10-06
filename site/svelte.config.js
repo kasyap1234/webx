@@ -10,7 +10,10 @@ const config = {
 			assets: 'build',
 			precompress: false,
 			strict: true
-		})
+		}),
+		// GitHub Pages serves the repo site at /<repo> — BASE_PATH is empty on
+		// a custom domain, '/webx' on kasyap1234.github.io/webx.
+		paths: { base: process.env.BASE_PATH || '' }
 	}
 };
 
