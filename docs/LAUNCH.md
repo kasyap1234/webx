@@ -15,6 +15,13 @@ image, Homebrew cask in `kasyap1234/homebrew-tap`, SDK publishes (gated, see §3
 - [x] `HOMEBREW_TAP_TOKEN` secret set — currently the gh CLI OAuth token.
       **Swap for a fine-grained PAT scoped to `kasyap1234/homebrew-tap`
       (contents:write)** and re-run `gh secret set HOMEBREW_TAP_TOKEN`.
+- [x] Homebrew is a **source formula** (`Formula/webx.rb`, auto-bumped by the
+      `tap-formula` CI job on each tag) — NOT a cask. Cask'd prebuilt binaries
+      get Gatekeeper-quarantined (`Killed: 9`); source builds sign ad-hoc on
+      install. Same caveat applies to manual release-tarball downloads via a
+      browser: `xattr -d com.apple.quarantine ./webx`. Proper fix once revenue
+      justifies it: Apple Developer ID + `quill` notarization in goreleaser
+      ($99/yr).
 
 ## 2. Self-serve license sales (webxl)
 

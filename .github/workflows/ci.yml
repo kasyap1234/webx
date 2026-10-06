@@ -64,4 +64,27 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HOMEBREW_TAP_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+
+  # Bump the source-build formula in the tap — kept out of goreleaser since
+  # it only generates casks, and cask'd binaries hit Gatekeeper quarantine.
+  tap-formula:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: bump Formula/webx.rb
+        env:
+          TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          SHA=$(curl -fsSL "https://github.com/kasyap1234/webx/archive/refs/tags/${TAG}.tar.gz" | sha256sum | cut -d' ' -f1)
+          git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/kasyap1234/homebrew-tap.git" tap
+          cd tap
+          sed -i "s|refs/tags/v[^/]*\.tar\.gz|refs/tags/${TAG}.tar.gz|; s|sha256 \".*\"|sha256 \"${SHA}\"|" Formula/webx.rb
+          git config user.name "webx-bot"
+          git config user.email "bot@kasyap1234.github.io"
+          git add Formula/webx.rb
+          if git diff --cached --quiet; then echo "formula already current"; exit 0; fi
+          git commit -m "webx ${TAG}"
+          git push

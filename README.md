@@ -10,7 +10,7 @@ The self-hosted alternative to Firecrawl/Exa/Tavily/TinyFish: the important part
 
 ```bash
 go install github.com/kasyap1234/webx/cmd/webx@latest   # from source
-brew install --cask kasyap1234/tap/webx               # macOS/Linux cask
+brew install kasyap1234/tap/webx                      # macOS/Linux formula
 docker pull ghcr.io/kasyap1234/webx:latest            # webx + webxd image
 ```
 

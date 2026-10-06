@@ -62,19 +62,9 @@ dockers_v2:
       - "{{ if not .IsNightly }}latest{{ end }}"
     platforms: [linux/amd64, linux/arm64]
 
-# Homebrew cask → brew install --cask kasyap1234/tap/webx.
-# Needs HOMEBREW_TAP_TOKEN (contents:write on kasyap1234/homebrew-tap).
-homebrew_casks:
-  - repository:
-      owner: kasyap1234
-      name: homebrew-tap
-      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
-      branch: main
-    ids: [webx]
-    binaries: [webx]
-    description: "The web toolkit for AI coding agents — scrape, search, crawl, extract"
-    homepage: "https://github.com/kasyap1234/webx"
-    license: MIT
+# Homebrew lives in kasyap1234/homebrew-tap as a *source formula* — cask'd
+# prebuilt binaries get killed by Gatekeeper quarantine. The tap-formula CI
+# job bumps version+sha256 there on each tag.
 
 changelog:
   sort: asc
