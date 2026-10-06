@@ -2,6 +2,7 @@ package search
 
 import (
 	"context"
+	"regexp"
 	"strings"
 	"sync"
 	"time"
@@ -104,11 +105,43 @@ func rerankResults(ctx context.Context, results []Result, req Request, contents 
 	}
 	for i, r := range results {
 		if md := contents[i]; md != "" {
+			// scraped page: bounded block-score nudge, content doesn't dominate
 			r.Score *= 1.0 + contentScore(md, req.Query)
-			results[i] = r
+		} else {
+			// snippet-level rerank (no scrape): a 1-2 line snippet can't
+			// produce meaningful block scores — term coverage is the signal.
+			// Full coverage earns up to +40%, enough to reorder near-ties.
+			// Zero coverage on a ≥4-term query means the provider matched
+			// loosely (a stale local index, a noise provider) — demote it
+			// bounded, mirroring the boost, so junk can't ride a fused lead.
+			cov := termCoverage(r.Title+" "+r.Snippet, req.Query)
+			switch {
+			case cov > 0:
+				r.Score *= 1.0 + 0.4*cov
+			case len(queryTerms(req.Query)) >= 4:
+				r.Score *= 0.5
+			}
 		}
+		results[i] = r
 	}
 	sortResults(results)
+}
+
+// termCoverage is the fraction of query terms present in text — the right
+// relevance signal for short snippets where block scoring can't apply.
+func termCoverage(text, query string) float64 {
+	terms := queryTerms(query)
+	if len(terms) == 0 {
+		return 0
+	}
+	low := strings.ToLower(text)
+	covered := 0
+	for _, t := range terms {
+		if strings.Contains(low, t) {
+			covered++
+		}
+	}
+	return float64(covered) / float64(len(terms))
 }
 
 // extractHighlights returns the top N markdown blocks most relevant to the
@@ -126,6 +159,9 @@ func extractHighlights(markdown, query string, n int) []string {
 	}
 	var cands []scored
 	for _, b := range blocks {
+		if soupBlock(b) {
+			continue // scraped sidebar/chrome — links and separators, not prose
+		}
 		s := blockScore(b, terms)
 		if s > 0 {
 			if len(b) > 600 {
@@ -178,11 +214,28 @@ func queryTerms(q string) []string {
 	})
 	var out []string
 	for _, t := range f {
-		if len(t) >= 2 {
+		if len(t) >= 2 && !index.IsStopword(t) {
 			out = append(out, t)
 		}
 	}
 	return out
+}
+
+var mdLinkRunRe = regexp.MustCompile(`\[[^\]]*\]\([^)]*\)`)
+
+// soupBlock reports whether a candidate excerpt is navigation/sidebar
+// chrome rather than prose: mostly markdown-link syntax, a long dash-run
+// separator (scraped SO/forum sidebars emit "-----"), or so little plain
+// text once links are removed that only the links carried content.
+func soupBlock(b string) bool {
+	if strings.Contains(b, "-----") {
+		return true
+	}
+	if !mdLinkRunRe.MatchString(b) {
+		return false // short plain-text lines are legitimate excerpts
+	}
+	plain := strings.TrimSpace(mdLinkRunRe.ReplaceAllString(b, ""))
+	return len(plain) < 30 // link soup leaves ~nothing once the syntax is gone
 }
 
 // blockScore: term frequency + coverage — a compact BM25-ish signal where

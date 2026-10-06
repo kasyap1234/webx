@@ -51,6 +51,14 @@ func Similar(ctx context.Context, idx *Index, rawURL string, limit int) ([]Hit, 
 	if len(out) > limit {
 		out = out[:limit]
 	}
+	// Raw bm25 magnitudes are corpus-dependent and tiny — normalize to the
+	// top hit so callers see a comparable 0–1 similarity instead of noise.
+	if len(out) > 0 && out[0].Score > 0 {
+		top := out[0].Score
+		for i := range out {
+			out[i].Score /= top
+		}
+	}
 	return out, nil
 }
 

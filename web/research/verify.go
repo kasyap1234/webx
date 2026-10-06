@@ -88,7 +88,10 @@ func Verify(ctx context.Context, claim string, maxSources int, logf func(string,
 		`You are a fact-checking engine. Judge the CLAIM against the numbered SOURCES. Reply ONLY as JSON: {"verdict":"supported"|"refuted"|"unclear","confidence":0.0-1.0,"reasoning":"one sentence citing [n]"}. Use "unclear" when sources disagree or lack direct evidence.`,
 		b.String(), true)
 	if err != nil {
-		return v, nil // sources still delivered — honest partial
+		// Sources still delivered — honest partial. Name the reason so the
+		// caller sees "unavailable" means "no judge", not "no evidence".
+		v.Reasoning = fmt.Sprintf("no LLM reachable — set WEBX_LLM_BASE/WEBX_LLM_MODEL for a verdict (%v)", err)
+		return v, nil
 	}
 	out = strings.TrimSpace(out)
 	out = strings.TrimPrefix(out, "```json")
@@ -103,6 +106,18 @@ func Verify(ctx context.Context, claim string, maxSources int, logf func(string,
 		v.Verdict = parsed.Verdict
 		v.Confidence = parsed.Confidence
 		v.Reasoning = parsed.Reasoning
+		return v, nil
+	}
+	// LLM answered but returned unparseable output — a wrong chat template
+	// or a too-small WEBX_LLM_MAX_TOKENS. Say so, with a peek at what came
+	// back, instead of an unexplained "unavailable".
+	if preview := strings.TrimSpace(out); preview != "" {
+		if len(preview) > 120 {
+			preview = preview[:120] + "…"
+		}
+		v.Reasoning = fmt.Sprintf("LLM returned no usable verdict (%s)", preview)
+	} else {
+		v.Reasoning = "LLM returned an empty response — check model and WEBX_LLM_MAX_TOKENS"
 	}
 	return v, nil
 }

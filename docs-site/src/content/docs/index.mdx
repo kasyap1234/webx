@@ -1,0 +1,38 @@
+---
+title: webx docs
+description: The self-hosted web toolkit for AI coding agents — scrape, search, crawl, index, extract, and serve. One static binary, MIT licensed.
+template: splash
+hero:
+  tagline: The web toolkit for AI coding agents. Scrape, search, crawl, index, extract, and serve — one static binary, zero required services, MIT licensed.
+  image:
+    file: ../../assets/webx-mark.svg
+  actions:
+    - text: Get started
+      link: /start/installation/
+      icon: right-arrow
+    - text: Command map
+      link: /cli/
+      icon: document
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid stagger>
+	<Card title="One binary" icon="rocket">
+		`go install github.com/kasyap1234/webx/cmd/webx@latest` — no Node, no
+		Python env, no required services. Runs on a laptop, a VPS, or air-gapped.
+	</Card>
+	<Card title="The full pipeline" icon="puzzle">
+		Search → scrape → index → query → watch → verify → archive. Every stage
+		writes to the same SQLite file it reads from.
+	</Card>
+	<Card title="Agent-native" icon="laptop">
+		17-tool MCP server, generated agent skills, `--fit` token-saver
+		extraction, and chunk metadata with `est_tokens`.
+	</Card>
+	<Card title="Firecrawl-compatible" icon="random">
+		`/v1` and `/v2` routes accept Firecrawl request shapes — point their SDKs
+		at your webx server and they keep working.
+	</Card>
+</CardGrid>

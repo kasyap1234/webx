@@ -22,7 +22,19 @@ func (d *duckduckgo) Search(ctx context.Context, req Request) ([]Result, error) 
 	if req.Site != "" {
 		q += " site:" + req.Site
 	}
-	form := url.Values{"q": {q}, "kl": {"us-en"}}
+	// kl is DDG's region-language code. English-market regions pair the
+	// country with -en (us-en, uk-en); elsewhere it's language=country
+	// (de-de, fr-fr, jp-jp). "wt-wt" is DDG's explicit no-region value.
+	kl := "us-en"
+	if cc := strings.ToLower(req.Location); cc != "" {
+		switch cc {
+		case "us", "uk", "gb", "au", "ca", "nz", "ie":
+			kl = cc + "-en"
+		default:
+			kl = cc + "-" + cc
+		}
+	}
+	form := url.Values{"q": {q}, "kl": {kl}}
 
 	body, err := postForm(ctx, "https://html.duckduckgo.com/html/", form, nil)
 	if err != nil {

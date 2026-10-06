@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"runtime/debug"
 	"strings"
 
 	"golang.org/x/net/html"
@@ -15,7 +16,25 @@ import (
 
 const searchUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 webx/0.1"
 
+// versionString reports the running module version for UAs and logs —
+// stamped builds get their ldflags version via the caller; source builds
+// fall back to runtime build info so "go install" binaries still identify
+// honestly instead of "dev".
+func versionString() string {
+	if bi, ok := debug.ReadBuildInfo(); ok && bi.Main.Version != "" && bi.Main.Version != "(devel)" {
+		return bi.Main.Version
+	}
+	return "0.1.0"
+}
+
 func getJSON(ctx context.Context, u string, headers map[string]string, v any) error {
+	return getJSONWith(ctx, httpClient, u, headers, v)
+}
+
+// getJSONWith is getJSON over a specific client — providers retrying through
+// the browser transport (uTLS Chrome fingerprint) use it when the plain
+// client trips a checkpoint.
+func getJSONWith(ctx context.Context, client *http.Client, u string, headers map[string]string, v any) error {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
 	if err != nil {
 		return err
@@ -24,7 +43,7 @@ func getJSON(ctx context.Context, u string, headers map[string]string, v any) er
 	for k, h := range headers {
 		req.Header.Set(k, h)
 	}
-	resp, err := httpClient.Do(req)
+	resp, err := client.Do(req)
 	if err != nil {
 		return err
 	}

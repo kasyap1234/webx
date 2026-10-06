@@ -24,16 +24,20 @@ type Request struct {
 	Before         time.Time // drop results published after this (when known)
 	Topic          string    // "news" boosts freshness + news-category providers
 	Lang           string    // provider-side language hint (searxng, wiki)
+	Location       string    // ISO 3166-1 alpha-2 country hint (Exa userLocation / Firecrawl location) — DDG region, etc.
+	Category       string    // vertical preset: "developer" restricts the provider set to code/docs sources
 	Exact          bool      // phrase-match the query verbatim
 	Scrape         bool      // fetch each result's page inline
 	ScrapeChars    int       // cap per-result content chars, 0 -> defaultScrapeChars
 	HighlightsOnly bool      // populate Highlights without full Content (token-saver)
-	Rerank         bool      // re-sort by scraped-content relevance (needs Scrape)
+	Rerank         bool      // re-sort fused results — snippets when !Scrape, page content when Scrape
+	Answer         bool      // attach a cited extractive answer to Response.Answer
 	Browser        bool      // use the Chrome-fingerprint transport for inline scrapes
 	Session        string    // persistent cookie jar for provider calls + scrapes
 	Render         bool      // render every result page via Chrome when scraping
 	AutoRender     bool      // escalate to Chrome only on detected JS-shells
 	Semantic       bool      // index provider: fuse FTS5 with embedding cosine (needs WEBX_EMBED_MODEL)
+	Fresh          bool      // bypass the fused-result cache — still writes, so it freshens
 	// Depth tunes the latency/quality tradeoff — Tavily search_depth /
 	// Exa type parity: "fast" trims the provider set to the lowest-latency
 	// sources, "advanced" adds the slower opt-in providers and scrapes
@@ -64,7 +68,7 @@ type Result struct {
 	Sources    []string  `json:"sources"` // providers that returned this URL
 	Score      float64   `json:"score"`
 	RawScore   float64   `json:"-"` // provider-native score (e.g. bm25) — blended into Score during fusion
-	Published  time.Time `json:"published,omitempty"`
+	Published  time.Time `json:"published,omitzero"`
 	Content    string    `json:"content,omitempty"`    // populated by --scrape
 	Highlights []string  `json:"highlights,omitempty"` // query-relevant passages
 	Subpages   []Subpage `json:"subpages,omitempty"`   // Exa contents.subpages
@@ -85,6 +89,7 @@ type Response struct {
 	ProviderMs map[string]int64  `json:"provider_ms,omitempty"` // per-provider latency, wall ms
 	CacheHit   bool              `json:"cache_hit,omitempty"`   // results replayed from cache, not live
 	Deduped    int               `json:"deduped,omitempty"`     // near-duplicate results dropped
+	Answer     string            `json:"answer,omitempty"`      // cited extractive answer (req.Answer — Tavily include_answer parity)
 }
 
 // Provider is one upstream search source.
@@ -195,6 +200,22 @@ func resolve(req Request) []Provider {
 		}
 		names = merged
 	}
+	switch req.Category {
+	case "developer", "dev":
+		// FC categories:developer / Exa category parity — restrict the
+		// resolved set to code/docs sources. Our provider bench IS dev-
+		// heavy (so/gh/grep/sg/npm/crates/hn/reddit); the category makes
+		// that strength addressable in one flag.
+		dev := map[string]bool{"so": true, "gh": true, "grep": true, "sg": true,
+			"npm": true, "crates": true, "hn": true, "reddit": true, "index": true}
+		var kept []string
+		for _, n := range names {
+			if dev[n] {
+				kept = append(kept, n)
+			}
+		}
+		names = kept
+	}
 	var ps []Provider
 	for _, n := range names {
 		if n == "index" && req.Collection != "" {
@@ -226,6 +247,16 @@ func Search(ctx context.Context, req Request) *Response {
 	}
 	resp := &Response{Query: req.Query}
 
+	// include_domains and exclude_domains are mutually exclusive — both
+	// set is almost always a caller mistake; intersecting them silently
+	// produces confusing empty results (Firecrawl 400s on the same input).
+	// Set before the cache read: a replayed response must still flag it.
+	if len(req.Domains) > 0 && len(req.ExcludeDomains) > 0 {
+		resp.Errors = map[string]string{
+			"request": "include_domains and exclude_domains are mutually exclusive",
+		}
+	}
+
 	// advanced depth implies the read-the-pages pass — per-source excerpts
 	// are the Tavily "advanced" chunks_per_source equivalent — plus content
 	// rerank so "advanced" means better ordering, not just more providers.
@@ -238,7 +269,11 @@ func Search(ctx context.Context, req Request) *Response {
 	}
 
 	ck := cacheKey(req)
-	cached, cacheHit := cachedResponse(ctx, ck)
+	var cached *Response
+	var cacheHit bool
+	if !req.Fresh {
+		cached, cacheHit = cachedResponse(ctx, ck)
+	}
 	if cacheHit && !req.Scrape && req.Subpages <= 0 {
 		resp.Results = cached.Results
 		resp.CacheHit = true
@@ -247,7 +282,10 @@ func Search(ctx context.Context, req Request) *Response {
 
 	providers := resolve(req)
 	if len(providers) == 0 {
-		resp.Errors = map[string]string{"search": "no providers enabled"}
+		if resp.Errors == nil {
+			resp.Errors = map[string]string{}
+		}
+		resp.Errors["search"] = "no providers enabled"
 		return resp
 	}
 
@@ -269,6 +307,15 @@ func Search(ctx context.Context, req Request) *Response {
 				}
 			}()
 			r := req
+			// Over-fetch: req.Num is the caller's result cap, but fusion
+			// needs a deeper candidate pool — dedup, domain filters and
+			// overlapping provider hits shrink the pool before the trim.
+			// 3× with a floor is standard metasearch practice and costs the
+			// same single request per provider.
+			r.Num = req.Num * 3
+			if r.Num < 20 {
+				r.Num = 20
+			}
 			if r.Exact && !strings.HasPrefix(r.Query, `"`) {
 				r.Query = `"` + r.Query + `"` // phrase-match at the provider
 			}
@@ -303,7 +350,18 @@ func Search(ctx context.Context, req Request) *Response {
 		resp.CacheHit = true
 	} else {
 		resp.Results = fuse(lists, req)
-		storeResponse(ctx, ck, &Response{Results: resp.Results})
+		// Only cache when at least one provider produced — storing an empty
+		// set after a full-provider outage replays "no results" for the TTL
+		// and hides real errors behind cache_hit.
+		if len(lists) > 0 {
+			storeResponse(ctx, ck, &Response{Results: resp.Results})
+		}
+	}
+	// Rerank without --scrape re-sorts on title+snippet — the cheap semantic
+	// pass, no page fetches. With --scrape, enrich() reranks on full content
+	// instead; the embedder is used when configured, lexical otherwise.
+	if req.Rerank && !req.Scrape {
+		rerankResults(ctx, resp.Results, req, nil)
 	}
 	if req.Scrape {
 		if req.ScrapeChars <= 0 {
@@ -321,7 +379,81 @@ func Search(ctx context.Context, req Request) *Response {
 		attachSubpages(ctx, resp.Results, req)
 	}
 	normalizeScores(resp.Results)
+	if req.Answer {
+		resp.Answer = composeAnswer(resp.Results, req.Query, 1800)
+	}
 	return resp
+}
+
+// composeAnswer builds the cited extractive answer — the best query-covered
+// excerpt from each top source with [n] markers, no LLM. Tavily's
+// include_answer equivalent: grounded in page content when --scrape ran,
+// honest snippet-level evidence otherwise.
+func composeAnswer(results []Result, query string, budget int) string {
+	terms := queryTerms(query)
+	var b strings.Builder
+	n := 0
+	for i := range results {
+		r := &results[i]
+		excerpt := bestExcerpt(r, terms)
+		if excerpt == "" {
+			continue
+		}
+		var sec strings.Builder
+		fmt.Fprintf(&sec, "[%d] %s — %s\n\n", n+1, r.Title, r.URL)
+		sec.WriteString(excerpt + "\n\n")
+		if b.Len()+sec.Len() > budget {
+			break
+		}
+		b.WriteString(sec.String())
+		n++
+		if n >= 5 {
+			break
+		}
+	}
+	return strings.TrimSpace(b.String())
+}
+
+// bestExcerpt picks the most query-covered passage available for a result —
+// highlights first (already query-fit), then a content window centered on
+// the densest term cluster, then the provider snippet.
+func bestExcerpt(r *Result, terms []string) string {
+	if len(r.Highlights) > 0 {
+		best, bestScore := "", -1.0
+		for _, h := range r.Highlights {
+			if s := blockScore(h, terms); s > bestScore {
+				best, bestScore = h, s
+			}
+		}
+		return best
+	}
+	text := r.Content
+	if text == "" {
+		text = r.Snippet
+	}
+	if text == "" {
+		return ""
+	}
+	blocks := splitBlocks(text)
+	if len(blocks) == 0 {
+		if len(text) > 400 {
+			return text[:400] + "…"
+		}
+		return text
+	}
+	best, bestScore := "", -1.0
+	for _, blk := range blocks {
+		if soupBlock(blk) {
+			continue
+		}
+		if s := blockScore(blk, terms); s > bestScore {
+			best, bestScore = blk, s
+		}
+	}
+	if len(best) > 600 {
+		best = best[:600] + "…"
+	}
+	return best
 }
 
 // normalizeScores rescales fused scores to 0–1 against the top hit so

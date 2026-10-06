@@ -121,6 +121,9 @@ func New(st store.Store) *Server {
 	s.Mux.HandleFunc("GET /v1/agent/{id}", s.v2AgentStatus)
 	s.Mux.HandleFunc("GET /openapi.json", s.openapi)
 	s.Mux.HandleFunc("GET /doctor", s.doctor)
+	// Jina-style reader — the zero-setup front door: curl /r/<url> → markdown.
+	// {url...} matches /r/ too (empty remainder prints usage).
+	s.Mux.HandleFunc("GET /r/{url...}", s.reader)
 	s.Mux.HandleFunc("GET /pages/md", s.pageMD)
 	s.Mux.HandleFunc("GET /crawl/{id}/events", s.jobEvents)
 	s.Mux.HandleFunc("POST /crawl", s.crawlStart)
@@ -707,6 +710,7 @@ type scrapeReq struct {
 	AutoRender  bool      `json:"auto_render"`
 	Session     string    `json:"session"`
 	WaitFor     string    `json:"wait_for"`
+	WaitMs      int       `json:"wait_ms"` // fixed delay after load — delayed JS injects
 	Scrolls     int       `json:"scrolls"`
 	Actions     string    `json:"actions"` // "click:.a | wait:.q | screenshot"
 	Screenshot  bool      `json:"screenshot"`
@@ -822,7 +826,7 @@ func (s *Server) scrape(w http.ResponseWriter, r *http.Request) {
 		URL: req.URL, Browser: req.Browser, Session: req.Session,
 		Render:     req.Render || req.Actions != "" || wantShot || wantPDF || wantMHTML || wantA11y || req.Network || req.Console,
 		AutoRender: req.AutoRender,
-		WaitFor:    req.WaitFor, Scrolls: req.Scrolls,
+		WaitFor:    req.WaitFor, WaitMs: req.WaitMs, Scrolls: req.Scrolls,
 		Actions: req.Actions, Screenshot: wantShot, Proxy: req.Proxy,
 		Stealth: req.Stealth, Profile: req.Profile,
 		BlockTrackers: req.BlockAds, BlockMedia: req.TextMode,
@@ -934,8 +938,12 @@ type searchReq struct {
 	Before         string   `json:"before"`          // Exa endPublishedDate
 	Topic          string   `json:"topic"`           // "news" → freshness + news providers
 	Lang           string   `json:"lang"`
-	Exact          bool     `json:"exact"` // phrase-match verbatim
+	Location       string   `json:"location"` // ISO country hint (Exa userLocation / FC location)
+	Category       string   `json:"category"` // vertical preset: developer → code/docs providers only
+	Answer         bool     `json:"answer"`   // cited extractive answer (Tavily include_answer)
+	Exact          bool     `json:"exact"`    // phrase-match verbatim
 	Semantic       bool     `json:"semantic"`
+	Fresh          bool     `json:"fresh"`          // bypass the result cache — still writes
 	Render         bool     `json:"render"`         // render every scraped result
 	AutoRender     bool     `json:"auto_render"`    // escalate scrapes on JS-shells/bot-walls
 	Browser        bool     `json:"browser"`        // Chrome-fingerprint transport for scrapes
@@ -965,13 +973,19 @@ func (s *Server) search(w http.ResponseWriter, r *http.Request) {
 		writeErr(w, http.StatusBadRequest, "before: "+err.Error())
 		return
 	}
+	scrape, highlightsOnly := req.Scrape, req.HighlightsOnly
+	if req.Answer && !scrape {
+		// Answers need evidence — scrape top results at highlights depth.
+		scrape, highlightsOnly = true, true
+	}
 	resp := searchFn(r.Context(), search.Request{
 		Query: req.Query, Num: req.Limit, Providers: req.Providers,
-		Site: req.Site, Scrape: req.Scrape, ScrapeChars: req.ScrapeChars,
-		HighlightsOnly: req.HighlightsOnly, Rerank: req.Rerank,
+		Site: req.Site, Scrape: scrape, ScrapeChars: req.ScrapeChars,
+		HighlightsOnly: highlightsOnly, Rerank: req.Rerank, Answer: req.Answer,
 		Domains: req.Domains, ExcludeDomains: req.ExcludeDomains,
 		After: after, Before: before, Topic: req.Topic, Lang: req.Lang,
-		Exact: req.Exact, Semantic: req.Semantic,
+		Location: req.Location, Category: req.Category,
+		Exact: req.Exact, Semantic: req.Semantic, Fresh: req.Fresh,
 		Render: req.Render, AutoRender: req.AutoRender,
 		Browser: req.Browser, Session: req.Session,
 		Depth: req.Depth, Sources: req.Sources,
@@ -994,6 +1008,9 @@ func (s *Server) search(w http.ResponseWriter, r *http.Request) {
 	}
 	if resp.CacheHit {
 		out["cache_hit"] = true
+	}
+	if resp.Answer != "" {
+		out["answer"] = resp.Answer
 	}
 	writeJSON(w, out)
 }

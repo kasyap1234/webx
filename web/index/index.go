@@ -229,6 +229,10 @@ var stopwords = map[string]bool{
 	"can": true, "could": true, "i": true, "me": true, "my": true, "you": true,
 }
 
+// IsStopword reports whether w is a query-noise term — shared with the
+// search package's coverage scoring so "to"/"time" can't earn relevance.
+func IsStopword(w string) bool { return stopwords[w] }
+
 func contentTerms(query string) []string {
 	var terms []string
 	for t := range strings.FieldsSeq(query) {
@@ -262,23 +266,42 @@ func (i *Index) Query(ctx context.Context, query string, limit int) ([]Hit, erro
 }
 
 // filterWeakOR drops OR-widened hits that matched too few content terms —
-// a page mentioning one of six query words is noise, not recall. Keeps at
-// most cap hits.
+// a page mentioning one of six query words is noise, not recall. The bar
+// scales with query size: 2/6+ matches is junk fusion bait. Keeps at most
+// cap hits.
 func filterWeakOR(hits []Hit, terms []string, cap int) []Hit {
 	minTerms := 2
-	if len(terms) < 3 {
+	switch {
+	case len(terms) < 3:
 		minTerms = 1
+	case len(terms) >= 5:
+		minTerms = 3
+	}
+	// Long terms are the query's distinguishing vocabulary — 7+ char English
+	// words are almost never function words. A hit matching only short
+	// terms ("french"+"end" on a French-Revolution query) is noise even at
+	// the coverage bar, so require ≥1 long-term match when the query has any.
+	var longTerms []string
+	for _, t := range terms {
+		if len(t) >= 7 {
+			longTerms = append(longTerms, strings.ToLower(t))
+		}
 	}
 	out := make([]Hit, 0, len(hits))
 	for _, h := range hits {
 		matched := 0
+		longMatched := len(longTerms) == 0
 		corpus := strings.ToLower(h.Title + " " + h.Snippet)
 		for _, t := range terms {
-			if strings.Contains(corpus, strings.ToLower(t)) {
+			lt := strings.ToLower(t)
+			if strings.Contains(corpus, lt) {
 				matched++
+				if !longMatched && len(t) >= 7 {
+					longMatched = true
+				}
 			}
 		}
-		if matched >= minTerms {
+		if matched >= minTerms && longMatched {
 			out = append(out, h)
 			if len(out) >= cap {
 				break

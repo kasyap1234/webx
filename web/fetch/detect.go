@@ -16,7 +16,7 @@ var (
 		`window.__NEXT_DATA__`, `window.__NUXT__`, `data-server-rendered`,
 		`data-v-app`, `ember-view`,
 	}
-	cfChallengeRe = regexp.MustCompile(`(?i)just a moment|checking your browser|cf-chl-|challenge-platform|attention required|verify you are human`)
+	cfChallengeRe = regexp.MustCompile(`(?i)just a moment|checking your browser|cf-chl-|challenge-platform|attention required|verify you are human|click the button below to continue shopping|automated access to amazon data`)
 	scriptBlockRe = regexp.MustCompile(`(?is)<script[^>]*>.*?</script>`)
 )
 
@@ -51,6 +51,13 @@ func NeedsRender(rawHTML []byte, extractedLen int) bool {
 			if float64(scriptBytes)/float64(len(rawHTML)) > 0.5 {
 				return true
 			}
+		}
+		// Custom-element shells (Lit/web components — e.g. Reddit's
+		// <shreddit-app>) carry no classic SPA marker and little inline
+		// script, but a non-trivial page producing ~zero text is almost
+		// always JS-gated. Render is the fix, so flag it.
+		if extractedLen < 60 && len(rawHTML) > 3000 {
+			return true
 		}
 	}
 	return false

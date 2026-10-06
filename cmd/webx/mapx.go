@@ -20,8 +20,11 @@ var mapCmd = &cobra.Command{
 }
 
 var (
-	mLimit  int
-	mFormat string
+	mLimit      int
+	mFormat     string
+	mSearch     string
+	mSubdomains bool
+	mNoSitemap  bool
 )
 
 func runMap(cmd *cobra.Command, args []string) error {
@@ -33,17 +36,32 @@ func runMap(cmd *cobra.Command, args []string) error {
 	if err != nil {
 		return fmt.Errorf("parse %q: %w", args[0], err)
 	}
-	urls, err := index.DiscoverURLs(cmd.Context(), base, mLimit)
+	var urls []string
+	if mNoSitemap {
+		urls, err = fetch.MapLinks(cmd.Context(), base, mLimit, mSubdomains, fetch.Fetch)
+	} else {
+		urls, err = index.DiscoverURLs(cmd.Context(), base, mLimit)
+	}
 	if err != nil {
 		return err
+	}
+	var out []string
+	for _, l := range urls {
+		if !mSubdomains && !fetch.SameOrWWW(l, base.Hostname()) {
+			continue
+		}
+		if mSearch != "" && !strings.Contains(strings.ToLower(l), strings.ToLower(mSearch)) {
+			continue
+		}
+		out = append(out, l)
 	}
 	switch mFormat {
 	case "json":
 		enc := json.NewEncoder(cmd.OutOrStdout())
 		enc.SetIndent("", "  ")
-		return enc.Encode(map[string]any{"site": base.Host, "urls": urls})
+		return enc.Encode(map[string]any{"site": base.Host, "urls": out})
 	case "md", "markdown":
-		for _, u := range urls {
+		for _, u := range out {
 			fmt.Fprintln(cmd.OutOrStdout(), u)
 		}
 		return nil
@@ -207,9 +225,16 @@ func runArchive(cmd *cobra.Command, args []string) error {
 
 var extractCmd = &cobra.Command{
 	Use:   "extract <url>",
-	Short: "Structured extraction — page markdown → LLM → schema'd JSON",
-	Args:  cobra.ExactArgs(1),
-	RunE:  runExtract,
+	Short: "Structured extraction — page markdown → schema'd JSON",
+	Long: `Structured extraction. Three paths, cheapest first:
+
+  --type auto|Article|Product   schema.org typed data from ld+json — no LLM
+  --css  '{"title":"h1"}'       deterministic CSS selectors — no LLM
+  --schema/--prompt (default)   LLM extraction — needs a reachable
+                                OpenAI-compatible endpoint (WEBX_LLM_*,
+                                default Ollama at localhost:11434)`,
+	Args: cobra.ExactArgs(1),
+	RunE: runExtract,
 }
 
 var (
@@ -239,9 +264,9 @@ func runExtract(cmd *cobra.Command, args []string) error {
 		}
 		if len(ents) == 0 {
 			if len(doc.JSONLD) == 0 {
-				return fmt.Errorf("no ld+json entities on this page at all")
+				return fmt.Errorf("no ld+json entities on this page at all — try --css or LLM --schema instead")
 			}
-			return fmt.Errorf("no ld+json entities of type %q on this page", xType)
+			return fmt.Errorf("no ld+json entities of type %q on this page — try --type auto, --css, or LLM --schema", xType)
 		}
 		enc := json.NewEncoder(cmd.OutOrStdout())
 		enc.SetIndent("", "  ")

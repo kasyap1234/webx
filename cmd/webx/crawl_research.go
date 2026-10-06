@@ -79,6 +79,9 @@ func runVerify(cmd *cobra.Command, args []string) error {
 	for i, s := range v.Sources {
 		fmt.Fprintf(out, "  [%d] %s\n      %s\n", i+1, s.Title, s.URL)
 	}
+	if v.Verdict == "unavailable" {
+		fmt.Fprintln(cmd.ErrOrStderr(), "webx: verdict needs a reachable LLM — set WEBX_LLM_BASE/WEBX_LLM_MODEL (sources above are still usable evidence)")
+	}
 	return nil
 }
 

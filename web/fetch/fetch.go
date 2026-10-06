@@ -36,6 +36,7 @@ type FetchRequest struct {
 	Render           bool          // always render via Chrome/remote (JS pages)
 	AutoRender       bool          // escalate to render only when JS-required is detected
 	WaitFor          string        // CSS selector to wait for when rendering
+	WaitMs           int           // ms to wait after load (delayed JS injects); implies render
 	Scrolls          int           // scroll passes for infinite/virtual pages when rendering
 	Actions          string        // render action spec: "click:.a | wait:.q | screenshot"
 	Screenshot       bool          // capture an image while rendering (ScreenshotB64 out)
@@ -164,6 +165,15 @@ func Fetch(ctx context.Context, freq FetchRequest) (*Document, error) {
 	// a11y snapshots only exist in a browser — honor the documented
 	// "implies render" instead of silently dropping the request.
 	if freq.WantA11y {
+		freq.Render = true
+	}
+	// A numeric wait implies render too: it becomes a leading sleep action
+	// so delayed JS injection lands before extraction (FC waitFor parity).
+	if freq.WaitMs > 0 {
+		if freq.Actions != "" {
+			freq.Actions = " | " + freq.Actions
+		}
+		freq.Actions = "sleep:" + strconv.Itoa(freq.WaitMs) + freq.Actions
 		freq.Render = true
 	}
 
@@ -713,7 +723,9 @@ func extractFromHTML(doc *Document, decoded []byte, finalURL *url.URL, domain st
 		doc.Markdown = string(md)
 	}
 
-	doc.Markdown = stripDataURIs(doc.Markdown) // base64 images are pure token waste
+	doc.Markdown = stripDataURIs(doc.Markdown)     // base64 images are pure token waste
+	doc.Markdown = stripHTMLComments(doc.Markdown) // <!-- --> is template junk, not content
+	doc.Markdown = stripLinkClusters(doc.Markdown) // nav/infobox link soup + footnote chrome
 	if doc.Title == "" {
 		doc.Title = pageTitle(decoded)
 	}

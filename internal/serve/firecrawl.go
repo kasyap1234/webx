@@ -200,14 +200,11 @@ func (o *v2ScrapeOptions) toFetchRequest() fetch.FetchRequest {
 	if o.Actions != nil {
 		actions = o.Actions.toDSL()
 	}
-	// waitFor(ms) → a leading sleep action so content has time to load
-	if o.WaitFor > 0 {
-		actions = "sleep:" + itoa(o.WaitFor) + orEmpty(actions)
-	}
-	render := actions != "" || wantShot ||
+	render := actions != "" || wantShot || o.WaitFor > 0 ||
 		o.Proxy == "stealth" || o.Proxy == "auto"
 	req := fetch.FetchRequest{
 		Render:           render,
+		WaitMs:           o.WaitFor,
 		Actions:          actions,
 		Screenshot:       wantShot,
 		Timeout:          time.Duration(o.Timeout) * time.Millisecond,
@@ -220,13 +217,6 @@ func (o *v2ScrapeOptions) toFetchRequest() fetch.FetchRequest {
 	}
 	o.Formats.shot().shotFields(&req)
 	return req
-}
-
-func orEmpty(s string) string {
-	if s == "" {
-		return ""
-	}
-	return " | " + s
 }
 
 // v2Doc reshapes a Document into Firecrawl's data object — field names are
@@ -343,28 +333,62 @@ func (s *Server) v2Scrape(w http.ResponseWriter, r *http.Request) {
 // → {data:{web:[...]}}.
 func (s *Server) v2Search(w http.ResponseWriter, r *http.Request) {
 	var req struct {
-		Query         string           `json:"query"`
-		Limit         int              `json:"limit"`
-		Sources       []any            `json:"sources"`
-		Country       string           `json:"country"`
-		Location      string           `json:"location"`
-		Timeout       int              `json:"timeout"`
-		ScrapeOptions *v2ScrapeOptions `json:"scrapeOptions"`
+		Query          string           `json:"query"`
+		Limit          int              `json:"limit"`
+		Sources        []any            `json:"sources"`
+		Country        string           `json:"country"`
+		Location       string           `json:"location"`
+		Categories     []string         `json:"categories"`
+		IncludeDomains []string         `json:"includeDomains"`
+		ExcludeDomains []string         `json:"excludeDomains"`
+		IncludeAnswer  bool             `json:"include_answer"`
+		Timeout        int              `json:"timeout"`
+		ScrapeOptions  *v2ScrapeOptions `json:"scrapeOptions"`
 	}
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil || req.Query == "" {
 		writeErr(w, http.StatusBadRequest, "body must be JSON {query}")
 		return
 	}
-	resp := searchFn(r.Context(), search.Request{
+	sreq := search.Request{
 		Query: req.Query, Num: req.Limit,
-	})
-	web := make([]map[string]any, 0, len(resp.Results))
+		Domains: req.IncludeDomains, ExcludeDomains: req.ExcludeDomains,
+		Answer: req.IncludeAnswer,
+	}
+	sreq.Location = req.Location
+	if sreq.Location == "" {
+		sreq.Location = req.Country
+	}
+	for _, c := range req.Categories {
+		if c == "developer" || c == "dev" {
+			sreq.Category = "developer"
+		}
+	}
+	// FC sources entries are strings or {type:"news",...} objects — keep the
+	// vertical names we actually serve.
+	for _, src := range req.Sources {
+		switch v := src.(type) {
+		case string:
+			sreq.Sources = append(sreq.Sources, v)
+		case map[string]any:
+			if t, ok := v["type"].(string); ok {
+				sreq.Sources = append(sreq.Sources, t)
+			}
+		}
+	}
+	if sreq.Answer && !sreq.Scrape {
+		sreq.Scrape, sreq.HighlightsOnly = true, true
+	}
+	resp := searchFn(r.Context(), sreq)
+	data := map[string]any{"web": []map[string]any{}}
 	for i, res := range resp.Results {
 		item := map[string]any{
 			"title":       res.Title,
 			"url":         res.URL,
 			"description": res.Snippet,
 			"position":    i + 1,
+		}
+		if res.Type == "images" && res.ImageURL != "" {
+			item["imageUrl"] = res.ImageURL
 		}
 		// Firecrawl inline-scrapes when scrapeOptions asks for it.
 		if req.ScrapeOptions != nil && len(req.ScrapeOptions.Formats) > 0 {
@@ -378,9 +402,20 @@ func (s *Server) v2Search(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 		}
-		web = append(web, item)
+		bucket := "web"
+		if res.Type == "news" || res.Type == "images" {
+			bucket = res.Type
+			if _, ok := data[bucket]; !ok {
+				data[bucket] = []map[string]any{}
+			}
+		}
+		data[bucket] = append(data[bucket].([]map[string]any), item)
 	}
-	writeJSON(w, map[string]any{"success": true, "data": map[string]any{"web": web}})
+	out := map[string]any{"success": true, "data": data}
+	if resp.Answer != "" {
+		out["answer"] = resp.Answer
+	}
+	writeJSON(w, out)
 }
 
 // v2Map handles POST /v2/map — {url, search?, limit} → {links:[{url,title?}]}.
@@ -400,18 +435,32 @@ func (s *Server) v2Map(w http.ResponseWriter, r *http.Request) {
 	if !strings.Contains(u, "://") {
 		u = "https://" + u
 	}
+	if err := s.guard.CheckURL(u); err != nil {
+		writeErr(w, http.StatusForbidden, "target refused: "+err.Error())
+		return
+	}
 	base, err := url.Parse(u)
 	if err != nil {
 		writeErr(w, http.StatusBadRequest, err.Error())
 		return
 	}
-	urls, err := index.DiscoverURLs(r.Context(), base, req.Limit)
+	var urls []string
+	if req.IgnoreSitemap {
+		// No sitemap (or caller wants fresh discovery) — harvest links
+		// from the live page tree instead.
+		urls, err = fetch.MapLinks(r.Context(), base, req.Limit, req.IncludeSubdomains, fetchFn)
+	} else {
+		urls, err = index.DiscoverURLs(r.Context(), base, req.Limit)
+	}
 	if err != nil {
 		writeErr(w, http.StatusBadGateway, err.Error())
 		return
 	}
 	links := make([]map[string]any, 0, len(urls))
 	for _, l := range urls {
+		if !req.IncludeSubdomains && !fetch.SameOrWWW(l, base.Hostname()) {
+			continue
+		}
 		if req.Search != "" && !strings.Contains(strings.ToLower(l), strings.ToLower(req.Search)) {
 			continue
 		}

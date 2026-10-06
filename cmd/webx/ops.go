@@ -144,22 +144,30 @@ var doctorCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Fprintln(cmd.ErrOrStderr(), "webx: probing providers…")
 		hs := search.Diagnose(cmd.Context(), "")
-		for _, h := range hs {
+		printRow := func(name string, ok bool, results int, latency time.Duration, note string) {
 			mark := "ok  "
-			if !h.OK {
+			if !ok {
 				mark = "FAIL"
 			}
-			line := fmt.Sprintf("%s %-8s", mark, h.Name)
-			if h.Results > 0 {
-				line += fmt.Sprintf(" %3d results", h.Results)
+			line := fmt.Sprintf("%s %-8s", mark, name)
+			if results > 0 {
+				line += fmt.Sprintf(" %3d results", results)
 			}
-			if h.Latency > 0 {
-				line += fmt.Sprintf(" %7s", h.Latency)
+			if latency > 0 {
+				line += fmt.Sprintf(" %7s", latency)
 			}
-			if h.Note != "" {
-				line += "  " + h.Note
+			if note != "" {
+				line += "  " + note
 			}
 			fmt.Fprintln(cmd.OutOrStdout(), line)
+		}
+		for _, h := range hs {
+			printRow(h.Name, h.OK, h.Results, h.Latency, h.Note)
+		}
+		// The LLM backend powers extract/verify/research/ask --llm — a dead
+		// endpoint is why those degrade, so it belongs in the same report.
+		if ok, lat, note := fetch.LLMHealth(cmd.Context()); true {
+			printRow("llm", ok, 0, lat, note)
 		}
 		return nil
 	},

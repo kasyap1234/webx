@@ -94,6 +94,43 @@ func TestQueryDoesNotORWidenOverStopwords(t *testing.T) {
 	}
 }
 
+// OR-widened hits that match only short terms must not survive: "french"
+// + "end" on a French-Revolution query is noise unless a long content
+// term ("revolution") is also present.
+func TestQueryWeakORRequiresLongTerm(t *testing.T) {
+	ctx := context.Background()
+	idx, err := Open(filepath.Join(t.TempDir(), "idx.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer idx.Close()
+
+	if err := idx.Put(ctx, Page{
+		URL:   "https://blog.test/paris",
+		Title: "A week in Paris",
+		Body:  "a french cafe at the end of the street, near the metro",
+	}); err != nil {
+		t.Fatal(err)
+	}
+	if err := idx.Put(ctx, Page{
+		URL:   "https://notes.test/rev",
+		Title: "Revolution notes",
+		Body:  "the french revolution ended in 1799 with the coup",
+	}); err != nil {
+		t.Fatal(err)
+	}
+
+	hits, err := idx.Query(ctx, "when did the french revolution end", 10)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, h := range hits {
+		if h.URL == "https://blog.test/paris" {
+			t.Fatalf("short-term-only hit survived filterWeakOR: %v", h)
+		}
+	}
+}
+
 func TestQueryAllStopwordsFallsBackToPhrase(t *testing.T) {
 	ctx := context.Background()
 	idx, err := Open(filepath.Join(t.TempDir(), "idx.db"))

@@ -38,17 +38,44 @@ type CDXRecord struct {
 
 var ccClient = &http.Client{Timeout: 60 * time.Second}
 
+// ccGet fetches u with retry — the Common Crawl index is a single
+// under-provisioned host that answers 502/504 under load, so one shot is
+// not a fair sample. Retries back off (1s, 3s); errors name the upstream
+// so "common crawl index: 504" reads as their outage, not your config.
+func ccGet(ctx context.Context, u string) (*http.Response, error) {
+	var lastErr error
+	for attempt := range 3 {
+		req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
+		if err != nil {
+			return nil, err
+		}
+		resp, err := ccClient.Do(req)
+		if err != nil {
+			lastErr = fmt.Errorf("common crawl: %w", err)
+		} else if resp.StatusCode == http.StatusBadGateway || resp.StatusCode == http.StatusServiceUnavailable || resp.StatusCode == http.StatusGatewayTimeout {
+			resp.Body.Close()
+			lastErr = fmt.Errorf("common crawl index: status %d", resp.StatusCode)
+		} else {
+			return resp, nil
+		}
+		if attempt < 2 {
+			select {
+			case <-ctx.Done():
+				return nil, ctx.Err()
+			case <-time.After(time.Duration(1+2*attempt) * time.Second):
+			}
+		}
+	}
+	return nil, lastErr
+}
+
 // LatestCrawl returns the newest crawl collection id (e.g. CC-MAIN-2026-40).
 func LatestCrawl(ctx context.Context) (string, error) {
 	var cols []struct {
 		ID   string `json:"id"`
 		Name string `json:"name"`
 	}
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, cdxIndex+"/collinfo.json", nil)
-	if err != nil {
-		return "", err
-	}
-	resp, err := ccClient.Do(req)
+	resp, err := ccGet(ctx, cdxIndex+"/collinfo.json")
 	if err != nil {
 		return "", err
 	}
@@ -80,11 +107,7 @@ func QueryCDX(ctx context.Context, crawl, urlPattern string, limit int) ([]CDXRe
 		"limit":    {fmt.Sprint(limit)},
 	}
 	u := fmt.Sprintf("%s/%s-index?%s", cdxIndex, crawl, q.Encode())
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
-	if err != nil {
-		return nil, err
-	}
-	resp, err := ccClient.Do(req)
+	resp, err := ccGet(ctx, u)
 	if err != nil {
 		return nil, err
 	}
@@ -93,7 +116,7 @@ func QueryCDX(ctx context.Context, crawl, urlPattern string, limit int) ([]CDXRe
 		return nil, nil // no captures for this pattern
 	}
 	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("cdx: status %d", resp.StatusCode)
+		return nil, fmt.Errorf("common crawl index: status %d", resp.StatusCode)
 	}
 	var recs []CDXRecord
 	sc := bufio.NewScanner(resp.Body)

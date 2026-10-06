@@ -91,10 +91,9 @@ func probeAgentReady(ctx context.Context, finalURL *url.URL, doc *Document, resp
 			}
 		}
 	}
-	if ar.MarkdownNative || ar.LLMsTxt != "" || len(ar.AIBots) > 0 || len(ar.JSONLDTypes) > 0 ||
-		ar.WebMCP || ar.APICatalog != "" || ar.TDMReserved || ar.AITxt || ar.AgentsMD || ar.AgentCard != "" {
-		doc.AgentReady = ar
-	}
+	// Always attach — an empty agent_ready{} distinguishes "probed, host
+	// exposes nothing" from "flag not passed" in JSON output.
+	doc.AgentReady = ar
 }
 
 // probeWellKnown GETs a well-known/site-root file and returns its URL when

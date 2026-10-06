@@ -37,6 +37,7 @@ func init() {
 	scrapeCmd.Flags().BoolVar(&doRender, "render", false, "render JavaScript via Chrome (go-rod) — for SPA/client-rendered pages")
 	scrapeCmd.Flags().BoolVar(&autoRender, "auto-render", false, "escalate to Chrome only when the page looks JS-required")
 	scrapeCmd.Flags().StringVar(&waitFor, "wait-for", "", "CSS selector to wait for when rendering")
+	scrapeCmd.Flags().IntVar(&waitMs, "wait", 0, "ms to wait after load — delayed JS injects (implies render)")
 	scrapeCmd.Flags().IntVar(&scrolls, "scrolls", 0, "scroll passes for infinite/virtual pages when rendering")
 	scrapeCmd.Flags().StringVar(&actions, "actions", "", "browser steps before extraction: \"click:.accept | wait:.quote | type:#q=term | press:enter | scroll | screenshot\"")
 	scrapeCmd.Flags().StringVar(&screenshot, "screenshot", "", "capture a PNG while rendering → file path (or screenshot_b64 with -f json)")
@@ -88,7 +89,8 @@ func init() {
 	searchCmd.Flags().BoolVar(&sExact, "exact", false, "phrase-match the query verbatim")
 	searchCmd.Flags().BoolVar(&sHighlights, "highlights", false, "fetch result pages but keep only query-relevant excerpts — the token-saving scrape")
 	searchCmd.Flags().BoolVar(&sScrape, "scrape", false, "fetch each result's content + highlights inline")
-	searchCmd.Flags().BoolVar(&sRerank, "rerank", false, "re-sort by scraped content relevance (implies --scrape)")
+	searchCmd.Flags().BoolVar(&sRerank, "rerank", false, "re-sort results by query relevance — embedding cosine on snippets; pair with --scrape for content-level rerank (WEBX_EMBED_*, lexical fallback)")
+	searchCmd.Flags().BoolVar(&sFresh, "fresh", false, "bypass the 10m result cache — fresh provider calls (still writes cache)")
 	searchCmd.Flags().IntVar(&sScrapeChars, "content-chars", 2000, "cap per-result content chars when --scrape")
 	searchCmd.Flags().BoolVar(&browser, "browser", false, "Chrome TLS fingerprint for --scrape fetches")
 	searchCmd.Flags().StringVar(&session, "session", "", "persistent cookie jar name")
@@ -97,10 +99,14 @@ func init() {
 
 	mapCmd.Flags().IntVar(&mLimit, "limit", 1000, "max URLs")
 	mapCmd.Flags().StringVarP(&mFormat, "format", "f", "md", "output format: md|json")
+	mapCmd.Flags().StringVar(&mSearch, "search", "", "keep only URLs containing this string")
+	mapCmd.Flags().BoolVar(&mSubdomains, "subdomains", false, "include subdomains of the target host")
+	mapCmd.Flags().BoolVar(&mNoSitemap, "ignore-sitemap", false, "skip the sitemap — harvest same-host links from live pages")
 
 	askCmd.Flags().IntVarP(&aNum, "num", "n", 5, "sources to cite")
 	askCmd.Flags().IntVar(&aTokens, "max-tokens", 3000, "token budget for output")
 	askCmd.Flags().BoolVar(&aLLM, "llm", false, "append an LLM-synthesized answer citing the sources (WEBX_LLM_*)")
+	askCmd.Flags().StringVarP(&format, "format", "f", "md", "output format: md|json")
 
 	evalCmd.Flags().IntVarP(&eNum, "num", "n", 10, "results per query")
 	evalCmd.Flags().StringVar(&eProviders, "providers", "", "comma-separated providers (default: free set)")
@@ -132,6 +138,9 @@ func init() {
 	}
 	searchCmd.Flags().StringVar(&sDepth, "depth", "", "search depth tier: fast|basic|advanced")
 	searchCmd.Flags().StringSliceVar(&sSources, "sources", nil, "result verticals to include: web,news,images")
+	searchCmd.Flags().StringVar(&sLocation, "location", "", "ISO country code geo hint (Exa userLocation / FC location) — biases regional providers like DDG")
+	searchCmd.Flags().StringVar(&sCategory, "category", "", "vertical preset: developer restricts providers to code/docs sources (so,gh,grep,sg,npm,crates,hn,reddit)")
+	searchCmd.Flags().BoolVar(&sAnswer, "answer", false, "attach a cited extractive answer (scrapes top results at highlights depth)")
 	searchCmd.Flags().IntVar(&sSubpages, "subpages", 0, "crawl N sitemap subpages per top result")
 	searchCmd.Flags().StringSliceVar(&sSubpageTgt, "subpage-target", nil, "keyword filter for subpage candidates")
 
@@ -154,10 +163,13 @@ func init() {
 	researchCmd.Flags().IntVar(&rSources, "sources", 6, "max pages to read")
 	researchCmd.Flags().StringVar(&rSchema, "schema", "", "JSON Schema — return the report as matching JSON (Tavily output_schema)")
 	verifyCmd.Flags().IntVar(&vSources, "sources", 4, "max pages to read")
+	verifyCmd.Flags().StringVarP(&format, "format", "f", "md", "output format: md|json")
 
 	similarCmd.Flags().IntVar(&simLimit, "limit", 10, "max similar pages")
 	similarCmd.Flags().BoolVar(&simWeb, "web", false, "search the live web for similar pages (Exa findSimilar) instead of the local index")
+	similarCmd.Flags().StringVarP(&format, "format", "f", "md", "output format: md|json")
 	llmsCmd.Flags().IntVar(&llmsLimit, "limit", 300, "max pages to include")
+	llmsCmd.Flags().StringVarP(&format, "format", "f", "md", "output format: md|json")
 
 	extractCmd.Flags().StringVar(&xSchema, "schema", "", "JSON schema for the data to extract")
 	extractCmd.Flags().StringVar(&xPrompt, "prompt", "", "extraction instructions")
@@ -169,6 +181,7 @@ func init() {
 
 	diffCmd.Flags().StringVar(&dDB, "db", "", "index db path (default ~/.webx/index.db)")
 	diffCmd.Flags().BoolVar(&dIndexNew, "update-index", false, "write the fresh version back to the index")
+	diffCmd.Flags().StringVarP(&format, "format", "f", "md", "output format: md|json")
 	diffCmd.Flags().BoolVar(&browser, "browser", false, "Chrome TLS fingerprint")
 	diffCmd.Flags().StringVar(&session, "session", "", "persistent cookie jar name")
 
@@ -190,6 +203,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&apiURL, "api", "", "remote webx/webxd base URL — scrape/search/crawl run server-side")
 
 	queryCmd.Flags().BoolVar(&sSemantic, "semantic", false, "fuse FTS5 with embedding cosine — needs WEBX_EMBED_MODEL (+WEBX_EMBED_BASE/KEY)")
+	queryCmd.Flags().StringVarP(&sFormat, "format", "f", "md", "output format: md|json")
 	botkeyCmd.Flags().StringVar(&botkeyOut, "out", fetch.BotKeyPath(), "key file path")
 	botkeyCmd.Flags().StringVar(&botkeyDir, "directory", "", "https URL where you'll serve the JWKS (saved into the key file)")
 	licenseCmd.Flags().StringVar(&licTier, "tier", "pro", "license tier: pro|enterprise")

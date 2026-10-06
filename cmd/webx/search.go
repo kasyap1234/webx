@@ -36,10 +36,14 @@ var (
 	sRerank      bool
 	sScrapeChars int
 	sSemantic    bool
+	sFresh       bool
 	sDepth       string
 	sSources     []string
 	sSubpages    int
 	sSubpageTgt  []string
+	sLocation    string
+	sCategory    string
+	sAnswer      bool
 )
 
 // iColl names the index corpus — shared by index/query/similar/llms/
@@ -47,14 +51,24 @@ var (
 var iColl string
 
 func runSearch(cmd *cobra.Command, args []string) error {
+	scrape := sScrape || sHighlights
+	answer := sAnswer
+	if answer && !scrape {
+		// Answers need evidence — snippet-only grounding is too thin.
+		// Scrape the top results at highlights depth, not full content.
+		scrape, sHighlights = true, true
+	}
 	req := search.Request{
 		Query:          args[0],
 		Num:            sNum,
 		Site:           sSite,
 		Topic:          sTopic,
 		Lang:           sLang,
+		Location:       sLocation,
+		Category:       sCategory,
 		Exact:          sExact,
-		Scrape:         sScrape || sRerank || sHighlights,
+		Scrape:         scrape,
+		Answer:         answer,
 		Rerank:         sRerank,
 		ScrapeChars:    sScrapeChars,
 		HighlightsOnly: sHighlights,
@@ -63,6 +77,7 @@ func runSearch(cmd *cobra.Command, args []string) error {
 		Render:         doRender,
 		AutoRender:     autoRender,
 		Semantic:       sSemantic,
+		Fresh:          sFresh,
 		Depth:          sDepth,
 		Sources:        sSources,
 		Subpages:       sSubpages,
@@ -123,6 +138,9 @@ func runSearch(cmd *cobra.Command, args []string) error {
 			sort.Strings(parts)
 			fmt.Fprintf(cmd.ErrOrStderr(), "webx: providers: %s\n", strings.Join(parts, " "))
 		}
+		if resp.Answer != "" {
+			fmt.Fprintf(cmd.OutOrStdout(), "## Answer\n\n%s\n\n", resp.Answer)
+		}
 		if len(resp.Results) == 0 {
 			fmt.Fprintln(cmd.ErrOrStderr(), "webx: no results")
 			return nil
@@ -170,6 +188,12 @@ func runAsk(cmd *cobra.Command, args []string) error {
 	if budget <= 0 {
 		budget = 12000
 	}
+	type askSource struct {
+		Title   string `json:"title"`
+		URL     string `json:"url"`
+		Excerpt string `json:"excerpt,omitempty"`
+	}
+	var srcs []askSource
 	n := 0
 	for i, r := range resp.Results {
 		if len(r.Highlights) == 0 && r.Content == "" && r.Snippet == "" {
@@ -177,39 +201,55 @@ func runAsk(cmd *cobra.Command, args []string) error {
 		}
 		var sec strings.Builder
 		fmt.Fprintf(&sec, "## [%d] %s\n%s\n\n", i+1, r.Title, r.URL)
+		excerpt := ""
 		if len(r.Highlights) > 0 {
 			for _, h := range r.Highlights {
 				fmt.Fprintf(&sec, "> %s\n\n", h)
 			}
+			excerpt = strings.Join(r.Highlights, " … ")
 		} else if r.Content != "" {
 			c := r.Content
 			if len(c) > 1500 {
 				c = c[:1500] + "…"
 			}
 			sec.WriteString(c + "\n\n")
+			excerpt = c
 		} else {
 			fmt.Fprintf(&sec, "> %s\n\n", r.Snippet)
+			excerpt = r.Snippet
 		}
 		if b.Len()+sec.Len() > budget {
 			break
 		}
 		b.WriteString(sec.String())
+		srcs = append(srcs, askSource{Title: r.Title, URL: r.URL, Excerpt: excerpt})
 		n++
 	}
 	for name, e := range resp.Errors {
 		fmt.Fprintf(cmd.ErrOrStderr(), "webx: provider %s failed: %s\n", name, e)
 	}
 	fmt.Fprintf(cmd.ErrOrStderr(), "webx: %d sources cited\n", n)
-	if _, err := fmt.Fprint(cmd.OutOrStdout(), b.String()); err != nil {
-		return err
-	}
+	answer := ""
 	if aLLM {
-		answer, err := synthesizeAnswer(cmd.Context(), args[0], b.String())
+		a, err := synthesizeAnswer(cmd.Context(), args[0], b.String())
 		if err != nil {
 			fmt.Fprintf(cmd.ErrOrStderr(), "webx: LLM synthesis failed (%v) — excerpts only\n", err)
 		} else {
-			fmt.Fprintf(cmd.OutOrStdout(), "\n## Answer\n\n%s\n", answer)
+			answer = a
 		}
+	}
+	if format == "json" {
+		return json.NewEncoder(cmd.OutOrStdout()).Encode(map[string]any{
+			"question": args[0],
+			"answer":   answer,
+			"sources":  srcs,
+		})
+	}
+	if _, err := fmt.Fprint(cmd.OutOrStdout(), b.String()); err != nil {
+		return err
+	}
+	if answer != "" {
+		fmt.Fprintf(cmd.OutOrStdout(), "\n## Answer\n\n%s\n", answer)
 	}
 	return nil
 }

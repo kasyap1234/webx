@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"runtime/debug"
 	"strings"
 	"sync"
 
@@ -26,6 +27,20 @@ import (
 // Version is the build version reported by /version — cmd/webx and webxd
 // stamp it at startup; "dev" means an unstamped build.
 var Version = "dev"
+
+// versionString resolves what /version reports: the stamped Version when
+// goreleaser/ldflags set one, else the Go module's own build info — which
+// is how `go install …@latest` binaries identify themselves honestly
+// instead of answering "dev" forever.
+func versionString() string {
+	if Version != "" && Version != "dev" {
+		return Version
+	}
+	if bi, ok := debug.ReadBuildInfo(); ok && bi.Main.Version != "" && bi.Main.Version != "(devel)" {
+		return bi.Main.Version
+	}
+	return Version
+}
 
 // ── operational endpoints ────────────────────────────────────────────────
 
@@ -78,7 +93,7 @@ func (s *Server) metricsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) version(w http.ResponseWriter, r *http.Request) {
-	writeJSON(w, map[string]any{"version": Version, "name": "webx"})
+	writeJSON(w, map[string]any{"version": versionString(), "name": "webx"})
 }
 
 // ── async research ───────────────────────────────────────────────────────

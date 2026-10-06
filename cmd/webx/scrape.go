@@ -30,6 +30,7 @@ var (
 	doRender   bool
 	autoRender bool
 	waitFor    string
+	waitMs     int
 	scrolls    int
 	actions    string
 	screenshot string
@@ -86,6 +87,7 @@ func runScrape(cmd *cobra.Command, args []string) error {
 		Render:           doRender || actions != "" || screenshot != "" || pdfOut != "" || mhtmlOut != "" || netCap || conCap || wantA11y,
 		AutoRender:       autoRender,
 		WaitFor:          waitFor,
+		WaitMs:           waitMs,
 		Scrolls:          scrolls,
 		Actions:          actions,
 		Screenshot:       screenshot != "",
@@ -175,6 +177,12 @@ func runScrape(cmd *cobra.Command, args []string) error {
 	case "md", "markdown":
 		if doc.Truncated {
 			fmt.Fprintf(cmd.ErrOrStderr(), "webx: output truncated to %d chars\n", maxChars)
+		}
+		if doc.Summary != "" {
+			_, err = fmt.Fprintf(cmd.OutOrStdout(), "## Summary\n\n%s\n\n---\n\n", doc.Summary)
+			if err != nil {
+				return err
+			}
 		}
 		if fit != "" && doc.FitMarkdown != "" {
 			fmt.Fprintf(cmd.ErrOrStderr(), "webx: fit → %d chars of %d\n", len(doc.FitMarkdown), doc.TextLength)

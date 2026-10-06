@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -17,9 +18,12 @@ import (
 // OpenAI-compatible endpoint — Ollama by default (free, local) or a hosted
 // provider via env.
 //
-//	WEBX_LLM_BASE   OpenAI-compatible base (default http://localhost:11434/v1)
-//	WEBX_LLM_MODEL  model name (default llama3.1)
-//	WEBX_LLM_KEY    bearer token for hosted providers
+//	WEBX_LLM_BASE        OpenAI-compatible base (default http://localhost:11434/v1)
+//	WEBX_LLM_MODEL       model name (default llama3.1)
+//	WEBX_LLM_KEY         bearer token for hosted providers
+//	WEBX_LLM_MAX_TOKENS  generation cap (default 4096 — reasoning models
+//	                     spend thinking budget before content; bounds runaway)
+//	WEBX_LLM_TIMEOUT     request timeout in seconds (default 120 — raise for slow local hardware)
 type ExtractRequest struct {
 	URL      string
 	Markdown string         // pre-fetched page text — skips the fetch when set
@@ -56,27 +60,92 @@ func llmModel() string {
 	return "llama3.1"
 }
 
-var extractClient = &http.Client{Timeout: 120 * time.Second}
+func llmMaxTokens() int {
+	if v := os.Getenv("WEBX_LLM_MAX_TOKENS"); v != "" {
+		if n, err := strconv.Atoi(v); err == nil && n > 0 {
+			return n
+		}
+	}
+	return 4096
+}
+
+func llmTimeout() time.Duration {
+	if v := os.Getenv("WEBX_LLM_TIMEOUT"); v != "" {
+		if n, err := strconv.Atoi(v); err == nil && n > 0 {
+			return time.Duration(n) * time.Second
+		}
+	}
+	return 120 * time.Second
+}
+
+var extractClient = &http.Client{Timeout: llmTimeout()}
 
 // LLMChat is the shared OpenAI-compatible chat call — extract, summarize,
 // and research all ride on it. Returns the assistant message text.
+//
+// Two retry classes, both bounded: a 400 naming response_format drops that
+// field (LM Studio and older llama.cpp reject "json_object"; prompts demand
+// bare JSON anyway), and 429/5xx — free-tier shared pools saturate for
+// seconds at a time — retry with backoff. max_tokens is always bounded: a
+// misconfigured chat template makes small models generate endlessly.
 func LLMChat(ctx context.Context, sys, user string, jsonMode bool) (string, error) {
+	noFormat := false
+	var lastErr error
+	for attempt := range 4 {
+		out, code, raw, err := llmRequest(ctx, sys, user, jsonMode, noFormat)
+		if err == nil {
+			return out, nil
+		}
+		switch {
+		case code == http.StatusBadRequest && jsonMode && !noFormat &&
+			structuredUnsupported(raw):
+			noFormat = true
+		case code == http.StatusTooManyRequests || code >= 500:
+			lastErr = err
+			if attempt == 3 {
+				break
+			}
+			select {
+			case <-time.After(time.Duration(1<<attempt) * 2 * time.Second):
+			case <-ctx.Done():
+				return "", ctx.Err()
+			}
+		default:
+			return "", err
+		}
+	}
+	return "", lastErr
+}
+
+// structuredUnsupported reports whether a 400 body blames the
+// response_format field. Providers name it differently — OpenAI/LM Studio
+// say "response_format", OpenRouter passes through upstream text like
+// "does not support feature: structured-outputs".
+func structuredUnsupported(raw []byte) bool {
+	s := string(raw)
+	return strings.Contains(s, "response_format") || strings.Contains(s, "structured")
+}
+
+// llmRequest performs one chat completion. Returns the assistant content,
+// or the HTTP status and raw body for the caller to classify.
+func llmRequest(ctx context.Context, sys, user string, jsonMode, noFormat bool) (string, int, []byte, error) {
 	payload := map[string]any{
-		"model": llmModel(),
+		"model":      llmModel(),
+		"max_tokens": llmMaxTokens(),
 		"messages": []map[string]string{
 			{"role": "system", "content": sys},
 			{"role": "user", "content": user},
 		},
 		"temperature": 0,
 	}
-	if jsonMode {
+	if jsonMode && !noFormat {
 		payload["response_format"] = map[string]string{"type": "json_object"}
 	}
 	body, _ := json.Marshal(payload)
 	httpReq, err := http.NewRequestWithContext(ctx, http.MethodPost,
 		llmBase()+"/chat/completions", bytes.NewReader(body))
 	if err != nil {
-		return "", err
+		return "", 0, nil, err
 	}
 	httpReq.Header.Set("Content-Type", "application/json")
 	if k := os.Getenv("WEBX_LLM_KEY"); k != "" {
@@ -84,15 +153,26 @@ func LLMChat(ctx context.Context, sys, user string, jsonMode bool) (string, erro
 	}
 	resp, err := extractClient.Do(httpReq)
 	if err != nil {
-		return "", fmt.Errorf("llm %s: %w", llmBase(), err)
+		return "", 0, nil, fmt.Errorf("llm unreachable at %s (%w) — start an OpenAI-compatible endpoint (default Ollama) or set WEBX_LLM_BASE", llmBase(), err)
 	}
 	defer resp.Body.Close()
 	raw, err := io.ReadAll(io.LimitReader(resp.Body, 8<<20))
 	if err != nil {
-		return "", err
+		return "", 0, nil, err
 	}
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("llm status %d: %s", resp.StatusCode, truncateStr(string(raw), 200))
+		// OpenAI-compatible errors carry {"error":{"message":…}} — surface
+		// the message, not the raw JSON blob.
+		var env struct {
+			Error struct {
+				Message string `json:"message"`
+			} `json:"error"`
+		}
+		if json.Unmarshal(raw, &env) == nil && env.Error.Message != "" {
+			return "", resp.StatusCode, raw, fmt.Errorf("llm %s (%s) — model %q at %s; pull the model or set WEBX_LLM_MODEL",
+				http.StatusText(resp.StatusCode), env.Error.Message, llmModel(), llmBase())
+		}
+		return "", resp.StatusCode, raw, fmt.Errorf("llm status %d: %s", resp.StatusCode, truncateStr(string(raw), 200))
 	}
 	var out struct {
 		Choices []struct {
@@ -102,12 +182,50 @@ func LLMChat(ctx context.Context, sys, user string, jsonMode bool) (string, erro
 		} `json:"choices"`
 	}
 	if err := json.Unmarshal(raw, &out); err != nil {
-		return "", fmt.Errorf("llm response parse: %w", err)
+		return "", resp.StatusCode, raw, fmt.Errorf("llm response parse: %w", err)
 	}
 	if len(out.Choices) == 0 {
-		return "", fmt.Errorf("llm returned no choices")
+		return "", resp.StatusCode, raw, fmt.Errorf("llm returned no choices")
 	}
-	return strings.TrimSpace(out.Choices[0].Message.Content), nil
+	return strings.TrimSpace(out.Choices[0].Message.Content), resp.StatusCode, raw, nil
+}
+
+// LLMHealth probes the configured chat endpoint — doctor's row for the
+// WEBX_LLM_* backend. A GET /models, not a generation: verifies reachability
+// and that WEBX_LLM_MODEL exists without spending tokens.
+func LLMHealth(ctx context.Context) (ok bool, latency time.Duration, note string) {
+	start := time.Now()
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, llmBase()+"/models", nil)
+	if err != nil {
+		return false, 0, err.Error()
+	}
+	if k := os.Getenv("WEBX_LLM_KEY"); k != "" {
+		req.Header.Set("Authorization", "Bearer "+k)
+	}
+	resp, err := extractClient.Do(req)
+	latency = time.Since(start).Round(time.Millisecond)
+	if err != nil {
+		return false, latency, "unreachable — extract/verify/research degrade to excerpts"
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return false, latency, fmt.Sprintf("status %d", resp.StatusCode)
+	}
+	var list struct {
+		Data []struct {
+			ID string `json:"id"`
+		} `json:"data"`
+	}
+	raw, _ := io.ReadAll(io.LimitReader(resp.Body, 4<<20))
+	if json.Unmarshal(raw, &list) != nil || len(list.Data) == 0 {
+		return true, latency, "reachable (model list unavailable)"
+	}
+	for _, m := range list.Data {
+		if m.ID == llmModel() {
+			return true, latency, "model ready"
+		}
+	}
+	return false, latency, fmt.Sprintf("model %q not listed — set WEBX_LLM_MODEL to one of %d available", llmModel(), len(list.Data))
 }
 
 // Summarize produces a tight 3-5 sentence digest of a page — Firecrawl's
