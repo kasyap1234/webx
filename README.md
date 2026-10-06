@@ -4,6 +4,8 @@
 
 The self-hosted alternative to Firecrawl/Exa/Tavily/TinyFish: the important parts (metasearch fusion, FTS5 indexing, adaptive crawling, TLS fingerprinting) are built in, not wrapped. One binary replaces a scraping API bill, a search API bill, and a browser-infra bill.
 
+![webx demo — scrape, search, doctor](docs/assets/demo.gif)
+
 ## Install
 
 ```bash
