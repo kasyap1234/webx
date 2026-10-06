@@ -1,0 +1,16 @@
+name = "webxl"
+main = "src/index.js"
+compatibility_date = "2026-10-06"
+
+# Retry dedup + mailbox spool (license JSONs when Resend isn't configured).
+[[kv_namespaces]]
+binding = "SEEN"
+id = "2035dbaac7b5417ab8747b436b73cd0d"
+
+# Non-secret config — provider product/price ids aren't sensitive.
+# Secrets (wrangler secret put): WEBX_MAINTAINER_SEED, POLAR_WEBHOOK_SECRET,
+# STRIPE_WEBHOOK_SECRET, STRIPE_SECRET_KEY, RESEND_API_KEY, ADMIN_TOKEN.
+[vars]
+LICENSE_FROM = "webx licenses <licenses@webx-5sp.pages.dev>"
+POLAR_TIERS = ""
+STRIPE_TIERS = ""

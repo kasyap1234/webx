@@ -25,27 +25,34 @@ image, Homebrew formula bump in `kasyap1234/homebrew-tap`, SDK publishes (gated,
 
 ## 2. Self-serve license sales (webxl)
 
-`webxl` is in the release artifacts. On any small VPS / fly.io / Railway:
+`webxl` is **already deployed as a Cloudflare Worker** (free tier) at
+`https://webxl.kasyap3103.workers.dev` — source in `workers/webxl/`, a
+zero-dep port of `internal/fulfill`. Routes: `POST /webhooks/polar`,
+`POST /webhooks/stripe`, `GET /health`, `GET /mailbox` (Bearer `ADMIN_TOKEN`;
+serves licenses when Resend isn't configured). KV namespace `SEEN` handles
+retry dedup + the mailbox spool. Already set: `WEBX_MAINTAINER_SEED`,
+`ADMIN_TOKEN`. To redeploy: `cd workers/webxl && npx wrangler deploy`.
 
-```bash
-WEBX_MAINTAINER_KEY=/secrets/maintainer.pem \
-POLAR_WEBHOOK_SECRET=whsec_…  \
-POLAR_TIERS="prod_xxx:pro,prod_yyy:enterprise:400" \
-RESEND_API_KEY=re_… \
-LICENSE_FROM="webx licenses <licenses@yourdomain>" \
-webxl   # listens :8090 — POST /webhooks/polar, /webhooks/stripe, GET /healthz
-```
+Remaining secrets to set (`npx wrangler secret put <NAME>` in `workers/webxl/`):
+
+- [ ] `POLAR_WEBHOOK_SECRET` — Polar.sh org → webhook endpoint
+      `https://webxl.kasyap3103.workers.dev/webhooks/polar`, event `order.paid`.
+      (Stripe also works: `STRIPE_WEBHOOK_SECRET`, `STRIPE_SECRET_KEY`.)
+- [ ] `POLAR_TIERS` / `STRIPE_TIERS` — product→tier maps (plain `[vars]`,
+      edit `wrangler.toml`): `"prod_xxx:pro,prod_yyy:enterprise:400"`.
+- [ ] `RESEND_API_KEY` + verify sender domain → set `LICENSE_FROM`.
+      Until then licenses land in `/mailbox` — fetch with
+      `curl -H "Authorization: Bearer $ADMIN_TOKEN" .../mailbox` then
+      `?key=<name>`.
+
+Alternative: the Go `webxl` binary is also in the release artifacts for a
+VPS/fly.io deploy (env: `WEBX_MAINTAINER_KEY`, same webhook secrets; listens
+:8090). The Worker is the recommended path — $0/month, no server.
 
 - [ ] Create a **Polar.sh** org (built for OSS devs; merchant of record —
       they handle sales tax/VAT). Products: `webx Pro` ($49/mo subscription)
       and `webx Enterprise` (custom/invoice). Note each product ID →
-      `POLAR_TIERS`.
-- [ ] Polar → Settings → Webhooks → endpoint `https://<host>/webhooks/polar`,
-      events `order.paid`. Copy secret → `POLAR_WEBHOOK_SECRET`.
-      (Stripe works too: Payment Links + `STRIPE_WEBHOOK_SECRET`,
-      `STRIPE_SECRET_KEY`, `STRIPE_TIERS="price_…:pro"`.)
-- [ ] **Resend** account → verify sender domain → `RESEND_API_KEY`. Without
-      it, licenses spool to `MAILBOX_DIR` for manual send — usable day one.
+      `POLAR_TIERS` in `workers/webxl/wrangler.toml`.
 - [ ] Put the checkout link in README § Pricing + site Pricing.svelte
       (replace the issue-template CTA for Pro; keep it for Enterprise).
 - [ ] Renewal handling is automatic: each billing cycle re-fires the paid
@@ -70,11 +77,13 @@ re-keying every customer.** It's never committed to the repo.
 
 ## 4. Discovery
 
-- [ ] **Domain** — webx.dev / usewebx.dev / webx.sh (~$12/yr). Point at the
-      Pages deploy (CNAME in repo settings) or move both sites to your
-      personal Vercel account later. Then update: `site/src/lib/data.ts`
-      `DOCS_URL`, `docs-site` SITE_URL/BASE_PATH envs in `pages.yml`,
-      repo homepage URL.
+- [ ] **Domain** — webx.dev / usewebx.dev / webx.sh (~$12/yr). Sites are on
+      Cloudflare Pages: `webx-5sp.pages.dev` (marketing) +
+      `webx-docs.pages.dev` (docs), deployed via
+      `npx wrangler pages deploy site/build|docs-site/dist
+      --project-name=webx|webx-docs`. A custom domain is one CNAME in the
+      Pages project settings. Then update: `site/src/lib/data.ts` `DOCS_URL`,
+      `docs-site` SITE_URL env, repo homepage URL.
 - [ ] **MCP registry** — `server.json` is at `mcp/server.json`; install
       `mcp-publisher` and `mcp-publisher publish` (GitHub OAuth to verify the
       `io.github.kasyap1234/*` namespace). Also list on Smithery + Glama.

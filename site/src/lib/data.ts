@@ -4,9 +4,9 @@
  */
 
 export const REPO_URL = 'https://github.com/kasyap1234/webx';
-// Starlight docs deployed under the Pages site's /docs path — swap to a
-// real domain when one is chosen.
-export const DOCS_URL = 'https://kasyap1234.github.io/webx/docs/';
+// Starlight docs on Cloudflare Pages — swap to a dedicated domain when
+// one is chosen.
+export const DOCS_URL = 'https://webx-docs.pages.dev/';
 export const INSTALL_CMD = 'go install github.com/kasyap1234/webx/cmd/webx@latest';
 export const VERSION = 'v0.1.0';
 
