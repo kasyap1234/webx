@@ -10,7 +10,7 @@ git tag v0.1.0 && git push origin v0.1.0
 ```
 
 The tag triggers: goreleaser → GitHub release artifacts, `ghcr.io/kasyap1234/webx`
-image, Homebrew cask in `kasyap1234/homebrew-tap`, SDK publishes (gated, see §3).
+image, Homebrew formula bump in `kasyap1234/homebrew-tap`, SDK publishes (gated, see §3).
 
 - [x] `HOMEBREW_TAP_TOKEN` secret set — currently the gh CLI OAuth token.
       **Swap for a fine-grained PAT scoped to `kasyap1234/homebrew-tap`
